@@ -19,12 +19,12 @@ nav a {
 }
 
 .hero {
-    background-image: url('../images/photoby_1716121354566.jpg');
+    background-image: url('../images/IMG_1178.png');
     background-size: cover;      /* 讓圖片完全覆蓋區塊 */
     background-position: center; /* 置中背景圖 */
     background-repeat: no-repeat;
     color: white;                /* 文字顏色改白，確保可讀 */
-    padding: 120px 20px;         /* 上下內距 */
+    padding: 200px 20px;         /* 上下內距 */
     text-align: center;
 }
 

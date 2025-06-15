@@ -1,117 +1,129 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <title>關於我</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* 置中關於我標題、頭像、文字 */
-        .about-header {
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於我</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 關於我置中 */
+    .about-header {
+      text-align: center;
+    }
 
-        /* 頭像框樣式 */
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 20px auto;
-            border: 3px solid #333;
-            box-shadow: 0 0 8px rgba(0,0,0,0.2);
-        }
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+    /* 頭像框 */
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 20px auto;
+      border: 3px solid #333;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-        /* 輪播容器 */
-        .slider {
-            width: 300px;
-            height: 180px;
-            margin: 30px auto;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.15);
-        }
-        .slides {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-        .slides img {
-            width: 300px;
-            height: 180px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-    </style>
+    /* 輪播區 */
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+      max-width: 960px;
+      margin: 40px auto;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .carousel-group {
+      display: flex;
+      justify-content: space-between;
+      min-width: 100%;
+      gap: 20px;
+    }
+
+    .carousel-group img {
+      width: calc(33.333% - 14px);
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html">首頁</a>
-            <a href="about.html">關於我</a>
-            <a href="projects.html">作品</a>
-            <a href="contact.html">聯絡我</a>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <a href="index.html">首頁</a>
+      <a href="about.html">關於我</a>
+      <a href="projects.html">作品</a>
+      <a href="contact.html">聯絡我</a>
+    </nav>
+  </header>
 
-    <main class="container">
-        <!-- 用 about-header 包起來置中 -->
-        <div class="about-header">
-            <h1>關於我</h1>
+  <main class="container">
+    <div class="about-header">
+      <h1>-關於我-</h1>
 
-            <!-- 頭像框 -->
-            <div class="avatar">
-                <img src="images/IMG_3327.JPG">
-            </div>
+      <!-- 頭像 -->
+      <div class="avatar">
+        <img src="images/photoby_1716121354566-1.jpg" alt="沫鯨頭像">
+      </div>
+    </div>
+
+    <h2>自介</h2>
+    <p>INTP人，大學設計生。</p>
+
+    <h2>技能</h2>
+    <ul>
+      <li>Unity 遊戲開發 / C#</li>
+      <li>遊戲美術</li>
+      <li>故事編寫</li>
+      <li>Cosplay</li>
+    </ul>
+
+    <h2>作品展示</h2>
+    <div class="carousel">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-group">
+          <img src="images/IMG_9437.PNG" alt="展示圖1">
+          <img src="images/NoiaBG.png" alt="展示圖2">
+          <img src="images/Sense_GameStart.png" alt="展示圖3">
         </div>
-
-         <h2>自介</h2>
-        <ul>
-            <p>INTP人，大學設計生。</p>
-        </ul>
-
-        <h2>技能</h2>
-        <ul>
-            <li>Unity 遊戲開發 / C#</li>
-            <li>遊戲美術</li>
-            <li>故事編寫</li>
-            <li>Cosplay</li>
-        </ul>
-
-        <!-- 輪播圖 -->
-        <div class="slider">
-            <div class="slides" id="slides">
-                <img src="images/slide1.jpg" alt="展示圖1">
-                <img src="images/slide2.jpg" alt="展示圖2">
-                <img src="images/slide3.jpg" alt="展示圖3">
-            </div>
+        <div class="carousel-group">
+          <img src="images/IMG_2201.png" alt="展示圖4">
+          <img src="images/5AEA7610-D4FB-460C-B536-A954FD6753CA.png" alt="展示圖5">
+          <img src="images/0O5A3276.jpg" alt="展示圖6">
         </div>
-    </main>
+       
+        <!-- 可繼續新增更多 group -->
+      </div>
+    </div>
+  </main>
 
-    <footer>
-        <p>© 2025 沫鯨Mojing | 
-          <a href="https://www.instagram.com/mojing0221/" target="_blank" rel="noopener noreferrer">Instagram</a> | 
-          <a href="https://www.facebook.com/mo.jing.33663" target="_blank" rel="noopener noreferrer">FB</a>
-        </p>
-    </footer>
+  <footer>
+    <p>© 2025 沫鯨Mojing | 
+      <a href="https://www.instagram.com/mojing0221/" target="_blank" rel="noopener noreferrer">Instagram</a> | 
+      <a href="https://www.facebook.com/mo.jing.33663" target="_blank" rel="noopener noreferrer">FB</a>
+    </p>
+  </footer>
 
-    <script>
-        // 輪播自動切換（簡單無外掛）
-        const slides = document.getElementById('slides');
-        const totalSlides = slides.children.length;
-        let index = 0;
+  <script>
+    // 輪播功能
+    const track = document.getElementById('carouselTrack');
+    const groups = track.children.length;
+    let index = 0;
 
-        setInterval(() => {
-            index = (index + 1) % totalSlides;
-            slides.style.transform = `translateX(${-index * 300}px)`;
-        }, 3000);  // 每3秒換一張
-    </script>
+    setInterval(() => {
+      index = (index + 1) % groups;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }, 4000);
+  </script>
 </body>
 </html>
