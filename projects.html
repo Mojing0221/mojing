@@ -8,41 +8,96 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html">首頁</a>
-            <a href="about.html">關於我</a>
-            <a href="projects.html">作品</a>
-            <a href="contact.html">聯絡我</a>
-        </nav>
+       <nav>
+  <a href="index.html">首頁</a>
+  <a href="about.html">關於我</a>
+
+  <!-- 下拉選單：作品 -->
+  <div class="dropdown">
+    <a href="projects.html">作品 ▾</a>
+    <div class="dropdown-content">
+      <a href="projects.html#game">遊戲開發</a>
+      <a href="projects.html#art">圖文創作</a>
+      <a href="projects.html#cosplay">角色扮演</a>
+    </div>
+  </div>
+
+  <a href="contact.html">聯絡我</a>
+</nav>
+
     </header>
 
      <main class="container">
-        <div class="about-header">
-            <h1>-作品-</h1>
-        </div>
+    <div class="about-header">
+        <h1>-作品-</h1>
+    </div>
+
+    <!-- 遊戲開發 -->
+    <section id="game">
+        <h2>🎮 遊戲開發</h2>
         <div class="projects">
-            <!-- 重複這個區塊 5 次 -->
             <div class="project">
                 <img src="images/IMG_9437.PNG" alt="時光迷走">
-                <h3>時光迷走TimeStroll</h3>
-                <p>2024.4月-擔任動畫×主視覺美術</p>
+                <h3>時光迷走 TimeStroll</h3>
+                <p>2024.4月 - 擔任動畫 × 主視覺美術</p>
+                <p><span class="tag">#遊戲開發</span></p>
                 <a href="#">詳細資訊</a>
             </div>
             <div class="project">
                 <img src="images/Sense_GameStart.png" alt="午月">
-                <h3>午月Convallis</h3>
-                <p>2024.9月-擔任動畫×主視覺美術</p>
+                <h3>午月 Convallis</h3>
+                <p>2024.9月 - 擔任動畫 × 主視覺美術</p>
+                <p><span class="tag">#遊戲開發</span></p>
                 <a href="#">詳細資訊</a>
             </div>
             <div class="project">
                 <img src="images/NoiaBG.png" alt="諾伊亞">
-                <h3>諾伊亞Code:Noia</h3>
-                <p>2025.6月-擔任美術×程式×副企劃</p>
+                <h3>諾伊亞 Code:Noia</h3>
+                <p>2025.6月 - 擔任美術 × 程式 × 副企劃</p>
+                <p><span class="tag">#遊戲開發</span></p>
                 <a href="#">詳細資訊</a>
             </div>
-            <!-- 其餘作品請依照這個格式新增 -->
         </div>
-    </main>
+    </section>
+
+    <!-- 圖文創作 -->
+    <section id="art">
+        <h2>🖌️ 圖文創作</h2>
+        <div class="projects">
+            <div class="project">
+                <img src="images/IMG_4370.PNG" alt="創作圖1">
+                <h3>漫畫-非自述。</h3>
+                <p>(連載中)短篇漫畫</p>
+                <p><span class="tag">#創作</span></p>
+                <a href="#">詳細資訊</a>
+            </div>
+             <div class="project">
+                <img src="images/IMG_4371.png" alt="創作圖1">
+                <h3>小說-在夢境的彼端長眠</h3>
+                <p>2025.3月-中篇小說</p>
+                <p><span class="tag">#創作</span></p>
+                <a href="#">詳細資訊</a>
+            </div>
+            <!-- 更多圖文創作作品放這裡 -->
+        </div>
+    </section>
+
+    <!-- 角色扮演 -->
+   <section id="cosplay">
+        <h2>🧝‍♀️ 角色扮演</h2>
+        <div class="projects">
+            <div class="project">
+                <img src="images/IMG_1167.jpg" alt="角色扮演照1">
+                <h3>八重櫻-逆神巫女</h3>
+                <p>2024.5月-成大蒼繡月</p>
+                <p><span class="tag">#Cosplay</span></p>
+                <a href="#">詳細資訊</a>
+            </div>
+            <!-- 更多角色扮演作品放這裡 -->
+        </div>
+    </section>
+</main>
+
 
     <footer>
          <p>© 2025 沫鯨Mojing | <a href="https://www.instagram.com/mojing0221/" target="_blank" rel="noopener noreferrer">Instagram</a> | <a href="https://www.facebook.com/mo.jing.33663" target="_blank" rel="noopener noreferrer">FB</a></p>

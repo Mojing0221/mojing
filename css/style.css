@@ -24,7 +24,7 @@ nav a {
     background-position: center; /* 置中背景圖 */
     background-repeat: no-repeat;
     color: white;                /* 文字顏色改白，確保可讀 */
-    padding: 200px 20px;         /* 上下內距 */
+    padding: 250px 20px;         /* 上下內距 */
     text-align: center;
 }
 
@@ -48,7 +48,7 @@ nav a {
 }
 
 footer {
-    background: #eee;
+    background: white;
     text-align: center;
     padding: 10px;
     margin-top: 30px;
@@ -77,5 +77,45 @@ footer {
     object-fit: cover;
     display: block;
 }
+.tag {
+    color: #5e717e;
+    font-weight: bold;
+}
+/* 下拉選單容器 */
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+/* 下拉內容：預設隱藏 */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #444;
+  min-width: 160px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* 下拉內容連結樣式 */
+.dropdown-content a {
+  color: white;
+  padding: 10px 15px;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+}
+
+/* 滑鼠移到 dropdown 時顯示內容 */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 滑鼠移上 dropdown 選單時背景變色 */
+.dropdown-content a:hover {
+  background-color: #666;
+}
+
+
 
 
