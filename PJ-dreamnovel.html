@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><!-- 這裡改成頁面標題，例如「建設中」或「作品展示」 --></title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* 針對本頁可調整的局部樣式 */
+        main.container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-image {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .page-image img {
+            width: 300px;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">首頁</a>
+            <a href="about.html">關於我</a>
+
+            <div class="dropdown">
+                <a href="projects.html">作品 ▾</a>
+                <div class="dropdown-content">
+                    <a href="projects.html#game">遊戲開發</a>
+                    <a href="projects.html#art">圖文創作</a>
+                    <a href="projects.html#cosplay">角色扮演</a>
+                </div>
+            </div>
+
+            <a href="contact.html">聯絡我</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- 主要頁面標題區，可編輯 -->
+        <div class="about-header">
+            <h1>-在夢境的彼端長眠-</h1>
+            <p>中篇原創小說</p>
+        </div>
+
+        <!-- 圖片區域，可換成你想放的圖片 -->
+        <div class="page-image">
+            <img src="images/construction.png" alt="頁面圖片描述" />
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            © 2025 沫鯨Mojing |
+            <a href="https://www.instagram.com/mojing0221/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+            <a href="https://www.facebook.com/mo.jing.33663" target="_blank" rel="noopener noreferrer">FB</a>
+        </p>
+    </footer>
+</body>
+
+</html>
