@@ -1,72 +1,42 @@
-/* ====== 全域設定 ====== */
+/* ================= 全域設定 ================= */
 html, body {
-    height: 100%; /* 讓頁面高度為整個視窗，便於 footer 貼底 */
+    height: 100%;                     /* 讓 footer 能貼底 */
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif; /* 預設字型 */
-    line-height: 1.6;               /* 行距 */
-    background-color: #f5f5f5;      /* 背景顏色 */
-    color: #333;                    /* 預設文字顏色 */
+    font-family: Arial, sans-serif;  /* 全站字型 */
+    line-height: 1.6;                /* 行距 */
+    background-color: #f5f5f5;       /* 背景顏色 */
+    color: #333;                     /* 字體顏色 */
     display: flex;
-    flex-direction: column;        /* 垂直排列 header / main / footer */
+    flex-direction: column;         /* 排列 header / main / footer */
 }
 
-/* ====== 導覽列區塊 ====== */
+/* ================= 導覽列 ================= */
 nav {
-    background: #333;              /* 深灰背景 */
+    background: #333;
     padding: 10px;
     text-align: center;
 }
 nav a {
-    color: white;                  /* 文字白色 */
+    color: white;
     margin: 0 15px;
-    text-decoration: none;         /* 去除底線 */
+    text-decoration: none;
 }
 
-/* ====== 首頁的英雄區塊（大標題背景圖） ====== */
+/* ================= 英雄區塊（首頁大圖） ================= */
 .hero {
     background-image: url('../images/IMG_0029.png');
-    background-size: cover;        /* 覆蓋整個區塊 */
-    background-position: center;   /* 圖片置中 */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     color: white;
-    padding: 250px 20px;           /* 上下內距形成大片區塊 */
+    padding: 250px 20px;
     text-align: center;
 }
 
-/* ====== 作品區塊容器 ====== */
-.projects {
-    display: flex;
-    flex-wrap: wrap;               /* 多行排列 */
-    justify-content: center;
-}
-
-/* ====== 個別作品卡片樣式 ====== */
-.project {
-    width: 250px;
-    margin: 15px;
-    background: white;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1); /* 微陰影 */
-}
-.project img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
-
-/* ====== 頁腳區塊 ====== */
-footer {
-    background: white;
-    text-align: center;
-    padding: 10px;
-    /* 不使用 margin-top，改用 flex 讓它黏底 */
-}
-
-/* ====== 主內容容器 ====== */
+/* ================= 通用容器 ================= */
 main {
-    flex: 1; /* 讓 main 撐滿空間，footer 被推到底部 */
+    flex: 1;                         /* 撐開空間，推 footer 到底 */
 }
 .container {
     max-width: 1000px;
@@ -74,17 +44,17 @@ main {
     padding: 0 20px;
 }
 
-/* ====== 標題對齊樣式（例如關於我區） ====== */
+/* ================= 標題樣式 ================= */
 .about-header {
     text-align: center;
 }
 
-/* ====== 關於我 - 頭像樣式 ====== */
+/* ================= 頭像區塊 ================= */
 .avatar {
-    margin: 20px auto;             /* 水平置中 */
+    margin: 20px auto;
     width: 150px;
     height: 150px;
-    border-radius: 50%;            /* 圓形 */
+    border-radius: 50%;
     overflow: hidden;
     border: 3px solid #333;
     box-shadow: 0 0 8px rgba(0,0,0,0.2);
@@ -96,24 +66,43 @@ main {
     display: block;
 }
 
-/* ====== 作品標籤文字樣式 ====== */
+/* ================= 作品列表 ================= */
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.project {
+    width: 250px;
+    margin: 15px;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+.project img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* ================= 作品標籤 ================= */
 .tag {
     color: #5e717e;
     font-weight: bold;
 }
 
-/* ====== 導覽列下拉選單樣式 ====== */
+/* ================= 下拉選單 ================= */
 .dropdown {
     display: inline-block;
     position: relative;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #444;
     min-width: 160px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     z-index: 1;
 }
 .dropdown-content a {
@@ -130,15 +119,61 @@ main {
     background-color: #666;
 }
 
-/* ====== 橫幅圖片區（各頁上方大圖） ====== */
+/* ================= 橫幅圖片區（子頁大圖） ================= */
 .banner {
     width: 100%;
-    height: 200px;
+    max-height: 300px;
     overflow: hidden;
+    position: relative;
 }
 .banner img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
+    object-position: center center; /* 水平 + 垂直 置中 */
     display: block;
+}
+/* 可選：圖片中央顯示文字（如建設中） */
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    text-align: center;
+}
+
+/* ================= 頁腳區塊 ================= */
+footer {
+    background: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* ================= 響應式設計 ================= */
+@media (max-width: 768px) {
+    .project {
+        width: 90%; /* 行動裝置單欄排 */
+    }
+
+    .hero {
+        padding: 120px 20px; /* 減少高度以適應手機 */
+    }
+
+    .banner {
+        max-height: 180px;
+    }
+
+    .banner-text {
+        font-size: 1.2rem;
+        padding: 0 10px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
 }
