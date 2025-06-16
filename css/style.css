@@ -1,45 +1,54 @@
-body {
-    font-family: Arial, sans-serif;
+/* ====== 全域設定 ====== */
+html, body {
+    height: 100%; /* 讓頁面高度為整個視窗，便於 footer 貼底 */
     margin: 0;
     padding: 0;
-    line-height: 1.6;
-    background-color: #f5f5f5;
-    color: #333;
+    font-family: Arial, sans-serif; /* 預設字型 */
+    line-height: 1.6;               /* 行距 */
+    background-color: #f5f5f5;      /* 背景顏色 */
+    color: #333;                    /* 預設文字顏色 */
+    display: flex;
+    flex-direction: column;        /* 垂直排列 header / main / footer */
 }
 
+/* ====== 導覽列區塊 ====== */
 nav {
-    background: #333;
+    background: #333;              /* 深灰背景 */
     padding: 10px;
     text-align: center;
 }
 nav a {
-    color: white;
+    color: white;                  /* 文字白色 */
     margin: 0 15px;
-    text-decoration: none;
+    text-decoration: none;         /* 去除底線 */
 }
 
+/* ====== 首頁的英雄區塊（大標題背景圖） ====== */
 .hero {
     background-image: url('../images/IMG_0029.png');
-    background-size: cover;      /* 讓圖片完全覆蓋區塊 */
-    background-position: center; /* 置中背景圖 */
+    background-size: cover;        /* 覆蓋整個區塊 */
+    background-position: center;   /* 圖片置中 */
     background-repeat: no-repeat;
-    color: white;                /* 文字顏色改白，確保可讀 */
-    padding: 250px 20px;         /* 上下內距 */
+    color: white;
+    padding: 250px 20px;           /* 上下內距形成大片區塊 */
     text-align: center;
 }
 
+/* ====== 作品區塊容器 ====== */
 .projects {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;               /* 多行排列 */
     justify-content: center;
 }
+
+/* ====== 個別作品卡片樣式 ====== */
 .project {
     width: 250px;
     margin: 15px;
     background: white;
     padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.1); /* 微陰影 */
 }
 .project img {
     width: 100%;
@@ -47,26 +56,35 @@ nav a {
     border-radius: 4px;
 }
 
+/* ====== 頁腳區塊 ====== */
 footer {
     background: white;
     text-align: center;
     padding: 10px;
-    margin-top: 30px;
+    /* 不使用 margin-top，改用 flex 讓它黏底 */
+}
+
+/* ====== 主內容容器 ====== */
+main {
+    flex: 1; /* 讓 main 撐滿空間，footer 被推到底部 */
 }
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
 }
+
+/* ====== 標題對齊樣式（例如關於我區） ====== */
 .about-header {
     text-align: center;
 }
 
+/* ====== 關於我 - 頭像樣式 ====== */
 .avatar {
-    margin: 20px auto; /* 水平置中 */
+    margin: 20px auto;             /* 水平置中 */
     width: 150px;
     height: 150px;
-    border-radius: 50%;
+    border-radius: 50%;            /* 圓形 */
     overflow: hidden;
     border: 3px solid #333;
     box-shadow: 0 0 8px rgba(0,0,0,0.2);
@@ -77,45 +95,50 @@ footer {
     object-fit: cover;
     display: block;
 }
+
+/* ====== 作品標籤文字樣式 ====== */
 .tag {
     color: #5e717e;
     font-weight: bold;
 }
-/* 下拉選單容器 */
+
+/* ====== 導覽列下拉選單樣式 ====== */
 .dropdown {
-  display: inline-block;
-  position: relative;
+    display: inline-block;
+    position: relative;
 }
 
-/* 下拉內容：預設隱藏 */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #444;
-  min-width: 160px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-  z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 1;
 }
-
-/* 下拉內容連結樣式 */
 .dropdown-content a {
-  color: white;
-  padding: 10px 15px;
-  display: block;
-  text-align: left;
-  text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: block;
+    text-align: left;
+    text-decoration: none;
 }
-
-/* 滑鼠移到 dropdown 時顯示內容 */
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
-
-/* 滑鼠移上 dropdown 選單時背景變色 */
 .dropdown-content a:hover {
-  background-color: #666;
+    background-color: #666;
 }
 
-
-
-
+/* ====== 橫幅圖片區（各頁上方大圖） ====== */
+.banner {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
