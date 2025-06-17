@@ -159,10 +159,6 @@ footer {
         width: 90%; /* 行動裝置單欄排 */
     }
 
-    .hero {
-        padding: 120px 20px; /* 減少高度以適應手機 */
-    }
-
     .banner {
         max-height: 180px;
     }
