@@ -153,6 +153,26 @@ footer {
     padding: 10px;
 }
 
+/* ================= 超連結樣式 ================= */
+a {
+    color: #a15d5d;
+}
+
+/* ================= 圖片網格排版（響應式） ================= */
+.gallery {
+    display: grid;                                        /* 使用 Grid 布局 */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 自動調整欄數 */
+    gap: 20px;                                             /* 圖片間距 */
+    padding: 10px;
+}
+.page-image img {
+    width: 100%;                                           /* 滿版圖片 */
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
 /* ================= 響應式設計 ================= */
 @media (max-width: 768px) {
     .project {
@@ -171,5 +191,15 @@ footer {
     nav a {
         display: inline-block;
         margin: 8px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(1, 1fr); /* 手機一行兩張 */
+    }
+}
+
+@media (min-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr); /* 電腦一行五張 */
     }
 }
