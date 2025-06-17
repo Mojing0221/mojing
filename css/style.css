@@ -173,6 +173,19 @@ a {
     border-radius: 8px;
 }
 
+/* ================= 捲動淡入動畫 ================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* ================= 響應式設計 ================= */
 @media (max-width: 768px) {
     .project {
