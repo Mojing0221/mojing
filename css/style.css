@@ -166,12 +166,35 @@ a {
     padding: 10px;
 }
 .page-image img {
-    width: 100%;                                           /* 滿版圖片 */
-    height: auto;
-    display: block;
-    object-fit: cover;
-    border-radius: 8px;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
+
+.page-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  background: white;                 /* 可選：讓圖片+說明區塊有底色 */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1); /* 可選：讓整塊更有層次 */
+}
+
+
+.image-caption {
+  width: 100%;                         /* 與圖片同寬 */
+  font-size: 0.85rem;
+  color: #313131;
+  font-style: italic;
+  text-align: center;
+  padding: 6px 10px;
+  background-color: white;           /* 淺色底讓字與圖分明 */
+}
+
+
 
 /* ================= 捲動淡入動畫 ================= */
 .fade-in {
@@ -207,7 +230,7 @@ a {
     }
 
     .gallery {
-        grid-template-columns: repeat(1, 1fr); /* 手機一行兩張 */
+        grid-template-columns: repeat(1, 1fr); /* 手機一行一張 */
     }
 }
 
