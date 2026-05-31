@@ -164,7 +164,7 @@ body.home {
 }
 
 .hero h1 {
-  font-size: clamp(1.8rem, 5vw, 3rem); 
+  font-size: clamp(1.3rem, 5vw, 3rem); 
   letter-spacing: 3px;
   margin-bottom: 10px;
 }
