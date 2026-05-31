@@ -6,58 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>魚缸管理員</title>
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* 關於我置中 */
-    .about-header {
-      text-align: center;
-    }
-
-    /* 頭像框 */
-    .avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 20px auto;
-      border: 3px solid #333;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* 輪播區 */
-    .carousel {
-      width: 100%;
-      overflow: hidden;
-      max-width: 960px;
-      margin: 40px auto;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.6s ease-in-out;
-    }
-
-    .carousel-group {
-      display: flex;
-      justify-content: space-between;
-      min-width: 100%;
-      gap: 20px;
-    }
-
-    .carousel-group img {
-      width: calc(33.333% - 14px);
-      height: auto;
-      border-radius: 8px;
-      object-fit: cover;
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-    }
-  </style>
 </head>
 
 <body>
@@ -66,7 +14,6 @@
       <a href="index.html">首頁</a>
       <a href="about.html">關於我</a>
 
-      <!-- 下拉選單：作品 -->
       <div class="dropdown">
         <a href="projects.html">作品 ▾</a>
         <div class="dropdown-content">
@@ -78,14 +25,11 @@
 
       <a href="contact.html">聯絡我</a>
     </nav>
-
   </header>
 
   <main class="container">
     <div class="about-header">
       <h1>-關於我-</h1>
-
-      <!-- 頭像 -->
       <div class="avatar">
         <img src="images/IMG_9997.png" alt="沫鯨頭像">
       </div>
@@ -110,7 +54,6 @@
       <li>2025 | 資料結構課 | 身心障礙學生課後輔導小老師</li>
       <li>2025 | 資料結構課 | 教學助理</li>
       <li>2024 | 基礎程式課 | 教學助理</li>
-
     </ul>
 
     <h2>得獎紀錄</h2>
@@ -128,7 +71,6 @@
       <li>2023-Adobe Photoshop CC</li>
     </ul>
 
-
     <h2>作品展示</h2>
     <div class="carousel">
       <div class="carousel-track" id="carouselTrack">
@@ -142,8 +84,6 @@
           <img src="images/5AEA7610-D4FB-460C-B536-A954FD6753CA.png" alt="展示圖5">
           <img src="images/0O5A3276.jpg" alt="展示圖6">
         </div>
-
-        <!-- 可繼續新增更多 group -->
       </div>
     </div>
   </main>
@@ -154,7 +94,7 @@
       <a href="https://www.facebook.com/mo.jing.33663" target="_blank" rel="noopener noreferrer">FB</a>
     </p>
   </footer>
-  
+
   <script src="js/carousel.js" defer></script>
   <script src="js/fadein.js" defer></script>
 </body>

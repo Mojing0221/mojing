@@ -1,241 +1,507 @@
-/* ================= 全域設定 ================= */
-html, body {
-    height: 100%;                     /* 讓 footer 能貼底 */
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;  /* 全站字型 */
-    line-height: 1.6;                /* 行距 */
-    background-color: #f5f5f5;       /* 背景顏色 */
-    color: #333;                     /* 字體顏色 */
-    display: flex;
-    flex-direction: column;         /* 排列 header / main / footer */
+/* ==========================================
+   通用設定：蒼白の斜面 (冬雪與冷空氣) 配色
+   ========================================== */
+:root {
+  --c1-dark-slate: #4e626a;  /* 深冷灰藍 */
+  --c2-cold-aqua: #68aac6;   /* 冷水藍 */
+  --c3-cold-smoke: #899faf;  /* 煙霧灰藍 */
+  --c4-winter-mist: #a7bcc9; /* 冬霧藍 */
+  --c5-winter-milk: #dbd8d6; /* 冬奶灰 */
+
+  --bg-color: #f4f7f8;       /* 雪地底色 */
+  --text-color: var(--c1-dark-slate);
+  --heading-color: #37464c;  /* 大標題色 */
+  --accent-color: var(--c2-cold-aqua);
 }
 
-/* ================= 導覽列 ================= */
-nav {
-    background: #333;
-    padding: 10px;
-    text-align: center;
-}
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif;
 }
 
-/* ================= 英雄區塊（首頁大圖） ================= */
-.hero {
-    background-image: url('../images/IMG_0029.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    padding: 250px 20px;
-    text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  color: var(--text-color);
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column; /* 確保 footer 可以置底 */
 }
 
-/* ================= 通用容器 ================= */
-main {
-    flex: 1;                         /* 撐開空間，推 footer 到底 */
-}
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* ================= 標題樣式 ================= */
-.about-header {
-    text-align: center;
-}
-
-/* ================= 頭像區塊 ================= */
-.avatar {
-    margin: 20px auto;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #333;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
-}
-.avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* ================= 作品列表 ================= */
-.projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.project {
-    width: 250px;
-    margin: 15px;
-    background: white;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-.project img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
-
-/* ================= 作品標籤 ================= */
-.tag {
-    color: #5e717e;
-    font-weight: bold;
-}
-
-/* ================= 下拉選單 ================= */
-.dropdown {
-    display: inline-block;
-    position: relative;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #444;
-    min-width: 160px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-.dropdown-content a {
-    color: white;
-    padding: 10px 15px;
-    display: block;
-    text-align: left;
-    text-decoration: none;
-}
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-.dropdown-content a:hover {
-    background-color: #666;
-}
-
-/* ================= 橫幅圖片區（子頁大圖） ================= */
-.banner {
-    width: 100%;
-    max-height: 300px;
-    overflow: hidden;
-    position: relative;
-}
-.banner img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center center; /* 水平 + 垂直 置中 */
-    display: block;
-}
-/* 可選：圖片中央顯示文字（如建設中） */
-.banner-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-    text-align: center;
-}
-
-/* ================= 頁腳區塊 ================= */
-footer {
-    background: white;
-    text-align: center;
-    padding: 10px;
-}
-
-/* ================= 超連結樣式 ================= */
 a {
-    color: #a15d5d;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 600;
 }
 
-/* ================= 圖片網格排版（響應式） ================= */
-.gallery {
-    display: grid;                                        /* 使用 Grid 布局 */
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 自動調整欄數 */
-    gap: 20px;                                             /* 圖片間距 */
-    padding: 10px;
+a:hover {
+  color: var(--accent-color);
 }
-.page-image img {
+
+h1, h2, h3 {
+  color: var(--heading-color);
+  font-weight: 700;
+}
+
+.container {
+  max-width: 960px; /* 統一最大寬度 */
+  margin: 0 auto;
+  padding: 40px 20px;
+  flex: 1; /* 讓內容自動撐開高度 */
+}
+
+/* ==========================================
+   1. 導覽列：冰霜毛玻璃質感
+   ========================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(219, 216, 214, 0.6);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 15px rgba(78, 98, 106, 0.1);
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+}
+
+header nav a {
+  color: var(--heading-color);
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  position: relative;
+  padding: 5px 0;
+}
+
+header nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+header nav a:hover::after {
   width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
 }
 
-.page-image {
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.95);
+  min-width: 160px;
+  box-shadow: 0 8px 20px rgba(137, 159, 175, 0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: var(--heading-color);
+  padding: 12px 16px;
+  display: block;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: normal;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--c4-winter-mist);
+  color: #fff;
+}
+
+/* ==========================================
+   2. 首頁專屬 (index.html)
+   ========================================== */
+/* 針對首頁的 body 獨立加上底圖 */
+body.home {
+  /* 👇 請把裡面的路徑，換成你原本首頁底圖的正確檔名 */
+  background-image: url('../images/IMG_0029.png'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* 讓背景固定，上下滑動時會有很高級的視差感 */
+}
+
+.hero {
+  text-align: center;
+  /* 讓首頁標題區塊佔滿大半個螢幕，展現底圖氣勢 */
+  min-height: 70vh; 
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 如果你的底圖比較亮或比較花，導致文字看不清楚，可以加上一點文字陰影 */
+.hero h1, .hero p {
+  color: #ffffff; /* 讓首頁的標題與副標題變成白色 */
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* 加上深色半透明陰影，把字體托出來 */
+}
+
+.hero h1 {
+  font-size: 3rem;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+/* ==========================================
+   3. 關於我 / 頁首共用區塊
+   ========================================== */
+.about-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 30px auto;
+  border: 5px solid var(--c4-winter-mist);
+  box-shadow: 0 8px 25px rgba(104, 170, 198, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 標題底線效果 */
+.container h2 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.container h2::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 4px;
+  background-color: var(--c3-cold-smoke);
+  border-radius: 2px;
+  bottom: 0;
+  left: 0;
+}
+
+/* 關於我：氣泡標籤 */
+.container > ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.container > ul li {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--text-color);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  border: 1px solid var(--c4-winter-mist);
+  box-shadow: 0 2px 8px rgba(137, 159, 175, 0.15);
+  transition: all 0.3s ease;
+}
+
+.container > ul li:hover {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(104, 170, 198, 0.4);
+}
+
+/* ==========================================
+   4. 作品頁專屬 (projects.html)
+   ========================================== */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.project {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--c4-winter-mist);
+  border-radius: 12px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(137, 159, 175, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(104, 170, 198, 0.25);
+  border-color: var(--accent-color);
+}
+
+.project img {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 統一卡片圖片比例 */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.project h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.project p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+.project .tag {
+  background-color: var(--c4-winter-mist);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.project a {
+  margin-top: auto; /* 將連結推到卡片最底部 */
+  display: inline-block;
+  padding-top: 15px;
+  color: var(--accent-color);
+}
+
+/* ==========================================
+   5. 聯絡我專屬 (contact.html)
+   ========================================== */
+.banner {
+  max-width: 960px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+}
+
+.banner img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 5px 20px rgba(137, 159, 175, 0.2);
+}
+
+/* ==========================================
+   6. 子頁面專屬 (PJ-*.html 畫廊)
+   ========================================== */
+.about-header .tag {
+  background-color: var(--c4-winter-mist);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.gallery {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
-  background: white;                 /* 可選：讓圖片+說明區塊有底色 */
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1); /* 可選：讓整塊更有層次 */
+  gap: 40px;
+  margin-top: 40px;
 }
 
+.page-image {
+  text-align: center;
+  width: 100%;
+}
+
+.page-image img {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(78, 98, 106, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.page-image img:hover {
+  transform: scale(1.02);
+}
 
 .image-caption {
-  width: 100%;                         /* 與圖片同寬 */
-  font-size: 0.85rem;
-  color: #313131;
-  font-style: italic;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--c3-cold-smoke);
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   7. 輪播圖外框與排版設定 (保留)
+   ========================================== */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  margin: 60px auto;
+  padding: 20px 0 40px 0; 
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--c5-winter-milk);
+  border-radius: 15px;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-group {
+  display: flex;
+  gap: 20px;
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 0 20px; 
+}
+
+.carousel-group img {
+  flex: 1;              
+  width: 0;             
+  aspect-ratio: 4 / 3;  
+  object-fit: cover;    
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(78, 98, 106, 0.15);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.carousel-group img:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(104, 170, 198, 0.3);
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--c4-winter-mist);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  background-color: var(--c3-cold-smoke);
+}
+
+.dot.active {
+  background-color: var(--accent-color);
+  transform: scale(1.3);
+  width: 20px;
+  border-radius: 5px;
+}
+
+/* ==========================================
+   8. 頁尾與手機版適應 (RWD)
+   ========================================== */
+footer {
   text-align: center;
-  padding: 6px 10px;
-  background-color: white;           /* 淺色底讓字與圖分明 */
+  padding: 40px 20px;
+  margin-top: auto; /* 自動推到底部 */
+  background-color: var(--c5-winter-milk);
+  color: var(--heading-color);
+  font-size: 0.9rem;
+  width: 100%;
 }
 
-
-
-/* ================= 捲動淡入動畫 ================= */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+footer a {
+  margin: 0 5px;
+  font-weight: 500;
+  color: var(--heading-color);
 }
 
-.fade-in.appear {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* ================= 響應式設計 ================= */
-@media (max-width: 768px) {
-    .project {
-        width: 90%; /* 行動裝置單欄排 */
-    }
-
-    .banner {
-        max-height: 180px;
-    }
-
-    .banner-text {
-        font-size: 1.2rem;
-        padding: 0 10px;
-    }
-
-    nav a {
-        display: inline-block;
-        margin: 8px;
-    }
-
-    .gallery {
-        grid-template-columns: repeat(1, 1fr); /* 手機一行一張 */
-    }
-}
-
-@media (min-width: 1024px) {
-    .gallery {
-        grid-template-columns: repeat(3, 1fr); /* 電腦一行五張 */
-    }
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+  header nav {
+    gap: 15px;
+    padding: 10px;
+  }
+  header nav a {
+    font-size: 1rem;
+  }
+  .hero h1, .about-header h1 {
+    font-size: 2rem;
+  }
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-width: 4px;
+  }
+  .projects {
+    grid-template-columns: 1fr; /* 手機版專案卡片變單行 */
+  }
+  .carousel-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .carousel-group img {
+    width: 100%;
+    aspect-ratio: auto; 
+  }
+  .carousel-group img:hover {
+    transform: none;
+  }
 }
