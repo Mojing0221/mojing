@@ -141,7 +141,6 @@ header nav a:hover::after {
    ========================================== */
 /* 針對首頁的 body 獨立加上底圖 */
 body.home {
-  /* 👇 請把裡面的路徑，換成你原本首頁底圖的正確檔名 */
   background-image: url('../images/IMG_0029.png'); 
   background-size: cover;
   background-position: center;
@@ -150,8 +149,7 @@ body.home {
 
 .hero {
   text-align: center;
-  /* 讓首頁標題區塊佔滿大半個螢幕，展現底圖氣勢 */
-  min-height: 70vh; 
+  min-height: 90vh; 
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -166,7 +164,7 @@ body.home {
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   letter-spacing: 3px;
   margin-bottom: 10px;
 }
@@ -457,7 +455,7 @@ body.home {
    ========================================== */
 footer {
   text-align: center;
-  padding: 40px 20px;
+  padding: 20px 20px;
   margin-top: auto; /* 自動推到底部 */
   background-color: var(--c5-winter-milk);
   color: var(--heading-color);
