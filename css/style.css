@@ -298,6 +298,12 @@ body.home {
   margin-bottom: 15px;
 }
 
+.project img.portrait {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;  
+  border-radius: 8px; 
+}
+
 .project h3 {
   margin-top: 0;
   margin-bottom: 10px;
