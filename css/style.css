@@ -149,7 +149,7 @@ header nav a:hover::after {
    ========================================== */
 /* 針對首頁的 body 獨立加上底圖 */
 body.home {
-  background-image: url('../images/IMG_0029.png'); 
+  background-image: url('../images/IMG_0029.webp'); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* 讓背景固定，上下滑動時會有很高級的視差感 */
