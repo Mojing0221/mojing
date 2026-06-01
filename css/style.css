@@ -1,5 +1,5 @@
 /* ==========================================
-   通用設定：蒼白の斜面 (冬雪與冷空氣) 配色
+   通用設定：配色
    ========================================== */
 :root {
   --c1-dark-slate: #4e626a;  /* 深冷灰藍 */
@@ -322,16 +322,17 @@ body.home {
    5. 聯絡我專屬 (contact.html)
    ========================================== */
 .banner {
-  max-width: 960px;
-  margin: 40px auto 0;
-  padding: 0 20px;
+  width: 100%;     
+  margin-top: 0;
 }
 
 .banner img {
   width: 100%;
-  border-radius: 15px;
-  object-fit: cover;
+  aspect-ratio: 4.3 / 1;
+  object-fit: cover;    
+  border-radius: 0;
   box-shadow: 0 5px 20px rgba(137, 159, 175, 0.2);
+  display: block; 
 }
 
 /* ==========================================
@@ -502,4 +503,188 @@ footer a {
   .carousel-group img:hover {
     transform: none;
   }
+}
+
+/* ==========================================
+   9. 進階互動體驗 (UX/UI)
+   ========================================== */
+
+/* --- 滾動滑入動畫 (Scroll Fade-in) --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px); /* 初始狀態：往下沉一點點 */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 觸發動畫後的狀態 (由 JS 動態加入) */
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0); /* 浮現回原位 */
+}
+
+/* --- 回到頂部按鈕 (Back to Top) --- */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--accent-color); /* 使用冰晶水藍色 */
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(104, 170, 198, 0.4);
+  z-index: 1000;
+}
+
+/* 滾動到一定距離後顯示按鈕 */
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--heading-color); /* 滑過時變深色 */
+  transform: translateY(-5px); /* 微微浮起 */
+  box-shadow: 0 6px 20px rgba(55, 70, 76, 0.3);
+}
+
+/* 手機版微調按鈕位置，避免擋住重要內容 */
+@media screen and (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ==========================================
+   10. 主題性粒子特效 (電影級光斑與細雪 Bokeh & Snow Dust)
+   ========================================== */
+#bubble-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* 讓滑鼠點擊穿透 */
+  z-index: 0;
+  overflow: hidden;
+}
+
+main.container, section.hero {
+  position: relative;
+  z-index: 1; 
+}
+
+/* 粒子的基礎樣式：不再是生硬的圓圈，而是柔和的光點 */
+.particle {
+  position: absolute;
+  bottom: -50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  /* 散發淡淡的光暈，而不是硬邊的陰影 */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  /* 動畫路徑改由 JS 注入變數控制，讓每顆粒子的軌跡都不一樣 */
+  animation: cinematicDrift linear infinite; 
+}
+
+/* 電影級的漂浮動畫 */
+@keyframes cinematicDrift {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: var(--max-opacity); /* 浮現到專屬的最高透明度 */
+  }
+  80% {
+    opacity: var(--max-opacity);
+  }
+  100% {
+    /* 往上飄的同時，加上左右隨機橫移，以及輕微的大小變化 */
+    transform: translateY(-110vh) translateX(var(--drift-x)) scale(var(--end-scale));
+    opacity: 0; /* 柔和地消散 */
+  }
+}
+
+/* ==========================================
+   11. 無縫頁面過場 (完美正弦波 Sine Wave 版)
+   ========================================== */
+html::before,
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  /* 讓波浪稍微超出畫面邊緣，加上一點點橫向滑動空間 */
+  left: -10vw;
+  width: 120vw;
+  height: 150vh;
+  pointer-events: none;
+  
+  /* 設定 SVG 波浪遮罩 (讓正方形的色塊被裁切成完美的 S 型波浪) */
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  /* 初始狀態：在螢幕上方外側退潮 */
+  transform: translateY(-150vh) translateX(0);
+}
+
+/*第一層：冷水藍 (波峰在左邊) */
+html::before {
+  background-color:#f4f7f8aa; /* 這層是最淡的白色，營造出水面反光的感覺 */
+  z-index: 9997;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,15 Q25,25 50,15 T100,15 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,15 Q25,25 50,15 T100,15 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+}
+
+/*第二層：煙霧灰 (波峰在右邊，產生交錯感) */
+body::before {
+  background-color:#91adc1d1; /* 這層是煙霧灰藍，讓波浪有層次感 */
+  z-index: 9998;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,15 Q25,5 50,15 T100,15 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,15 Q25,5 50,15 T100,15 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+}
+
+/*第三層：雪白底色 (波幅更深的海浪) */
+body::after {
+  background-color:rgb(95, 120, 152);
+  z-index: 9999;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,20 Q25,30 50,20 T100,20 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,20 Q25,30 50,20 T100,20 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+}
+
+/* ======== 狀態 1：新網頁載入時 (海浪繼續往上退去) ======== */
+/* 加入微小的 translateX 橫移，創造液體流動感 */
+html::before { animation: waveSlideReveal 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0.2s; }
+body::before { animation: waveSlideReveal 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0.1s; }
+body::after  { animation: waveSlideReveal 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0s; }
+
+@keyframes waveSlideReveal {
+  0% { transform: translateY(-40vh) translateX(0); }       /* 畫面被海浪完全蓋滿 */
+  100% { transform: translateY(-150vh) translateX(5vw); }  /* 往上滑走並輕微右移 */
+}
+
+/* ======== 狀態 2：點擊連結離開時 (海浪從下方湧上來) ======== */
+html.is-leaving { overflow: hidden; }
+
+html.is-leaving::before { animation: waveSlideCover 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0s; }
+html.is-leaving body::before { animation: waveSlideCover 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0.1s; }
+html.is-leaving body::after  { animation: waveSlideCover 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0.2s; }
+
+@keyframes waveSlideCover {
+  0% { transform: translateY(100vh) translateX(5vw); }  /* 從最下方海平面準備 */
+  100% { transform: translateY(-40vh) translateX(0); }  /* 湧上來並完美蓋滿畫面 */
 }
