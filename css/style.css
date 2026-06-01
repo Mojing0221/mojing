@@ -149,7 +149,7 @@ header nav a:hover::after {
    ========================================== */
 /* 針對首頁的 body 獨立加上底圖 */
 body.home {
-  background-image: url('../images/IMG_0029.webp'); 
+  background-image: url('../images/CosPIC/IMG_0029.webp'); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* 讓背景固定，上下滑動時會有很高級的視差感 */
@@ -423,7 +423,7 @@ body.home {
 .carousel-group img {
   flex: 1;              
   width: 0;             
-  aspect-ratio: 4 / 3;  
+  aspect-ratio: 16 / 9;  
   object-fit: cover;    
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(78, 98, 106, 0.15);

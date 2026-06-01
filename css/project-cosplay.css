@@ -1,0 +1,123 @@
+/* ==========================================
+   Cosplay 照片牆 (不對稱網格)
+   ========================================== */
+.cosplay-section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  color: var(--c1-dark-slate);
+  margin-bottom: 40px;
+  border-bottom: 2px solid var(--c4-winter-mist);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.section-title span {
+  font-size: 1rem;
+  color: var(--c3-cold-smoke);
+  font-weight: normal;
+  margin-left: 10px;
+  letter-spacing: 2px;
+}
+
+/* 🌟 核心魔法：CSS Grid 網格設定 */
+/* ==========================================
+   Cosplay 照片牆 (瀑布流 Masonry 原比例排版)
+   ========================================== */
+.gallery-grid {
+  column-count: 3;
+  column-gap: 15px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  
+   break-inside: avoid; 
+  /* 取代原本的 gap，改用下邊距來推開照片 */
+  margin-bottom: 15px; 
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto; /* 🌟 讓高度自動適應，100% 保留照片最原始的長寬比！ */
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 懸停遮罩特效 (維持原本的，不用改) */
+/* 🌟 1. 調整遮罩的 Padding */
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(29, 43, 54, 0.9) 0%, rgba(29, 43, 54, 0.4) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* 👇 關鍵修改：減少下方的 padding，讓文字更貼近底部 (上 右 下 左) */
+  padding: 40px 20px 15px 20px; 
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* 🌟 2. 清除標題的預設外距 */
+.gallery-overlay h3 {
+  font-size: 1.5rem;
+  color: var(--bg-color);
+  margin: 0 0 5px 0; 
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+/* 🌟 3. 清除段落的預設外距 (這是造成下方留白的最大兇手) */
+.gallery-overlay p {
+  font-size: 0.9rem;
+  /* 👇 關鍵修改：完全歸零 */
+  margin: 0; 
+  color: var(--c2-cold-aqua);
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+  transition-delay: 0.1s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08); 
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1; 
+}
+
+.gallery-item:hover .gallery-overlay h3,
+.gallery-item:hover .gallery-overlay p {
+  transform: translateY(0); 
+}
+
+/* ==========================================
+   手機版與平板 RWD 適應
+   ========================================== */
+@media screen and (max-width: 992px) {
+  .gallery-grid {
+    column-count: 3; /* 平板變 3 欄 */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .gallery-grid {
+    column-count: 2; /* 手機變 2 欄 */
+    column-gap: 10px;
+  }
+  .gallery-item {
+    margin-bottom: 10px;
+  }
+}
