@@ -1,4 +1,6 @@
-/*專案詳細介紹頁樣式*/
+/* ==========================================
+   專案詳細介紹頁樣式 (project-detail.css)
+   ========================================== */
 
 /* 頂部滿版主視覺 */
 .project-detail-hero {
@@ -172,7 +174,7 @@
   display: inline-block;
   padding: 10px 25px;
   background-color: transparent;
-  color: var(--accent-color);               /* 文字使用冰晶水藍色 */
+  color: var(--accent-color);              /* 文字使用冰晶水藍色 */
   border: 2px solid var(--accent-color);    /* 加上水藍色外框 */
   border-radius: 30px;                      /* 圓角藥丸形狀 */
   font-size: 0.95rem;
@@ -259,8 +261,9 @@
   place-items: center;
 }
 
-/* 確保裡面的 GIF 都能保有自己的圓角，且乖乖待在格子裡 */
-.gif-grid img {
+/* 確保裡面的 GIF 和 WebM 都能保有自己的圓角，且乖乖待在格子裡 */
+.gif-grid img,
+.gif-grid video {
   width: 100%;
   height: auto;
   border-radius: 8px;
@@ -268,7 +271,7 @@
 }
 
 /* ==========================================
-   多比例 GIF 彈性展示區
+   多比例 GIF 彈性展示區 (支援 img 與 video)
    ========================================== */
 .gif-showcase {
   display: flex;
@@ -284,9 +287,10 @@
   box-shadow: none; 
 }
 
-.gif-showcase img {
-  /* 🌟 核心魔法：鎖定高度，不鎖寬度！ */
-  height: 200px; /* 你可以根據喜好微調這個高度，220px 通常很剛好 */
+/* 將 img 與 video 一起設定 */
+.gif-showcase img,
+.gif-showcase video {
+  height: 200px; /* 你可以根據喜好微調這個高度，200px 通常很剛好 */
   width: auto;   /* 寬度設定 auto，它就會根據原本的比例自己縮放，絕不變形 */
   
   border-radius: 8px;
@@ -295,12 +299,14 @@
 }
 
 /* 滑鼠移過去微微浮起的小特效 */
-.gif-showcase img:hover {
+.gif-showcase img:hover,
+.gif-showcase video:hover {
   transform: translateY(-5px);
 }
 
 @media screen and (max-width: 768px) {
-  .gif-showcase img {
+  .gif-showcase img,
+  .gif-showcase video {
     height: 150px; 
     max-width: 100%; 
     object-fit: contain;
