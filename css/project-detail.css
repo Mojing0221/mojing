@@ -266,3 +266,43 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(104, 170, 198, 0.15); /* 給小圖獨立的陰影 */
 }
+
+/* ==========================================
+   多比例 GIF 彈性展示區
+   ========================================== */
+.gif-showcase {
+  display: flex;
+  flex-wrap: wrap; /* 如果塞不下會自動換行 */
+  gap: 20px;
+  justify-content: center; /* 讓所有角色在正中間集中 */
+  
+  /* 🌟 排版心機：讓圖片對齊「底部」。
+     這樣不同比例的角色腳底都會貼齊同一條隱形的地平線，看起來最自然！ */
+  align-items: flex-end; 
+  
+  background-color: transparent;
+  box-shadow: none; 
+}
+
+.gif-showcase img {
+  /* 🌟 核心魔法：鎖定高度，不鎖寬度！ */
+  height: 200px; /* 你可以根據喜好微調這個高度，220px 通常很剛好 */
+  width: auto;   /* 寬度設定 auto，它就會根據原本的比例自己縮放，絕不變形 */
+  
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(104, 170, 198, 0.15);
+  transition: transform 0.3s ease;
+}
+
+/* 滑鼠移過去微微浮起的小特效 */
+.gif-showcase img:hover {
+  transform: translateY(-5px);
+}
+
+@media screen and (max-width: 768px) {
+  .gif-showcase img {
+    height: 150px; 
+    max-width: 100%; 
+    object-fit: contain;
+  }
+}
