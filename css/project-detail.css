@@ -315,8 +315,8 @@
 }
 
 /* 記得也幫手機版設定一個專屬的縮小高度，避免螢幕塞不下 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 640px) {
   .hero-showcase video {
-    height: 80px !important; 
+    height: 130px !important; 
   }
 }
