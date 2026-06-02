@@ -121,3 +121,69 @@
     margin-bottom: 10px;
   }
 }
+
+/* ==========================================
+   Lightbox 燈箱特效 (劇院級放大檢視)
+   ========================================== */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* 深冷灰藍色背景遮罩 */
+  background-color: rgba(29, 43, 54, 0.95); 
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* 當燈箱被點擊觸發時 */
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 放大後的圖片設定 */
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  /* 預設稍微縮小，配合 opacity 創造浮現感 */
+  transform: scale(0.95); 
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lightbox.active .lightbox-img {
+  transform: scale(1);
+}
+
+/* 關閉按鈕 (右上角的 X) */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 50px;
+  color: var(--c4-winter-mist);
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+/* 圖片下方的說明文字 */
+.lightbox-caption {
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
