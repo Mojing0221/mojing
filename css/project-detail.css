@@ -292,7 +292,6 @@
 .gif-showcase video {
   height: 200px; /* 你可以根據喜好微調這個高度，200px 通常很剛好 */
   width: auto;   /* 寬度設定 auto，它就會根據原本的比例自己縮放，絕不變形 */
-  
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(104, 170, 198, 0.15);
   transition: transform 0.3s ease;
@@ -310,5 +309,19 @@
     height: 150px; 
     max-width: 100%; 
     object-fit: contain;
+  }
+}
+
+/* ==========================================
+   單獨調整「主角動畫區塊」的高度
+   ========================================== */
+.hero-showcase video {
+  height: 130px !important; /* 👈 這裡填入你想要的高度，加上 !important 確保覆蓋原本的設定 */
+}
+
+/* 記得也幫手機版設定一個專屬的縮小高度，避免螢幕塞不下 */
+@media screen and (max-width: 768px) {
+  .hero-showcase video {
+    height: 180px !important; 
   }
 }
