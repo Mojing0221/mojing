@@ -252,11 +252,11 @@
    ========================================== */
 .gif-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* 5列，讓每個 GIF 都有足夠空間展示 */
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   gap: 15px;
   background-color: transparent;
   box-shadow: none; 
-  align-items: center;
+  place-items: center;
 }
 
 /* 確保裡面的 GIF 都能保有自己的圓角，且乖乖待在格子裡 */
