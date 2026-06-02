@@ -246,3 +246,23 @@
   background-color: #fff;
   transform: scale(1.4);
 }
+
+/* ==========================================
+   GIF 微型展示網格 (2x2)
+   ========================================== */
+.gif-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* 5列，讓每個 GIF 都有足夠空間展示 */
+  gap: 15px;
+  background-color: transparent;
+  box-shadow: none; 
+  align-items: center;
+}
+
+/* 確保裡面的 GIF 都能保有自己的圓角，且乖乖待在格子裡 */
+.gif-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(104, 170, 198, 0.15); /* 給小圖獨立的陰影 */
+}
