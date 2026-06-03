@@ -4,17 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>沫鯨的魚缸</title>
+  <title>沫鯨的魚缸 | Mojing's Fish Tank</title>
+
+  <!-- 引入 Google Fonts：乾淨優雅風 (Cormorant Garamond + 思源宋體 + 思源黑體) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap"
+    rel="stylesheet">
+  <!-- 樣式表 -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
 
 <body class="home">
   <header>
     <nav>
-      <a href="index.html">首頁</a>
+      <a href="index.html" class="active">首頁</a>
       <a href="about.html">關於我</a>
 
-      <!-- 下拉選單：作品 -->
       <div class="dropdown">
         <a href="projects.html">作品集 ▾</a>
         <div class="dropdown-content">
@@ -26,20 +34,45 @@
 
       <a href="contact.html">聯絡我</a>
     </nav>
-
   </header>
 
-  <section class="hero">
-    <h1>-歡迎來到沫鯨的魚缸-</h1>
-    <p>×小心溺水×</p>
-    <p>遊戲開發 × 繪圖 × Cosplay</p>
-  </section>
+  <main class="hero-rpg">
+
+    <div class="title-container fade-in">
+
+      <div class="vertical-story">
+        ×遊戲開發<br>×繪圖<br>×角色扮演<br>×小心溺水×
+      </div>
+
+      <div class="content-column">
+
+        <div class="massive-title-group">
+          <div class="magic-circle-deco">✧</div>
+
+          <h1 class="main-word"><span class="big-letter">D</span>ive in</h1>
+          <h1 class="sub-word"><span class="big-letter">M</span>y tank.</h1>
+
+          <div class="nested-subtitle">
+            歡迎來到<br>沫鯨的魚缸。
+          </div>
+        </div>
+
+        <div class="rpg-menu-actions">
+          <a href="projects.html" class="menu-btn"><span class="cursor">▶</span> 潛入作品集</a>
+          <a href="about.html" class="menu-btn"><span class="cursor">▶</span> 讀取存檔 - 關於我</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
 
   <footer>
-    <p>© 2025 沫鯨Mojing | <a href="https://www.instagram.com/mojing0221/" target="_blank"
-        rel="noopener noreferrer">Instagram</a> | <a href="https://www.facebook.com/mo.jing.33663" target="_blank"
-        rel="noopener noreferrer">FB</a></p>
+    <p>© 2026 沫鯨Mojing |
+      <a href="https://www.instagram.com/mojing0221/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+      <a href="https://www.facebook.com/mo.jing.33663" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </p>
   </footer>
+
   <script src="js/bubbles.js" defer></script>
   <script src="js/fadein.js" defer></script>
   <script src="js/transition.js" defer></script>

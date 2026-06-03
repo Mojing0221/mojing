@@ -2,10 +2,6 @@ html {
   scroll-behavior: smooth; /* 讓同頁面的錨點跳轉變成「平滑捲動」 */
 }
 
-* {
-  box-sizing: border-box;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif;
-}
 /* ==========================================
    通用設定：配色
    ========================================== */
@@ -22,9 +18,18 @@ html {
   --accent-color: var(--c2-cold-aqua);
 }
 
+/* ==========================================
+   全站字體設定 (重返未來：1999 英倫電影風)
+   ========================================== */
 * {
   box-sizing: border-box;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif;
+  font-family: 'Noto Sans TC', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, .hero-title, .hero-title-cn, .water-warning, .deco-text {
+  font-family: 'Playfair Display', 'Noto Serif TC', serif;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 body {
@@ -51,7 +56,6 @@ a:hover {
 
 h1, h2, h3 {
   color: var(--heading-color);
-  font-weight: 700;
 }
 
 .container {
@@ -145,40 +149,7 @@ header nav a:hover::after {
 }
 
 /* ==========================================
-   2. 首頁專屬 (index.html)
-   ========================================== */
-/* 針對首頁的 body 獨立加上底圖 */
-body.home {
-  background-image: url('../images/CosPIC/IMG_0029.webp'); 
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* 讓背景固定，上下滑動時會有很高級的視差感 */
-}
-
-.hero {
-  text-align: center;
-  min-height: 90vh; 
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 如果你的底圖比較亮或比較花，導致文字看不清楚，可以加上一點文字陰影 */
-.hero h1, .hero p {
-  color: #ffffff; /* 讓首頁的標題與副標題變成白色 */
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* 加上深色半透明陰影，把字體托出來 */
-}
-
-.hero h1 {
-  font-size: clamp(1.3rem, 5vw, 3rem); 
-  letter-spacing: 3px;
-  margin-bottom: 10px;
-}
-
-/* ==========================================
-   3. 關於我 / 頁首共用區塊
+   2. 關於我 / 頁首共用區塊
    ========================================== */
 .about-header {
   text-align: center;
@@ -264,7 +235,7 @@ body.home {
 }
 
 /* ==========================================
-   4. 作品頁專屬 (projects.html)
+   3. 作品頁專屬 (projects.html)
    ========================================== */
 .projects {
   display: grid;
@@ -333,7 +304,7 @@ body.home {
 }
 
 /* ==========================================
-   5. 聯絡我專屬 (contact.html)
+   4. 聯絡我專屬 (contact.html)
    ========================================== */
 .banner {
   width: 100%;     
@@ -350,7 +321,7 @@ body.home {
 }
 
 /* ==========================================
-   6. 子頁面專屬 (PJ-*.html 畫廊)
+   5. 子頁面專屬 (PJ-*.html 畫廊)
    ========================================== */
 .about-header .tag {
   background-color: var(--c4-winter-mist);
@@ -393,7 +364,7 @@ body.home {
 }
 
 /* ==========================================
-   7. 輪播圖外框與排版設定 (保留)
+   6. 輪播圖外框與排版設定 (保留)
    ========================================== */
 .carousel {
   width: 100%;
@@ -466,7 +437,7 @@ body.home {
 }
 
 /* ==========================================
-   8. 頁尾與手機版適應 (RWD)
+   7. 頁尾與手機版適應 (RWD)
    ========================================== */
 footer {
   text-align: center;
@@ -495,7 +466,7 @@ footer a {
   header nav a {
     font-size: 1rem;
   }
-  .hero h1, .about-header h1 {
+  .about-header h1 {
     font-size: 2rem;
   }
   .avatar {
@@ -520,7 +491,7 @@ footer a {
 }
 
 /* ==========================================
-   9. 進階互動體驗 (UX/UI)
+   8. 進階互動體驗 (UX/UI)
    ========================================== */
 
 /* --- 滾動滑入動畫 (Scroll Fade-in) --- */
@@ -583,7 +554,7 @@ footer a {
 }
 
 /* ==========================================
-   10. 主題性粒子特效 (電影級光斑與細雪 Bokeh & Snow Dust)
+   9. 主題性粒子特效 (電影級光斑與細雪 Bokeh & Snow Dust)
    ========================================== */
 #bubble-container {
   position: fixed;
@@ -596,7 +567,8 @@ footer a {
   overflow: hidden;
 }
 
-main.container, section.hero {
+/* 確保粒子特效會乖乖待在 RPG 首頁與其他內容頁的背景 */
+main.container, main.hero-rpg {
   position: relative;
   z-index: 1; 
 }
@@ -633,7 +605,7 @@ main.container, section.hero {
 }
 
 /* ==========================================
-   11. 無縫頁面過場 (完美正弦波 Sine Wave 版)
+   10. 無縫頁面過場 (完美正弦波 Sine Wave 版)
    ========================================== */
 html::before,
 body::before,

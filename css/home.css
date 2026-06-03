@@ -1,0 +1,225 @@
+/* ==========================================
+   首頁專屬排版 - 日系 RPG 標題畫面風 (home.css)
+   ========================================== */
+
+/* 修改背景圖位置，讓角色往右靠，避免被文字擋住 */
+body.home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background-image: url('../images/CosPIC/IMG_7731.webp'); 
+  background-size: cover;
+  background-position: 70% center; /* 🌟 關鍵修改：將視覺焦點往右推 */
+  background-attachment: fixed; 
+}
+
+/* 將內容推向左側，不再置中 */
+.hero-rpg {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 靠左對齊 */
+  padding: 0 8vw; /* 依螢幕大小縮放的左右邊距，讓它不會貼死螢幕邊緣 */
+  position: relative;
+}
+
+/* 修正排版容器：使用 flex 和 gap 取代 absolute */
+.title-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px; /* 讓垂直字跟右邊的標題群組保持距離 */
+  position: relative;
+  max-width: 900px;
+  margin-top: 5vh; /* 整體稍微往下推一點，避免太貼頂 */
+}
+
+/* 新增：將標題、副標題、按鈕包在一個直向欄位中 */
+.content-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= 1. 垂直敘述字 ================= */
+.vertical-story {
+  writing-mode: vertical-rl;
+  font-family: 'Noto Serif TC', serif; 
+  font-size: 1rem;
+  letter-spacing: 6px;
+  line-height: 2;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  margin-top: 20px;
+  opacity: 0.95;
+}
+
+/* ================= 2. 巨型主標題 ================= */
+.massive-title-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-word, .sub-word {
+  /* 換上更乾淨的英文字體 */
+  font-family: 'Cormorant Garamond', serif; 
+  color: #ffffff;
+  margin: 0;
+  line-height: 0.8;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.main-word {
+  font-size: 7.5rem;
+  font-weight: 600; /* 稍微調輕一點重量，更顯精緻 */
+  z-index: 2;
+  letter-spacing: 2px;
+}
+
+.sub-word {
+  font-size: 6rem;
+  font-weight: 500;
+  /* 👇 已經把原本的 font-style: italic; 刪除了，讓字體站直變乾淨！ */
+  margin-left: 80px; 
+  margin-top: -15px; 
+  z-index: 1;
+}
+
+/* ================= 3. 嵌套的副標題 ================= */
+/* 修正副標題：拔掉 absolute，改成靠右對齊 */
+.nested-subtitle {
+  align-self: flex-end; /* 自動推到右邊 */
+  margin-top: 20px;
+  margin-right: 40px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  text-align: left;
+  border-left: 2px solid rgba(255, 255, 255, 0.6); /* 加上一條細細的裝飾線 */
+  padding-left: 15px;
+}
+
+/* ================= 裝飾圖騰 (魔法陣) ================= */
+.magic-circle-deco {
+  position: absolute;
+  top: 60px;
+  left: -50px;
+  font-size: 5rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+  animation: spin 30s linear infinite; /* 極其緩慢的旋轉動畫 */
+  z-index: 0;
+  pointer-events: none; /* 避免滑鼠誤觸 */
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* ================= 4. RPG 風格選單按鈕 ================= */
+/* 修正按鈕：拔掉 absolute，改用 margin 往下推 */
+.rpg-menu-actions {
+  margin-top: 60px; /* 和標題保持距離 */
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-btn {
+  font-family: 'Noto Serif TC', serif; /* 按鈕也使用復古宋體 */
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  letter-spacing: 4px;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.menu-btn .cursor {
+  opacity: 0; /* 預設隱藏游標 */
+  margin-right: 12px;
+  font-size: 1rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-15px); /* 預設往左偏移一點點 */
+}
+
+/* 游標移上去時，文字變白發光，箭頭出現並向右滑入 */
+.menu-btn:hover {
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+}
+
+.menu-btn:hover .cursor {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--accent-color); /* 箭頭使用你的主色水藍色 */
+}
+
+/* ================= 手機版適應 (RWD) ================= */
+@media screen and (max-width: 900px) {
+  .hero-rpg { 
+    padding: 0 20px; 
+    justify-content: center; 
+  }
+  .title-container { 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    gap: 20px;
+  }
+  .vertical-story { 
+    writing-mode: horizontal-tb; /* 手機版改回橫式排列 */
+    margin: 0; 
+    letter-spacing: 3px; 
+    font-size: 1.1rem;
+  }
+  .massive-title-group {
+    align-items: center;
+  }
+  .main-word { font-size: 4.5rem; }
+  .sub-word { font-size: 4rem; margin-left: 0; margin-top: 0; }
+  .big-letter { font-size: 6.5rem; }
+  
+  .nested-subtitle { 
+    align-self: center;
+    margin-right: 0;
+    margin-top: 25px; 
+    border-left: none; 
+    text-align: center; 
+    padding: 0; 
+  }
+  .rpg-menu-actions { 
+    margin-top: 40px; 
+    margin-left: 0;
+    align-items: center; 
+  }
+  .magic-circle-deco { 
+    left: 50%; 
+    transform: translateX(-50%); 
+    top: -20px; 
+  }
+  /* 讓動畫在置中時依然能旋轉 */
+  @keyframes spin {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+  }
+}
+
+/* 讓首頁的 Footer 變成透明，釋放背景圖空間 */
+body.home footer {
+  background-color: transparent; /* 拔掉底色 */
+  color: rgba(255, 255, 255, 0.6); /* 文字改成半透明白色 */
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8); /* 加上陰影避免看不清 */
+}
+
+/* 讓 Footer 裡面的社群連結也變色 */
+body.home footer a {
+  color: rgba(255, 255, 255, 0.8);
+}
