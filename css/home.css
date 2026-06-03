@@ -1,5 +1,5 @@
 /* ==========================================
-   首頁專專屬排版 - 日系 RPG 標題畫面風 (home.css)
+   首頁專屬排版 - 日系 RPG 標題畫面風 (home.css)
    ========================================== */
 
 /* 修改背景圖位置，讓角色往右靠，避免被文字擋住 */
@@ -9,9 +9,10 @@ body.home {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-  background-image: url('../images/CosPIC/IMG_0029.webp'); 
+  /* 保留你指定的背景圖 */
+  background-image: url('../images/CosPIC/IMG_7731.webp'); 
   background-size: cover;
-  background-position: 70% center; 
+  background-position: 70% center; /* 🌟 關鍵修改：將視覺焦點往右推 */
   background-attachment: fixed; 
 }
 
@@ -20,8 +21,8 @@ body.home {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: flex-start; 
-  padding: 0 8vw; 
+  justify-content: flex-start; /* 靠左對齊 */
+  padding: 0 8vw; /* 依螢幕大小縮放的左右邊距，讓它不會貼死螢幕邊緣 */
   position: relative;
 }
 
@@ -29,19 +30,19 @@ body.home {
 .title-container {
   display: flex;
   align-items: flex-start;
-  gap: 40px; 
+  gap: 40px; /* 讓垂直字跟右邊的標題群組保持距離 */
   position: relative;
   max-width: 900px;
-  margin-top: 5vh; 
+  margin-top: 5vh; /* 整體稍微往下推一點，避免太貼頂 */
 }
 
-/* 將標題、副標題、按鈕包在一個直向欄位中 */
+/* 新增：將標題、副標題、按鈕包在一個直向欄位中 */
 .content-column {
   display: flex;
   flex-direction: column;
 }
 
-/* ================= 1. 垂直敘述字 (電腦版) ================= */
+/* ================= 1. 垂直敘述字 ================= */
 .vertical-story {
   writing-mode: vertical-rl;
   font-family: 'Noto Serif TC', serif; 
@@ -54,7 +55,7 @@ body.home {
   opacity: 0.95;
 }
 
-/* ================= 2. 巨型主標題 (電腦版) ================= */
+/* ================= 2. 巨型主標題 ================= */
 .massive-title-group {
   position: relative;
   display: flex;
@@ -62,15 +63,16 @@ body.home {
 }
 
 .main-word, .sub-word {
+  /* 換上史詩電影字體 Cinzel */
   font-family: 'Cinzel', serif; 
   color: #ffffff;
   margin: 0;
-  line-height: 0.85; 
+  line-height: 0.85; /* Cinzel 比較寬，稍微多給一點呼吸空間 */
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
 .main-word {
-  font-size: 7rem; 
+  font-size: 7rem; /* 微調大小以適應字體寬度 */
   font-weight: 700; 
   z-index: 2;
   letter-spacing: 3px;
@@ -79,28 +81,34 @@ body.home {
 .sub-word {
   font-size: 5.5rem;
   font-weight: 500;
-  margin-left: 60px; 
-  margin-top: -10px; 
+  margin-left: 60px; /* 縮排微調 */
+  margin-top: -10px; /* 疊加微調 */
   z-index: 1;
 }
 
-/* 誇張的首字母大小、鏤空與斜體特效 (電腦版) */
+/* 誇張的首字母大小、鏤空與斜體特效 */
 .big-letter {
   font-size: 10rem;
   font-weight: 800;
   line-height: 0.7;
   display: inline-block;
   vertical-align: bottom;
+
+  /* 鏤空設定 */
   color: transparent; 
   -webkit-text-stroke: 3px #ffffff; 
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
+  
+  /* 首字母斜體 */
   font-style: italic; 
+  
+  /* 加上一點右側空間，避免傾斜的字母頂部去撞到後面的字 */
   padding-right: 8px; 
 }
 
-/* ================= 3. 嵌套的副標題 (電腦版) ================= */
+/* ================= 3. 嵌套的副標題 ================= */
 .nested-subtitle {
-  align-self: flex-end; 
+  align-self: flex-end; /* 自動推到右邊 */
   margin-top: 20px;
   margin-right: 40px;
   font-family: 'Noto Sans TC', sans-serif;
@@ -109,7 +117,7 @@ body.home {
   color: #ffffff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
   text-align: left;
-  border-left: 2px solid rgba(255, 255, 255, 0.6); 
+  border-left: 2px solid rgba(255, 255, 255, 0.6); /* 加上一條細細的裝飾線 */
   padding-left: 15px;
 }
 
@@ -121,18 +129,18 @@ body.home {
   font-size: 5rem;
   color: rgba(255, 255, 255, 0.5);
   text-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
-  animation: spin 30s linear infinite; 
+  animation: spin 30s linear infinite; /* 極其緩慢的旋轉動畫 */
   z-index: 0;
-  pointer-events: none; 
+  pointer-events: none; /* 避免滑鼠誤觸 */
 }
 
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
 
-/* ================= 4. RPG 風格選單按鈕 (電腦版) ================= */
+/* ================= 4. RPG 風格選單按鈕 ================= */
 .rpg-menu-actions {
-  margin-top: 60px; 
+  margin-top: 60px; /* 和標題保持距離 */
   margin-left: 40px;
   display: flex;
   flex-direction: column;
@@ -140,7 +148,7 @@ body.home {
 }
 
 .menu-btn {
-  font-family: 'Noto Serif TC', serif; 
+  font-family: 'Noto Serif TC', serif; /* 按鈕也使用復古宋體 */
   font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
@@ -153,13 +161,14 @@ body.home {
 }
 
 .menu-btn .cursor {
-  opacity: 0; 
+  opacity: 0; /* 預設隱藏游標 */
   margin-right: 12px;
   font-size: 1rem;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  transform: translateX(-15px); 
+  transform: translateX(-15px); /* 預設往左偏移一點點 */
 }
 
+/* 游標移上去時，文字變白發光，箭頭出現並向右滑入 */
 .menu-btn:hover {
   color: #ffffff;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
@@ -168,12 +177,11 @@ body.home {
 .menu-btn:hover .cursor {
   opacity: 1;
   transform: translateX(0);
-  color: var(--accent-color); 
+  color: var(--accent-color); /* 箭頭使用你的主色水藍色 */
 }
 
-
 /* ==========================================
-   🌟 手機版適應 (RWD) - 字體精緻微小化版
+   手機版適應 (RWD) - 字體精緻微小化版
    ========================================== */
 @media screen and (max-width: 900px) {
   .hero-rpg { 
@@ -193,30 +201,30 @@ body.home {
     writing-mode: horizontal-tb; 
     margin: 0; 
     letter-spacing: 3px; 
-    font-size: 0.85rem; /* 👈 從 1.1rem 大幅縮小，精緻好看 */
+    font-size: 0.85rem;
     opacity: 0.8;
   }
   
+  /* 修改：讓主標題群組內部靠左對齊，錯落感才會自然 */
   .massive-title-group {
-    align-items: center;
+    align-items: flex-start; 
   }
   
-  /* 🌟 核心修改：大幅調小手機版的英文標題，避免擠壓跑版 */
   .main-word { 
-    font-size: 2.8rem; /* 從 4.5rem 縮小，更秀氣 */
+    font-size: 3.2rem; /* 稍微調大一點點，增加張力 */
     letter-spacing: 1px;
   }
   
+  /* 核心修改：恢復手機版的錯落與疊加感 */
   .sub-word { 
-    font-size: 2.4rem; /* 從 4.0rem 縮小 */
-    margin-left: 0; 
-    margin-top: 5px; /* 給上下兩行字保留微小的呼吸空間 */
+    font-size: 2.6rem; 
+    margin-left: 40px; /* 重新把第二行往右推 */
+    margin-top: -8px;  /* 重新讓第二行往上疊加 */
   }
   
-  /* 🌟 核心修改：縮小大寫字母，並將鏤空外框線變細（從 3px 減為 1.5px），防止線條糊在一起 */
   .big-letter { 
-    font-size: 4.2rem; /* 從 6.5rem 縮小 */
-    -webkit-text-stroke: 1.5px #ffffff; /* 框線變細，維持銳利度 */
+    font-size: 4.8rem; 
+    -webkit-text-stroke: 1.5px #ffffff; 
     padding-right: 4px;
   }
   
@@ -257,4 +265,19 @@ body.home {
     0% { transform: translateX(-50%) rotate(0deg); }
     100% { transform: translateX(-50%) rotate(360deg); }
   }
+}
+
+/* ==========================================
+   透明 Footer 設定 (首頁專屬)
+   ========================================== */
+/* 讓首頁的 Footer 變成透明，釋放背景圖空間 */
+body.home footer {
+  background-color: transparent; /* 拔掉底色 */
+  color: rgba(255, 255, 255, 0.6); /* 文字改成半透明白色 */
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8); /* 加上陰影避免看不清 */
+}
+
+/* 讓 Footer 裡面的社群連結也變色 */
+body.home footer a {
+  color: rgba(255, 255, 255, 0.8);
 }
