@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>魚缸管理員</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/about.css">
 </head>
 
 <body>
@@ -27,68 +28,114 @@
     </nav>
   </header>
 
-  <main class="container">
-    <div class="about-header">
-      <h1>-關於我-</h1>
-      <div class="avatar">
-        <img src="images/IMG_7123.JPG" alt="沫鯨頭像">
-      </div>
+  <!-- ================= 關於我：全息拼貼 RPG 面板 (原始文案版) ================= -->
+  <main class="rpg-scrapbook-layout fade-in">
+    
+    <!-- 頂部標題 -->
+    <div class="page-title">
+      <h1>- 關於我 -</h1>
     </div>
 
-    <h2>自介</h2>
-    <p>暱稱沫鯨，魚缸管理員。</p>
-    <p>INTP人，南台科大多樂系在讀。</p>
-    <p>由 50% 的畫圖 、 30% 的打Code 、 20% 的角色扮演所組成。</p>
-
-    <h2>技能</h2>
-    <ul>
-      <li>Unity 遊戲開發 / C# / DOTween / ShaderGraph</li>
-      <li>2D美術</li>
-      <li>故事創作</li>
-      <li>Cosplay</li>
-    </ul>
-
-    <h2>經歷</h2>
-    <ul>
-      <li>2026 | 資料結構課 | 教學助理</li>
-      <li>2025 | 資料結構課 | 身心障礙學生課後輔導小老師</li>
-      <li>2025 | 資料結構課 | 教學助理</li>
-      <li>2024 | 基礎程式課 | 教學助理</li>
-    </ul>
-
-    <h2>得獎紀錄</h2>
-    <ul>
-      <li>2025金犢獎 | 網路互動組 | 入圍 | 《任務代碼:M》</li>
-      <li>2025巴哈姆特ACG創作大賽 | 遊戲組 | 入圍 | 《午月Convallis》</li>
-      <li>2025放視大賞 | PC與遊戲主機組 | 複選入圍 |《午月Convallis》</li>
-      <li>2024巴哈姆特ACG創作大賽 | 遊戲組 | 入圍 | 《時光迷走TimeStroll》</li>
-      <li>2024放視大賞 | 遊戲商業Pitch舞台 | 最佳潛力獎 |《時光迷走TimeStroll》</li>
-    </ul>
-
-    <h2>證照</h2>
-    <ul>
-      <li>2025-Unity Certified User:Artist</li>
-      <li>2023-Adobe Photoshop CC</li>
-    </ul>
-
-    <div class="carousel">
-      <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-group">
-          <img src="images/TimeStroll/TimeStroll-MainVision.webp" alt="展示圖1">
-          <img src="images/Convallis/Convallis-MainVision.webp" alt="展示圖2">
-          <img src="images/CodeNoia/CodeNoia-MainVision.webp" alt="展示圖3">
-        </div>
-        <div class="carousel-group">
-          <img src="images/CosPIC/EllenJo-1.webp" alt="展示圖4">
-          <img src="images/CosPIC/IMG_1167.webp" alt="展示圖5">
-          <img src="images/CosPIC/IMG_2201.webp" alt="展示圖6">
-        </div>
-        <div class="carousel-group">
-          <img src="images/CosPIC/IMG_7695.webp" alt="展示圖7">
-          <img src="images/CosPIC/IMG_3392.webp" alt="展示圖8">
-          <img src="images/CosPIC/IMG_4338.webp" alt="展示圖9">
+    <div class="scrapbook-container">
+      
+      <!-- 🌟 區塊 1：自介 -->
+      <div class="rpg-panel intro-panel">
+        <div class="rpg-badge top-right-badge">✦ 自介</div>
+        
+        <div class="panel-content-flex">
+          <!-- 左側頭像 -->
+          <div class="avatar-glass-box">
+            <img src="images/IMG_7123.JPG" alt="沫鯨頭像">
+          </div>
+          
+          <!-- 右側捲軸內容 -->
+          <div class="scroll-content">
+            <h2 class="epic-en">MoJing <span>沫鯨</span></h2>
+            <p class="scroll-hint">( Scroll to read )</p>
+            
+            <div class="rpg-scroll-box">
+              <p>暱稱沫鯨，魚缸管理員。</p>
+              <p>INTP人，南台科大多樂系在讀。</p>
+              <p>由 50% 的畫圖 、 30% 的打Code 、 20% 的角色扮演所組成。</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- 🌟 雙欄錯落排版：技能與經歷 -->
+      <div class="rpg-split-grid">
+        
+        <!-- 區塊 2：技能 -->
+        <div class="rpg-panel skill-panel">
+          <div class="rpg-badge top-left-badge">✦ 技能</div>
+          <div class="rpg-scroll-box short-scroll">
+            <ul class="clean-list">
+              <li>> Unity 遊戲開發 / C# / DOTween / ShaderGraph</li>
+              <li>> 2D美術</li>
+              <li>> 故事創作</li>
+              <li>> Cosplay</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 區塊 3：經歷與證照 -->
+        <div class="rpg-panel exp-panel offset-down">
+          <div class="rpg-badge top-right-badge">✦ 經歷與證照</div>
+          <div class="rpg-scroll-box short-scroll">
+            <strong>經歷</strong><br>
+            <ul class="clean-list" style="margin-bottom: 15px;">
+              <li>> 2026 | 資料結構課 | 教學助理</li>
+              <li>> 2025 | 資料結構課 | 身心障礙學生課後輔導小老師</li>
+              <li>> 2025 | 資料結構課 | 教學助理</li>
+              <li>> 2024 | 基礎程式課 | 教學助理</li>
+            </ul>
+            
+            <strong>證照</strong><br>
+            <ul class="clean-list">
+              <li>> 2025-Unity Certified User:Artist</li>
+              <li>> 2023-Adobe Photoshop CC</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🌟 區塊 4：得獎紀錄與輪播圖 -->
+      <div class="rpg-panel carousel-panel">
+        <div class="rpg-badge top-left-badge">✦ 得獎紀錄</div>
+        
+        <div class="achievement-text">
+          <ul class="clean-list">
+            <li>> 2025金犢獎 | 網路互動組 | 入圍 | 《任務代碼:M》</li>
+            <li>> 2025巴哈姆特ACG創作大賽 | 遊戲組 | 入圍 | 《午月Convallis》</li>
+            <li>> 2025放視大賞 | PC與遊戲主機組 | 複選入圍 |《午月Convallis》</li>
+            <li>> 2024巴哈姆特ACG創作大賽 | 遊戲組 | 入圍 | 《時光迷走TimeStroll》</li>
+            <li>> 2024放視大賞 | 遊戲商業Pitch舞台 | 最佳潛力獎 |《時光迷走TimeStroll》</li>
+          </ul>
+        </div>
+        
+        <!-- 塞入你的輪播圖 -->
+        <div class="carousel mini-carousel">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-group">
+              <img src="images/TimeStroll/TimeStroll-MainVision.webp" alt="展示圖1">
+              <img src="images/Convallis/Convallis-MainVision.webp" alt="展示圖2">
+              <img src="images/CodeNoia/CodeNoia-MainVision.webp" alt="展示圖3">
+            </div>
+            <div class="carousel-group">
+              <img src="images/CosPIC/EllenJo-1.webp" alt="展示圖4">
+              <img src="images/CosPIC/IMG_1167.webp" alt="展示圖5">
+              <img src="images/CosPIC/IMG_2201.webp" alt="展示圖6">
+            </div>
+            <div class="carousel-group">
+              <img src="images/CosPIC/IMG_7695.webp" alt="展示圖7">
+              <img src="images/CosPIC/IMG_3392.webp" alt="展示圖8">
+              <img src="images/CosPIC/IMG_4338.webp" alt="展示圖9">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </main>
 
