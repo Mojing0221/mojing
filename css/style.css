@@ -19,16 +19,17 @@ html {
 }
 
 /* ==========================================
-   全站字體設定 (重返未來：1999 英倫電影風)
+   全站字體設定 (史詩電影感)
    ========================================== */
 * {
   box-sizing: border-box;
   font-family: 'Noto Sans TC', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/* 將所有標題換成史詩電影感的 Cinzel */
 h1, h2, h3, .hero-title, .hero-title-cn, .water-warning, .deco-text {
-  font-family: 'Playfair Display', 'Noto Serif TC', serif;
-  font-weight: 700;
+  font-family: 'Cinzel', 'Noto Serif TC', serif;
+  font-weight: 600;
   letter-spacing: 2px;
 }
 

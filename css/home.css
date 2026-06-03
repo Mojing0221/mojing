@@ -62,28 +62,47 @@ body.home {
 }
 
 .main-word, .sub-word {
-  /* 換上更乾淨的英文字體 */
-  font-family: 'Cormorant Garamond', serif; 
+  /* 換上史詩電影字體 Cinzel */
+  font-family: 'Cinzel', serif; 
   color: #ffffff;
   margin: 0;
-  line-height: 0.8;
+  line-height: 0.85; /* Cinzel 比較寬，稍微多給一點呼吸空間 */
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
 .main-word {
-  font-size: 7.5rem;
-  font-weight: 600; /* 稍微調輕一點重量，更顯精緻 */
+  font-size: 7rem; /* 微調大小以適應字體寬度 */
+  font-weight: 700; 
   z-index: 2;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 .sub-word {
-  font-size: 6rem;
+  font-size: 5.5rem;
   font-weight: 500;
-  /* 👇 已經把原本的 font-style: italic; 刪除了，讓字體站直變乾淨！ */
-  margin-left: 80px; 
-  margin-top: -15px; 
+  margin-left: 60px; /* 縮排微調 */
+  margin-top: -10px; /* 疊加微調 */
   z-index: 1;
+}
+
+/* 誇張的首字母大小、鏤空與斜體特效 */
+.big-letter {
+  font-size: 10rem;
+  font-weight: 800;
+  line-height: 0.7;
+  display: inline-block;
+  vertical-align: bottom;
+
+  /* 鏤空設定 */
+  color: transparent; 
+  -webkit-text-stroke: 3px #ffffff; 
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
+  
+  /* 👇 新增：首字母斜體 */
+  font-style: italic; 
+  
+  /* 👇 加上一點右側空間，避免傾斜的字母頂部去撞到後面的字 */
+  padding-right: 8px; 
 }
 
 /* ================= 3. 嵌套的副標題 ================= */
