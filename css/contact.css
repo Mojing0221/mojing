@@ -174,12 +174,12 @@
 @media screen and (max-width: 768px) {
   /* 1. 將手機版的 Banner 圖片加高，騰出足夠的深色背景給文字 */
   .banner img {
-    aspect-ratio: 16 / 9; /* 從寬扁的 21/9 改為標準 16/9 */
+    aspect-ratio: 4 / 3; /* 從寬扁的 21/9 改為標準 16/9 */
   }
 
   /* 2. 重新調整往上拉的距離，確保文字完全進入深色圖片區域 */
   .banner + .container {
-    margin-top: -220px; /* 根據加高的圖片調整拉升距離 */
+    margin-top: -200px; /* 根據加高的圖片調整拉升距離 */
   }
 
   /* 3. 稍微縮小手機版的標題大小，看起來會更精緻 */
