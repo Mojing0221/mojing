@@ -4,8 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>聯絡我</title>
+  <title>聯絡我 | Mojing's Fish Tank</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
@@ -23,37 +29,83 @@
           <a href="projects.html#cosplay">角色扮演</a>
         </div>
       </div>
-      <a href="contact.html">聯絡我</a>
+      <a href="contact.html" class="active">聯絡我</a>
     </nav>
-
   </header>
 
-  <div class="banner">
+  <!-- 滿版橫幅 (加上 fade-in 動畫) -->
+  <div class="banner fade-in">
     <img src="images/IMG_7577.JPG" alt="聯絡我 Banner">
   </div>
 
-  <main class="container">
+  <main class="container fade-in">
     <div class="about-header">
-      <h1>- 聯絡我 -</h1>
-      <p>× 歡迎透過以下方式與我聯絡 ×</p>
+      <h1 style="font-family: 'Cinzel', serif; letter-spacing: 4px;">Get in Touch</h1>
+      <h2 style="margin-top: -10px; font-size: 1.5rem;">聯絡我</h2>
+      <p style="color: var(--c3-cold-smoke); letter-spacing: 2px;">× 歡迎透過以下方式與我聯絡 ×</p>
     </div>
 
-    <ul>
-      <li>Instagram: <a href="https://www.instagram.com/mojing0221/" target="_blank"
-          rel="noopener noreferrer">@mojing0221</a></li>
-      <li>Facebook: <a href="https://www.facebook.com/mo.jing.33663" target="_blank" rel="noopener noreferrer">@凌沫 /
-          沫鯨</a></li>
-      <li>Discord: @mojing.0221</li>
-      <li>Gmail: mojing0221@gmail.com</li>
-    </ul>
+    <!-- 聯絡卡片網格 -->
+    <div class="contact-grid">
+      
+      <!-- 卡片 1：Instagram -->
+      <a href="https://www.instagram.com/mojing0221/" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <div class="contact-icon">
+          <!-- IG 向量圖示 -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </div>
+        <div class="contact-info">
+          <h3>Instagram</h3>
+          <p>@mojing0221</p>
+        </div>
+      </a>
+
+      <!-- 卡片 2：Facebook -->
+      <a href="https://www.facebook.com/mo.jing.33663" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <div class="contact-icon">
+          <!-- FB 向量圖示 -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </div>
+        <div class="contact-info">
+          <h3>Facebook</h3>
+          <p>@凌沫 / 沫鯨</p>
+        </div>
+      </a>
+
+      <!-- 卡片 3：Discord (使用 mailto 或純顯示，這裡先做外觀) -->
+      <div class="contact-card cursor-copy" title="複製 Discord 帳號">
+        <div class="contact-icon">
+          <!-- Discord 向量圖示 -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12A1 1 0 1 0 9 12.01M15 12A1 1 0 1 0 15 12.01M7.5 15C8.5 16.5 10 17 12 17C14 17 15.5 16.5 16.5 15M20.5 7.5A14.2 14.2 0 0 0 17.5 5A18.6 18.6 0 0 0 12 3.5A18.6 18.6 0 0 0 6.5 5A14.2 14.2 0 0 0 3.5 7.5A21.6 21.6 0 0 0 2 16.5C3.5 18 5 19.5 7.5 20.5A15.3 15.3 0 0 0 10 18.5A14.6 14.6 0 0 1 7.5 17.5A16.6 16.6 0 0 0 10 16A13.6 13.6 0 0 0 12 16.5A13.6 13.6 0 0 0 14 16A16.6 16.6 0 0 0 16.5 17.5A14.6 14.6 0 0 1 14 18.5A15.3 15.3 0 0 0 16.5 20.5C19 19.5 20.5 18 22 16.5A21.6 21.6 0 0 0 20.5 7.5Z"></path></svg>
+        </div>
+        <div class="contact-info">
+          <h3>Discord</h3>
+          <p>@mojing.0221</p>
+        </div>
+      </div>
+
+      <!-- 卡片 4：Gmail -->
+      <a href="mailto:mojing0221@gmail.com" class="contact-card">
+        <div class="contact-icon">
+          <!-- Mail 向量圖示 -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </div>
+        <div class="contact-info">
+          <h3>Email</h3>
+          <p>mojing0221@gmail.com</p>
+        </div>
+      </a>
+
+    </div>
   </main>
 
   <footer>
-    <p>© 2025 沫鯨Mojing | <a href="https://www.instagram.com/mojing0221/" target="_blank"
-        rel="noopener noreferrer">Instagram</a> | <a href="https://www.facebook.com/mo.jing.33663" target="_blank"
-        rel="noopener noreferrer">FB</a>
+    <p>© 2026 沫鯨Mojing | 
+      <a href="https://www.instagram.com/mojing0221/" target="_blank" rel="noopener noreferrer">Instagram</a> | 
+      <a href="https://www.facebook.com/mo.jing.33663" target="_blank" rel="noopener noreferrer">Facebook</a>
     </p>
   </footer>
+  
   <script src="js/fadein.js" defer></script>
   <script src="js/transition.js" defer></script>
 </body>

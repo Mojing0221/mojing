@@ -19,14 +19,13 @@ html {
 }
 
 /* ==========================================
-   全站字體設定 (史詩電影感)
+   全站字體設定 
    ========================================== */
 * {
   box-sizing: border-box;
   font-family: 'Noto Sans TC', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* 將所有標題換成史詩電影感的 Cinzel */
 h1, h2, h3, .hero-title, .hero-title-cn, .water-warning, .deco-text {
   font-family: 'Cinzel', 'Noto Serif TC', serif;
   font-weight: 600;
@@ -304,22 +303,6 @@ header nav a:hover::after {
   color: var(--accent-color);
 }
 
-/* ==========================================
-   4. 聯絡我專屬 (contact.html)
-   ========================================== */
-.banner {
-  width: 100%;     
-  margin-top: 0;
-}
-
-.banner img {
-  width: 100%;
-  aspect-ratio: 4.3 / 1;
-  object-fit: cover;    
-  border-radius: 0;
-  box-shadow: 0 5px 20px rgba(137, 159, 175, 0.2);
-  display: block; 
-}
 
 /* ==========================================
    5. 子頁面專屬 (PJ-*.html 畫廊)

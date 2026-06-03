@@ -1,0 +1,195 @@
+/* ==========================================
+   聯絡我專屬排版 (contact.css)
+   ========================================== */
+.banner {
+  width: 100%;     
+  margin-top: 0;
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  aspect-ratio: 32 / 9;
+  object-fit: cover;    
+  display: block; 
+  /* 讓圖片底部有一點漸層淡出，完美融入網頁背景色 */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+}
+
+/* 聯絡資訊網格排版 */
+.contact-grid {
+  display: grid;
+  /* 自動排版：螢幕夠寬就並排，太窄就自動變直排 */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* 質感名片卡設計 */
+.contact-card {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--c4-winter-mist);
+  border-radius: 16px;
+  padding: 25px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 15px rgba(137, 159, 175, 0.1);
+  text-decoration: none;
+
+  /* 🌟 動畫設定：預設先隱藏，等待入場動效 */
+  opacity: 0;
+}
+
+/* 懸浮發光效果 */
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(104, 170, 198, 0.25);
+  border-color: var(--accent-color);
+  background-color: #ffffff;
+}
+
+/* 左側圓形圖示框 */
+.contact-icon {
+  width: 55px;
+  height: 55px;
+  background-color: var(--c4-winter-mist);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+}
+
+.contact-card:hover .contact-icon {
+  background-color: var(--accent-color);
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* 右側文字資訊 */
+.contact-info h3 {
+  margin: 0 0 5px 0;
+  font-family: 'Cinzel', 'Noto Serif TC', serif;
+  font-size: 1.3rem;
+  color: var(--heading-color);
+  letter-spacing: 1px;
+}
+
+.contact-info p {
+  margin: 0;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-card:hover .contact-info p {
+  color: var(--accent-color);
+}
+
+/* 針對不能點擊跳轉的區塊(如 Discord) 改變游標狀態 */
+.cursor-copy {
+  cursor: default; 
+}
+
+/* ==========================================
+   讓標題卡到 Banner 圖片上 (重疊特效)
+   ========================================== */
+.banner + .container {
+  position: relative;
+  z-index: 10;           
+  margin-top: -360px;    
+  padding-top: 0;        
+}
+
+/* 將標題改為白色，並加上深色陰影，讓文字在背景圖上完美托出 */
+.banner + .container .about-header h1,
+.banner + .container .about-header h2,
+.banner + .container .about-header p {
+  color: #ffffff !important; /* 🌟 加上 !important 強制覆蓋原本的顏色 */
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.8),
+    0 4px 25px rgba(0, 0, 0, 0.6); /* 改為深色陰影，增加立體感 */
+
+  /* 🌟 動畫設定：預設先隱藏 */
+  opacity: 0;
+}
+
+
+/* ==========================================
+   🎬 聯絡頁專屬入場動畫核心 Keyframes
+   ========================================== */
+@keyframes cinematicBlurIn {
+  0% { opacity: 0; filter: blur(12px); transform: translateY(15px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes cardEntranceUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 🌟 控制標題群組的 staggered 延遲浮現 */
+.about-header h1 {
+  animation: cinematicBlurIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.2s;
+}
+.about-header h2 {
+  animation: cinematicBlurIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.4s;
+}
+.about-header p {
+  animation: cinematicBlurIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+/* 🌟 四張聯絡卡片像選單一樣，排隊依序滑出登場 */
+.contact-grid .contact-card:nth-child(1) {
+  animation: cardEntranceUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.9s;
+}
+.contact-grid .contact-card:nth-child(2) {
+  animation: cardEntranceUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 1.0s;
+}
+.contact-grid .contact-card:nth-child(3) {
+  animation: cardEntranceUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 1.1s;
+}
+.contact-grid .contact-card:nth-child(4) {
+  animation: cardEntranceUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 1.2s;
+}
+
+
+/* ==========================================
+   手機版適應 (RWD) - 修正文字卡在邊緣的問題
+   ========================================== */
+@media screen and (max-width: 768px) {
+  /* 1. 將手機版的 Banner 圖片加高，騰出足夠的深色背景給文字 */
+  .banner img {
+    aspect-ratio: 16 / 9; /* 從寬扁的 21/9 改為標準 16/9 */
+  }
+
+  /* 2. 重新調整往上拉的距離，確保文字完全進入深色圖片區域 */
+  .banner + .container {
+    margin-top: -250px; /* 根據加高的圖片調整拉升距離 */
+  }
+
+  /* 3. 稍微縮小手機版的標題大小，看起來會更精緻 */
+  .banner + .container .about-header h1 {
+    font-size: 2.2rem; 
+  }
+  .banner + .container .about-header h2 {
+    font-size: 1.3rem;
+  }
+  .banner + .container .about-header p {
+    font-size: 0.9rem;
+  }
+}
