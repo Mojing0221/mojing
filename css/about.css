@@ -99,8 +99,7 @@ body {
 .avatar-glass-box {
   position: relative;
   width: 190px;
-  height: 300px;
-  aspect-ratio: 1/1;
+  aspect-ratio: 190 / 300; 
   overflow: hidden;
   flex-shrink: 0;
   border: 2px solid var(--small-border);
@@ -242,7 +241,7 @@ body {
 @media screen and (max-width:768px) {
   .rpg-scrapbook-layout { margin-top: 80px; }
   .panel-content-flex { flex-direction: column; align-items: center; text-align: center; }
-  .avatar-glass-box { width: 130px; }
+  .avatar-glass-box { width: 130px; height: auto; }}
   .rpg-scroll-box { max-height: none; overflow: visible; text-align: left; }
   .short-scroll { max-height: none; }
   .rpg-split-grid { grid-template-columns: 1fr; }
@@ -260,7 +259,7 @@ body {
   }
   
   .page-title h1 { font-size: 2rem; letter-spacing: 4px; }
-}
+
 
 @media screen and (max-width:400px) {
   .rpg-panel { padding: 44px 16px 20px; }
