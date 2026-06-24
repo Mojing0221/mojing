@@ -1,10 +1,23 @@
+:root {
+  --accent-color: #68aac6;
+  --accent-dark: #4a7d96;
+  --accent-dim: rgba(104,170,198,0.14);
+  --text-main: #455a64;
+  --text-dark: #2c3e50;
+  --text-muted: #78909c;
+  --border: rgba(44,62,80,0.16);
+  --border-accent: rgba(104,170,198,0.5);
+  --small-border: rgba(120,120,120,0.25);
+}
+
+/* ===== 背景 ===== */
 body {
-  background-color: #f0f5f9;
+  background-color: #eef3f7;
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(104, 170, 198, 0.25) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(160, 200, 220, 0.25) 0%, transparent 50%);
+    radial-gradient(circle at 50% 50%, rgba(104,170,198,0.15) 0%, transparent 55%),
+    radial-gradient(circle at 85% 15%, rgba(160,200,220,0.12) 0%, transparent 50%);
   background-size: 200% 200%;
-  animation: mysticGlow 10s ease-in-out infinite alternate;
+  animation: mysticGlow 12s ease-in-out infinite alternate;
 }
 
 @keyframes mysticGlow {
@@ -12,215 +25,249 @@ body {
   100% { background-position: 100% 100%; }
 }
 
+/* ===== 版面 ===== */
 .rpg-scrapbook-layout {
   max-width: 850px;
-  margin: 100px auto 50px auto;
+  margin: 100px auto 50px;
   padding: 0 20px;
 }
-
-.page-title {
-  text-align: center;
-  margin-bottom: 50px;
+.scrapbook-container {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
 }
 
+/* ===== 標題 ===== */
+.page-title { text-align: center; margin-bottom: 50px; }
 .page-title h1 {
-  color: #2c3e50;
-  font-family: 'Cinzel', 'Noto Serif TC', serif; 
+  color: var(--text-dark);
+  font-family: 'Cinzel', 'Noto Serif TC', serif;
   font-size: 2.8rem;
   letter-spacing: 6px;
   margin: 0;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  font-weight: 700;
 }
-
 .page-title h2 {
-  font-family: 'Noto Serif TC', serif;
   color: #607d8b;
   font-size: 1.1rem;
   letter-spacing: 2px;
   margin-top: 5px;
 }
 
-.scrapbook-container {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
+/* ===== 大面板 ===== */
 .rpg-panel {
   position: relative;
-  background: rgba(255, 255, 255, 0.65); 
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  padding: 35px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), inset 0 0 20px rgba(255, 255, 255, 0.8);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--border-accent);
+  border-radius: 4px;
+  outline: 3px solid rgba(104,170,198,0.12);
+  outline-offset: 3px;
+  padding: 48px 32px 30px;
+  transition: 0.25s;
 }
-
 .rpg-panel:hover {
-  border-color: rgba(104, 170, 198, 0.6); 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 0 15px rgba(104, 170, 198, 0.15);
+  border-color: var(--accent-color);
+  outline-color: rgba(104,170,198,0.28);
 }
 
+/* ===== Badge ===== */
 .rpg-badge {
   position: absolute;
-  background: linear-gradient(135deg, #68aac6, #4a7d96);
-  color: #fff;
+  background: var(--accent-dark);
+  color: white;
   font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 2px;
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.6);
-  box-shadow: 0 4px 15px rgba(104, 170, 198, 0.3);
+  padding: 4px 16px 4px 12px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
   z-index: 10;
 }
+.top-left-badge { top: -1px; left: -1px; }
+.top-right-badge {
+  top: -1px; right: -1px;
+  padding: 4px 12px 4px 20px;
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%);
+}
+.bottom-left-badge { bottom: -1px; left: -1px; }
 
-.top-right-badge { top: -15px; right: 20px; }
-.top-left-badge { top: -15px; left: 20px; }
-.bottom-left-badge { bottom: -15px; left: 20px; }
-
+/* ===== 自介 ===== */
 .panel-content-flex {
-  display: flex;
-  gap: 30px;
-  align-items: center;
+  display: flex; gap: 30px; align-items: flex-start;
 }
 
+/* ===== 頭像 ===== */
 .avatar-glass-box {
-  width: 200px;
-  aspect-ratio: 1 / 1;
-  border-radius: 10px;
+  position: relative;
+  width: 190px;
+  height: 300px;
+  aspect-ratio: 1/1;
   overflow: hidden;
-  border: 4px solid #ffffff;
   flex-shrink: 0;
-  transform: rotate(-2deg); 
-  box-shadow: 5px 10px 20px rgba(0,0,0,0.08);
+  border: 2px solid var(--small-border);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
+}
+.avatar-glass-box::after {
+  content: ''; position: absolute; inset: -2px; pointer-events: none;
+  background-image:
+    linear-gradient(135deg, transparent 16.5px, var(--small-border) 16.5px, var(--small-border) 19px, transparent 19px),
+    linear-gradient(-45deg, transparent 16.5px, var(--small-border) 16.5px, var(--small-border) 19px, transparent 19px);
+  background-origin: border-box; z-index: 10;
+}
+.avatar-glass-box img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== 內容 ===== */
+.scroll-content { flex: 1; min-width: 0; }
+.epic-en { font-family: 'Cinzel', serif; font-size: 2.1rem; color: var(--text-dark); margin: 0 0 4px; }
+.epic-en span { font-size: 1.15rem; color: var(--accent-color); }
+.scroll-hint { color: var(--text-muted); font-size: 0.78rem; letter-spacing: 2px; margin-bottom: 14px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+
+/* ===== 小框通用設定 ===== */
+.rpg-scroll-box, .achievement-text, .mini-carousel {
+  position: relative;
+  background-color: rgba(255,255,255,0.72);
+  border: 2px solid var(--small-border);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.5);
+  overflow: hidden;
+  clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
+}
+.rpg-scroll-box, .achievement-text {
+  background-image:
+    linear-gradient(135deg, transparent 16.5px, var(--small-border) 16.5px, var(--small-border) 19px, transparent 19px),
+    linear-gradient(-45deg, transparent 16.5px, var(--small-border) 16.5px, var(--small-border) 19px, transparent 19px);
+  background-origin: border-box; background-attachment: scroll;
+}
+.mini-carousel::after {
+  content: ''; position: absolute; inset: -2px; pointer-events: none;
+  background-image:
+    linear-gradient(135deg, transparent 16.5px, var(--small-border) 16.5px, var(--small-border) 19px, transparent 19px),
+    linear-gradient(-45deg, transparent 16.5px, var(--small-border) 16.5px, var(--small-border) 19px, transparent 19px);
+  background-origin: border-box; z-index: 10;
 }
 
-.avatar-glass-box img {
+/* ===== 文字框細節 ===== */
+.rpg-scroll-box { min-height: 60px; max-height: 200px; padding: 14px 18px; overflow-y: auto; color: var(--text-main); line-height: 1.75; }
+.short-scroll { max-height: 160px; }
+.highlight-text { color: #1a252f; font-style: italic; font-weight: bold; }
+.rpg-scroll-box::-webkit-scrollbar { width: 4px; }
+.rpg-scroll-box::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
+.rpg-scroll-box::-webkit-scrollbar-thumb { background: var(--accent-color); }
+
+/* ===== 雙欄排版 ===== */
+.rpg-split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.offset-down { margin-top: 20px; }
+.clean-list { list-style: none; padding: 0; margin: 0; }
+.clean-list li { margin-bottom: 8px; }
+
+/* ===== 輪播整體排版 ===== */
+.carousel-panel-inner { display: grid; grid-template-columns: 2fr 1.2fr; gap: 24px; margin-top: 8px; align-items: start; }
+.achievement-text { padding: 14px 16px; font-size: 0.9rem; line-height: 1.85; color: var(--text-main); }
+
+/* ===== 圖片輪播區塊 (防溢出絕對定位版) ===== */
+.mini-carousel {
+  height: 100%; 
+  width: 300px;
+  position: relative;
+  min-width: 0; 
+  margin: 0;    
+  padding: 0;
+}
+
+/* ★ 取消全域 style.css 帶來的圖片懸浮放大與陰影效果 */
+.mini-carousel .carousel-group img:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+
+.mini-carousel .carousel-group img {
+  cursor: default;
+}
+
+/* 觀景窗：負責卡在安全範圍內，並把超出的圖片裁切掉 */
+.mini-carousel .carousel-viewport {
+  position: absolute;
+  top: 24px;      
+  left: 24px;
+  right: 24px;    
+  bottom: 48px;   
+  overflow: hidden;   
+  border-radius: 6px; 
+}
+
+/* 軌道：純粹的排版容器，在觀景窗內滑動 */
+.mini-carousel .carousel-track {
+  display: flex; 
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s ease-in-out; 
+}
+
+/* 單一群組：佔滿 100% 寬度 */
+.mini-carousel .carousel-group {
+  display: grid;
+  grid-template-columns: 1fr;  
+  grid-template-rows: 1fr 1fr; 
+  gap: 12px; 
+  height: 100%;
+  width: 100%; 
+  flex: 0 0 100%; 
+  padding: 0; 
+}
+
+.mini-carousel img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: contrast(105%);
+  object-fit: cover; 
+  display: block;
+  border-radius: 6px; 
+  aspect-ratio: auto; 
+  min-height: 0;      
 }
 
-.scroll-content {
-  flex: 1;
+/* ===== 導覽點點 ===== */
+.carousel-indicators {
+  position: absolute;
+  bottom: 16px; 
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 20;
 }
+.dot { width: 10px; height: 10px; background-color: var(--small-border); border-radius: 50%; cursor: pointer; transition: background-color 0.3s; }
+.dot.active { background-color: var(--accent-color); }
 
-.epic-en {
-  font-family: 'Cinzel', serif;
-  font-size: 2.2rem;
-  color: #2c3e50; 
-  margin: 0 0 5px 0;
-}
-
-.epic-en span {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 1.2rem;
-  color: var(--accent-color);
-}
-
-.scroll-hint {
-  color: #78909c; 
-  font-family: 'Cinzel', serif;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  margin: 0 0 15px 0;
-  border-bottom: 1px dashed rgba(0,0,0,0.1);
-  padding-bottom: 5px;
-}
-
-.rpg-scroll-box {
-  max-height: 180px;
-  overflow-y: auto;
-  padding-right: 15px;
-  font-family: 'Noto Sans TC', sans-serif;
-  font-size: 0.95rem;
-  color: #455a64;
-  line-height: 1.7;
-}
-
-.short-scroll {
-  max-height: 140px;
-}
-
-.highlight-text {
-  color: #1a252f;
-  font-family: 'Noto Serif TC', serif;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.rpg-scroll-box::-webkit-scrollbar { width: 4px; }
-.rpg-scroll-box::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 4px; }
-.rpg-scroll-box::-webkit-scrollbar-thumb { background: rgba(104, 170, 198, 0.5); border-radius: 4px; }
-.rpg-scroll-box::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
-
-.rpg-split-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-}
-
-.offset-down {
-  margin-top: 40px; 
-}
-
-.clean-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.clean-list li {
-  margin-bottom: 8px;
-  color: #455a64; 
-}
-
-.achievement-text {
-  font-family: 'Noto Sans TC', sans-serif;
-  color: #455a64;
-  font-size: 0.95rem;
-  line-height: 1.8;
-  margin-bottom: 25px;
-  background: rgba(255,255,255,0.7);
-  padding: 15px;
-  border-radius: 6px;
-  border-left: 3px solid var(--accent-color);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-}
-
-.mini-carousel {
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-@media screen and (max-width: 768px) {
-  .panel-content-flex {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* ===== 手機版 ===== */
+@media screen and (max-width:768px) {
+  .rpg-scrapbook-layout { margin-top: 80px; }
+  .panel-content-flex { flex-direction: column; align-items: center; text-align: center; }
+  .avatar-glass-box { width: 130px; }
+  .rpg-scroll-box { max-height: none; overflow: visible; text-align: left; }
+  .short-scroll { max-height: none; }
+  .rpg-split-grid { grid-template-columns: 1fr; }
+  .offset-down { margin-top: 0; }
+  
+  /* 讓文字與輪播圖變成上下排列 */
+  .carousel-panel-inner { grid-template-columns: 1fr; } 
+  
+  /* ★ 手機版輪播圖修正 */
+  .mini-carousel { 
+    width: 100%;     
+    max-width: 400px;
+    margin: 0 auto;  
+    height: 380px;   
   }
-  .avatar-glass-box {
-    width: 150px;
-    transform: rotate(0);
-  }
-  .rpg-scroll-box {
-    text-align: left; 
-  }
-  .rpg-split-grid {
-    grid-template-columns: 1fr; 
-  }
-  .offset-down {
-    margin-top: 0; 
-  }
-  .rpg-badge {
-    font-size: 0.75rem;
-    padding: 4px 12px;
+  
+  .page-title h1 { font-size: 2rem; letter-spacing: 4px; }
+}
+
+@media screen and (max-width:400px) {
+  .rpg-panel { padding: 44px 16px 20px; }
+  .epic-en { font-size: 1.6rem; }
+  
+  /* ★ 極小螢幕的輪播圖高度微調 */
+  .mini-carousel { 
+    height: 320px; 
   }
 }
