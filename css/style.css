@@ -171,6 +171,7 @@ header nav a:hover::after {
   border: 5px solid var(--c4-winter-mist);
   box-shadow: 0 8px 25px rgba(104, 170, 198, 0.25);
   transition: transform 0.3s ease;
+  will-change: transform;
 }
 
 .avatar:hover {
@@ -223,7 +224,9 @@ header nav a:hover::after {
   font-size: 0.95rem;
   border: 1px solid var(--c4-winter-mist);
   box-shadow: 0 2px 8px rgba(137, 159, 175, 0.15);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 .container > ul li:hover {
@@ -249,7 +252,8 @@ header nav a:hover::after {
   border: 1px solid var(--c4-winter-mist);
   border-radius: 12px;
   padding: 15px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
   box-shadow: 0 4px 15px rgba(137, 159, 175, 0.1);
   display: flex;
   flex-direction: column;
@@ -406,7 +410,8 @@ header nav a:hover::after {
   border-radius: 50%;
   background-color: var(--c4-winter-mist);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
+  will-change: transform;
 }
 
 .dot:hover {
@@ -509,7 +514,9 @@ footer a {
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease,
+              transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
   box-shadow: 0 4px 15px rgba(104, 170, 198, 0.4);
   z-index: 1000;
 }
@@ -566,7 +573,8 @@ main.container, main.hero-rpg {
   /* 散發淡淡的光暈，而不是硬邊的陰影 */
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
   /* 動畫路徑改由 JS 注入變數控制，讓每顆粒子的軌跡都不一樣 */
-  animation: cinematicDrift linear infinite; 
+  animation: cinematicDrift linear infinite;
+  will-change: transform, opacity;
 }
 
 /* 電影級的漂浮動畫 */
@@ -596,8 +604,8 @@ body::before,
 body::after {
   content: '';
   position: fixed;
-  /* 讓波浪稍微超出畫面邊緣，加上一點點橫向滑動空間 */
-  left: -10vw;
+  /* 改用 transform: translateX 做橫向偏移，避免觸發 Layout */
+  left: 0;
   width: 120vw;
   height: 150vh;
   pointer-events: none;
@@ -608,8 +616,11 @@ body::after {
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 
+  /* 預告瀏覽器此元素即將做 transform，建立獨立合成層 */
+  will-change: transform;
+
   /* 初始狀態：在螢幕上方外側退潮 */
-  transform: translateY(-150vh) translateX(0);
+  transform: translateY(-150vh) translateX(-10vw);
 }
 
 /*第一層：冷水藍 (波峰在左邊) */
@@ -643,8 +654,8 @@ body::before { animation: waveSlideReveal 1.2s cubic-bezier(0.64, 0.04, 0.35, 1)
 body::after  { animation: waveSlideReveal 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0s; }
 
 @keyframes waveSlideReveal {
-  0% { transform: translateY(-40vh) translateX(0); }       /* 畫面被海浪完全蓋滿 */
-  100% { transform: translateY(-150vh) translateX(5vw); }  /* 往上滑走並輕微右移 */
+  0% { transform: translateY(-40vh) translateX(-10vw); }       /* 畫面被海浪完全蓋滿 */
+  100% { transform: translateY(-150vh) translateX(-5vw); }     /* 往上滑走並輕微右移 */
 }
 
 /* ======== 狀態 2：點擊連結離開時 (海浪從下方湧上來) ======== */
@@ -655,8 +666,8 @@ html.is-leaving body::before { animation: waveSlideCover 1.2s cubic-bezier(0.64,
 html.is-leaving body::after  { animation: waveSlideCover 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0.2s; }
 
 @keyframes waveSlideCover {
-  0% { transform: translateY(100vh) translateX(5vw); }  /* 從最下方海平面準備 */
-  100% { transform: translateY(-40vh) translateX(0); }  /* 湧上來並完美蓋滿畫面 */
+  0% { transform: translateY(100vh) translateX(-5vw); }    /* 從最下方海平面準備 */
+  100% { transform: translateY(-40vh) translateX(-10vw); } /* 湧上來並完美蓋滿畫面 */
 }
 
 /* ==========================================
@@ -666,9 +677,8 @@ html.is-leaving body::after  { animation: waveSlideCover 1.2s cubic-bezier(0.64,
   html::before,
   body::before,
   body::after {
-    /* 將波浪的外框橫向拉寬 3 倍，讓弦波跟著平滑展開 */
-    width: 300vw;
-    /* 往左推，確保波浪依然對齊螢幕中央 */
-    left: -100vw; 
+    /* 手機版用 scaleX 將波浪橫向拉寬，讓弦波保持平滑，避免觸發 Layout */
+    transform: translateY(-150vh) translateX(-10vw) scaleX(3);
+    transform-origin: center top;
   }
 }
