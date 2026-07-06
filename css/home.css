@@ -1,8 +1,3 @@
-/* ==========================================
-   首頁專屬排版 - 日系 RPG 標題畫面風 (home.css)
-   ========================================== */
-
-/* 修改背景圖位置，讓角色往右靠，避免被文字擋住 */
 body.home {
   display: flex;
   flex-direction: column;
@@ -15,7 +10,6 @@ body.home {
   background-attachment: fixed; 
 }
 
-/* 將內容推向左側，不再置中 */
 .hero-rpg {
   flex: 1;
   display: flex;
@@ -25,7 +19,6 @@ body.home {
   position: relative;
 }
 
-/* 修正排版容器 */
 .title-container {
   display: flex;
   align-items: flex-start;
@@ -35,15 +28,11 @@ body.home {
   margin-top: 5vh; 
 }
 
-/* 將標題、副標題、按鈕包在一個直向欄位中 */
 .content-column {
   display: flex;
   flex-direction: column;
 }
 
-/* ==========================================
-   🎬 入場動畫核心 CSS Keyframes
-   ========================================== */
 @keyframes cinematicBlurFade {
   0% { opacity: 0; filter: blur(15px); transform: translateY(15px); }
   100% { opacity: 1; filter: blur(0); transform: translateY(0); }
@@ -74,8 +63,6 @@ body.home {
   100% { opacity: 0.5; filter: blur(0); transform: scale(1); }
 }
 
-
-/* ================= 1. 垂直敘述字 ================= */
 .vertical-story {
   writing-mode: vertical-rl;
   font-family: 'Noto Serif TC', serif; 
@@ -85,14 +72,11 @@ body.home {
   color: #ffffff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
   margin-top: 20px;
-  
-  /* 🌟 動畫：最先登場的詩句 */
   opacity: 0;
   animation: verticalStoryIn 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   animation-delay: 0.2s;
 }
 
-/* ================= 2. 巨型主標題 ================= */
 .massive-title-group {
   position: relative;
   display: flex;
@@ -105,7 +89,7 @@ body.home {
   margin: 0;
   line-height: 0.85; 
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-  opacity: 0; /* 預設先隱藏，交給動畫浮現 */
+  opacity: 0; 
 }
 
 .main-word {
@@ -113,8 +97,6 @@ body.home {
   font-weight: 700; 
   z-index: 2;
   letter-spacing: 3px;
-  
-  /* 🌟 動畫：第一行標題從左側滑入 */
   animation: slideFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   animation-delay: 0.5s;
 }
@@ -125,13 +107,10 @@ body.home {
   margin-left: 80px; 
   margin-top: -10px; 
   z-index: 1;
-  
-  /* 🌟 動畫：第二行標題慢 0.2 秒跟進滑入 */
   animation: slideFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   animation-delay: 0.7s;
 }
 
-/* 誇張的首字母大小、鏤空與斜體特效 */
 .big-letter {
   font-size: 10rem;
   font-weight: 800;
@@ -145,12 +124,10 @@ body.home {
   padding-right: 8px; 
 }
 
-/* ================= 3. 嵌套的副標題 ================= */
 .nested-subtitle {
   align-self: flex-end; 
   margin-top: 20px;
   margin-right: 40px;
-  font-family: 'Noto Sans TC', sans-serif;
   font-size: 0.95rem;
   letter-spacing: 2px;
   color: #ffffff;
@@ -158,14 +135,11 @@ body.home {
   text-align: left;
   border-left: 2px solid rgba(255, 255, 255, 0.6); 
   padding-left: 15px;
-  
-  /* 🌟 動畫：從右側悄悄靠岸，與主標題形成交錯視覺 */
   opacity: 0;
   animation: slideFromRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   animation-delay: 1.1s;
 }
 
-/* ================= 裝飾圖騰 (魔法陣) ================= */
 .magic-circle-deco {
   position: absolute;
   top: 60px;
@@ -175,8 +149,6 @@ body.home {
   text-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
   z-index: 0;
   pointer-events: none; 
-  
-  /* 🌟 動畫：融合了入場浮現與無限旋轉 */
   opacity: 0;
   animation: circleEntrance 2s ease-out forwards, spin 30s linear infinite;
   animation-delay: 0.4s;
@@ -186,7 +158,6 @@ body.home {
   100% { transform: rotate(360deg); }
 }
 
-/* ================= 4. RPG 風格選單按鈕 ================= */
 .rpg-menu-actions {
   margin-top: 60px; 
   margin-left: 40px;
@@ -196,26 +167,22 @@ body.home {
 }
 
 .menu-btn {
-  font-family: 'Noto Serif TC', serif; 
   font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
   letter-spacing: 4px;
   transition: all 0.3s ease;
   text-shadow: 0 2px 6px rgba(0,0,0,0.8);
   display: flex;
   align-items: center;
   font-weight: 700;
-  
-  /* 🌟 動畫設定：基礎隱藏，等待觸發 */
   opacity: 0;
 }
 
-/* 🌟 動態 staggered 延遲：按鈕一、二像開機選單一樣排隊浮現 */
 .rpg-menu-actions .menu-btn:nth-child(1) {
   animation: menuElementsUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   animation-delay: 1.4s;
 }
+
 .rpg-menu-actions .menu-btn:nth-child(2) {
   animation: menuElementsUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   animation-delay: 1.6s;
@@ -240,106 +207,29 @@ body.home {
   color: var(--accent-color); 
 }
 
-
-/* ==========================================
-   🌟 手機版適應 (RWD) - 完美保留錯落與動畫版
-   ========================================== */
 @media screen and (max-width: 900px) {
-  .hero-rpg { 
-    padding: 0 20px; 
-    justify-content: center; 
-  }
-  
-  .title-container { 
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center; 
-    gap: 15px; 
-  }
-  
-  /* 手機版橫式敘述：改用淡入模糊效果 */
+  .hero-rpg { padding: 0 20px; justify-content: center; }
+  .title-container { flex-direction: column; align-items: center; text-align: center; gap: 15px; }
   .vertical-story { 
-    writing-mode: horizontal-tb; 
-    margin: 0; 
-    letter-spacing: 3px; 
-    font-size: 0.85rem; 
-    animation: cinematicBlurFade 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    animation-delay: 0.2s;
+    writing-mode: horizontal-tb; margin: 0; letter-spacing: 3px; font-size: 0.85rem; 
+    animation: cinematicBlurFade 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 0.2s;
   }
-  
-  /* 🌟 核心保留：手機版維持向左看齊，錯落感不消失 */
-  .massive-title-group {
-    align-items: flex-start;
-  }
-  
-  .main-word { 
-    font-size: 3.2rem; 
-    letter-spacing: 1px;
-    animation: slideFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    animation-delay: 0.5s;
-  }
-  
-  /* 🌟 核心保留：手機版等比例縮小的右推與上疊 */
-  .sub-word { 
-    font-size: 2.6rem; 
-    margin-left: 40px; 
-    margin-top: -8px; 
-    animation: slideFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    animation-delay: 0.7s;
-  }
-  
-  .big-letter { 
-    font-size: 4.8rem; 
-    -webkit-text-stroke: 1.5px #ffffff; 
-    padding-right: 4px;
-  }
-  
+  .massive-title-group { align-items: flex-start; }
+  .main-word { font-size: 3.2rem; letter-spacing: 1px; animation: slideFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 0.5s; }
+  .sub-word { font-size: 2.6rem; margin-left: 40px; margin-top: -8px; animation: slideFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 0.7s; }
+  .big-letter { font-size: 4.8rem; -webkit-text-stroke: 1.5px #ffffff; padding-right: 4px; }
   .nested-subtitle { 
-    align-self: center;
-    margin-right: 0;
-    margin-top: 15px; 
-    border-left: none; 
-    text-align: center; 
-    padding: 0; 
-    font-size: 0.85rem;
-    animation: cinematicBlurFade 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    animation-delay: 1.0s;
+    align-self: center; margin-right: 0; margin-top: 15px; border-left: none; text-align: center; padding: 0; font-size: 0.85rem;
+    animation: cinematicBlurFade 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 1.0s;
   }
-  
-  .rpg-menu-actions { 
-    margin-top: 35px; 
-    margin-left: 0;
-    align-items: center; 
-    gap: 12px;
-  }
-  
-  .menu-btn {
-    font-size: 1.1rem; 
-  }
-  
+  .rpg-menu-actions { margin-top: 35px; margin-left: 0; align-items: center; gap: 12px; }
+  .menu-btn { font-size: 1.1rem; }
   .magic-circle-deco { 
-    left: 50%; 
-    transform: translateX(-50%); 
-    top: -20px; 
-    font-size: 3.5rem;
+    left: 50%; transform: translateX(-50%); top: -20px; font-size: 3.5rem;
     animation: circleEntrance 2s ease-out forwards, spinMobile 30s linear infinite;
   }
-  
   @keyframes spinMobile {
     0% { transform: translateX(-50%) rotate(0deg); }
     100% { transform: translateX(-50%) rotate(360deg); }
   }
-}
-
-/* ==========================================
-   透明 Footer 設定 (首頁專屬)
-   ========================================== */
-body.home footer {
-  background-color: transparent; 
-  color: rgba(255, 255, 255, 0.6); 
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8); 
-}
-
-body.home footer a {
-  color: rgba(255, 255, 255, 0.8);
 }

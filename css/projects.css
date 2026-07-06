@@ -1,0 +1,98 @@
+/* ==========================================
+   作品集總覽頁專屬排版 (projects.css)
+   ========================================== */
+
+/* 網格容器設定 */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* 單一作品卡片外觀與懸停特效 */
+.project {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--c4-winter-mist);
+  border-radius: 12px;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+  box-shadow: 0 4px 15px rgba(137, 159, 175, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(104, 170, 198, 0.25);
+  border-color: var(--accent-color);
+}
+
+/* 卡片圖片統一比例裁切 */
+.project img {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 統一橫式比例 */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.project img.portrait {
+  aspect-ratio: 3 / 4; /* 特殊直式比例覆寫 */
+  object-fit: cover;  
+  border-radius: 8px; 
+}
+
+/* 卡片內文字與標籤排版 */
+.project h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.project p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+.project .tag {
+  background-color: var(--c4-winter-mist);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* 底部連結自動推至最下方 */
+.project a {
+  margin-top: auto; 
+  display: inline-block;
+  padding-top: 15px;
+  color: var(--accent-color);
+}
+
+/* ==========================================
+   頂部大標題排版
+   ========================================== */
+.about-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* ==========================================
+   手機版自適應 (RWD)
+   ========================================== */
+@media screen and (max-width: 768px) {
+  .projects {
+    grid-template-columns: 1fr; /* 螢幕過小時強制變為單行滿版排列 */
+  }
+}

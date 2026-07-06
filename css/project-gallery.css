@@ -1,7 +1,4 @@
-/* ==========================================
-   Cosplay 照片牆 (不對稱網格)
-   ========================================== */
-.cosplay-section {
+.gallery-section {
   padding: 60px 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -24,10 +21,6 @@
   letter-spacing: 2px;
 }
 
-/* 🌟 核心魔法：CSS Grid 網格設定 */
-/* ==========================================
-   Cosplay 照片牆 (瀑布流 Masonry 原比例排版)
-   ========================================== */
 .gallery-grid {
   column-count: 3;
   column-gap: 15px;
@@ -39,21 +32,17 @@
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  
-   break-inside: avoid; 
-  /* 取代原本的 gap，改用下邊距來推開照片 */
+  break-inside: avoid; 
   margin-bottom: 15px; 
 }
 
 .gallery-item img {
   width: 100%;
-  height: auto; /* 🌟 讓高度自動適應，100% 保留照片最原始的長寬比！ */
+  height: auto; 
   display: block;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* 懸停遮罩特效 (維持原本的，不用改) */
-/* 🌟 1. 調整遮罩的 Padding */
 .gallery-overlay {
   position: absolute;
   bottom: 0;
@@ -64,13 +53,11 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* 👇 關鍵修改：減少下方的 padding，讓文字更貼近底部 (上 右 下 左) */
   padding: 40px 20px 15px 20px; 
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-/* 🌟 2. 清除標題的預設外距 */
 .gallery-overlay h3 {
   font-size: 1.5rem;
   color: var(--bg-color);
@@ -79,10 +66,8 @@
   transition: transform 0.4s ease;
 }
 
-/* 🌟 3. 清除段落的預設外距 (這是造成下方留白的最大兇手) */
 .gallery-overlay p {
   font-size: 0.9rem;
-  /* 👇 關鍵修改：完全歸零 */
   margin: 0; 
   color: var(--c2-cold-aqua);
   transform: translateY(20px);
@@ -90,48 +75,26 @@
   transition-delay: 0.1s;
 }
 
-.gallery-item:hover img {
-  transform: scale(1.08); 
-}
-
-.gallery-item:hover .gallery-overlay {
-  opacity: 1; 
-}
-
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
 .gallery-item:hover .gallery-overlay h3,
-.gallery-item:hover .gallery-overlay p {
-  transform: translateY(0); 
-}
+.gallery-item:hover .gallery-overlay p { transform: translateY(0); }
 
-/* ==========================================
-   手機版與平板 RWD 適應
-   ========================================== */
 @media screen and (max-width: 992px) {
-  .gallery-grid {
-    column-count: 3; /* 平板變 3 欄 */
-  }
+  .gallery-grid { column-count: 3; }
 }
 
 @media screen and (max-width: 768px) {
-  .gallery-grid {
-    column-count: 2; /* 手機變 2 欄 */
-    column-gap: 10px;
-  }
-  .gallery-item {
-    margin-bottom: 10px;
-  }
+  .gallery-grid { column-count: 2; column-gap: 10px; }
+  .gallery-item { margin-bottom: 10px; }
 }
 
-/* ==========================================
-   Lightbox 燈箱特效 (劇院級放大檢視)
-   ========================================== */
 .lightbox {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* 深冷灰藍色背景遮罩 */
   background-color: rgba(29, 43, 54, 0.95); 
   z-index: 99999;
   display: flex;
@@ -143,28 +106,22 @@
   transition: opacity 0.4s ease;
 }
 
-/* 當燈箱被點擊觸發時 */
 .lightbox.active {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* 放大後的圖片設定 */
 .lightbox-img {
   max-width: 90vw;
   max-height: 85vh;
   border-radius: 8px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-  /* 預設稍微縮小，配合 opacity 創造浮現感 */
   transform: scale(0.95); 
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.lightbox.active .lightbox-img {
-  transform: scale(1);
-}
+.lightbox.active .lightbox-img { transform: scale(1); }
 
-/* 關閉按鈕 (右上角的 X) */
 .lightbox-close {
   position: absolute;
   top: 20px;
@@ -180,7 +137,6 @@
   transform: scale(1.1);
 }
 
-/* 圖片下方的說明文字 */
 .lightbox-caption {
   margin-top: 20px;
   color: #ffffff;

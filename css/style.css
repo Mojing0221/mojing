@@ -1,26 +1,17 @@
-html {
-  scroll-behavior: smooth; /* 讓同頁面的錨點跳轉變成「平滑捲動」 */
-}
+html { scroll-behavior: smooth; }
 
-/* ==========================================
-   通用設定：配色
-   ========================================== */
 :root {
-  --c1-dark-slate: #4e626a;  /* 深冷灰藍 */
-  --c2-cold-aqua: #68aac6;   /* 冷水藍 */
-  --c3-cold-smoke: #899faf;  /* 煙霧灰藍 */
-  --c4-winter-mist: #a7bcc9; /* 冬霧藍 */
-  --c5-winter-milk: #dbd8d6; /* 冬奶灰 */
-
-  --bg-color: #f4f7f8;       /* 雪地底色 */
+  --c1-dark-slate: #4e626a;
+  --c2-cold-aqua: #68aac6;
+  --c3-cold-smoke: #899faf;
+  --c4-winter-mist: #a7bcc9;
+  --c5-winter-milk: #dbd8d6;
+  --bg-color: #f4f7f8;
   --text-color: var(--c1-dark-slate);
-  --heading-color: #37464c;  /* 大標題色 */
+  --heading-color: #37464c;
   --accent-color: var(--c2-cold-aqua);
 }
 
-/* ==========================================
-   全站字體設定 
-   ========================================== */
 * {
   box-sizing: border-box;
   font-family: 'Noto Sans TC', "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -40,7 +31,7 @@ body {
   color: var(--text-color);
   line-height: 1.8;
   display: flex;
-  flex-direction: column; /* 確保 footer 可以置底 */
+  flex-direction: column;
 }
 
 a {
@@ -50,24 +41,38 @@ a {
   font-weight: 600;
 }
 
-a:hover {
-  color: var(--accent-color);
-}
+a:hover { color: var(--accent-color); }
 
-h1, h2, h3 {
-  color: var(--heading-color);
-}
+h1, h2, h3 { color: var(--heading-color); }
 
 .container {
-  max-width: 960px; /* 統一最大寬度 */
+  max-width: 960px;
   margin: 0 auto;
   padding: 40px 20px;
-  flex: 1; /* 讓內容自動撐開高度 */
+  flex: 1;
 }
 
-/* ==========================================
-   1. 導覽列：冰霜毛玻璃質感
-   ========================================== */
+.container h2 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.container h2::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 4px;
+  background-color: var(--c3-cold-smoke);
+  border-radius: 2px;
+  bottom: 0;
+  left: 0;
+}
+
+/* 導覽列 */
 header {
   position: sticky;
   top: 0;
@@ -108,14 +113,9 @@ header nav a::after {
   border-radius: 2px;
 }
 
-header nav a:hover::after {
-  width: 100%;
-}
+header nav a:hover::after { width: 100%; }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+.dropdown { position: relative; display: inline-block; }
 
 .dropdown-content {
   display: none;
@@ -130,9 +130,7 @@ header nav a:hover::after {
   transform: translateX(-50%);
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+.dropdown:hover .dropdown-content { display: block; }
 
 .dropdown-content a {
   color: var(--heading-color);
@@ -148,290 +146,11 @@ header nav a:hover::after {
   color: #fff;
 }
 
-/* ==========================================
-   2. 關於我 / 頁首共用區塊
-   ========================================== */
-.about-header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.about-header h1 {
-  font-size: 2.5rem;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
-
-.avatar {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 30px auto;
-  border: 5px solid var(--c4-winter-mist);
-  box-shadow: 0 8px 25px rgba(104, 170, 198, 0.25);
-  transition: transform 0.3s ease;
-  will-change: transform;
-}
-
-.avatar:hover {
-  transform: scale(1.05) rotate(5deg);
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 標題底線效果 */
-.container h2 {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
-}
-
-.container h2::after {
-  content: '';
-  position: absolute;
-  width: 50px;
-  height: 4px;
-  background-color: var(--c3-cold-smoke);
-  border-radius: 2px;
-  bottom: 0;
-  left: 0;
-}
-
-/* 關於我：氣泡標籤 */
-.container > ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.container > ul li {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: var(--text-color);
-  padding: 8px 20px;
-  border-radius: 30px;
-  font-size: 0.95rem;
-  border: 1px solid var(--c4-winter-mist);
-  box-shadow: 0 2px 8px rgba(137, 159, 175, 0.15);
-  transition: background-color 0.3s ease, color 0.3s ease,
-              border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
-}
-
-.container > ul li:hover {
-  background-color: var(--accent-color);
-  color: #ffffff;
-  border-color: var(--accent-color);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(104, 170, 198, 0.4);
-}
-
-/* ==========================================
-   3. 作品頁專屬 (projects.html)
-   ========================================== */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.project {
-  background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid var(--c4-winter-mist);
-  border-radius: 12px;
-  padding: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  will-change: transform;
-  box-shadow: 0 4px 15px rgba(137, 159, 175, 0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-.project:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(104, 170, 198, 0.25);
-  border-color: var(--accent-color);
-}
-
-.project img {
-  width: 100%;
-  aspect-ratio: 16 / 9; /* 統一卡片圖片比例 */
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.project img.portrait {
-  aspect-ratio: 3 / 4;
-  object-fit: cover;  
-  border-radius: 8px; 
-}
-
-.project h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.3rem;
-}
-
-.project p {
-  margin: 5px 0;
-  font-size: 0.95rem;
-}
-
-.project .tag {
-  background-color: var(--c4-winter-mist);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  display: inline-block;
-  margin-top: 5px;
-}
-
-.project a {
-  margin-top: auto; /* 將連結推到卡片最底部 */
-  display: inline-block;
-  padding-top: 15px;
-  color: var(--accent-color);
-}
-
-
-/* ==========================================
-   5. 子頁面專屬 (PJ-*.html 畫廊)
-   ========================================== */
-.about-header .tag {
-  background-color: var(--c4-winter-mist);
-  color: white;
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 1rem;
-}
-
-.gallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.page-image {
-  text-align: center;
-  width: 100%;
-}
-
-.page-image img {
-  width: 100%;
-  max-width: 700px;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(78, 98, 106, 0.15);
-  transition: transform 0.4s ease;
-}
-
-.page-image img:hover {
-  transform: scale(1.02);
-}
-
-.image-caption {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: var(--c3-cold-smoke);
-  letter-spacing: 1px;
-}
-
-/* ==========================================
-   6. 輪播圖外框與排版設定 (保留)
-   ========================================== */
-.carousel {
-  width: 100%;
-  overflow: hidden;
-  margin: 60px auto;
-  padding: 20px 0 40px 0; 
-  background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid var(--c5-winter-milk);
-  border-radius: 15px;
-  position: relative;
-}
-
-.carousel-track {
-  display: flex;
-  width: 100%;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.carousel-group {
-  display: flex;
-  gap: 20px;
-  flex: 0 0 100%;
-  min-width: 100%;
-  padding: 0 20px; 
-}
-
-.carousel-group img {
-  flex: 1;              
-  width: 0;             
-  aspect-ratio: 16 / 9;  
-  object-fit: cover;    
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(78, 98, 106, 0.15);
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-
-.carousel-group img:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(104, 170, 198, 0.3);
-}
-
-.carousel-indicators {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--c4-winter-mist);
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
-  will-change: transform;
-}
-
-.dot:hover {
-  background-color: var(--c3-cold-smoke);
-}
-
-.dot.active {
-  background-color: var(--accent-color);
-  transform: scale(1.3);
-  width: 20px;
-  border-radius: 5px;
-}
-
-/* ==========================================
-   7. 頁尾與手機版適應 (RWD)
-   ========================================== */
+/* 頁尾 */
 footer {
   text-align: center;
   padding: 20px 20px;
-  margin-top: auto; /* 自動推到底部 */
+  margin-top: auto;
   background-color: var(--c5-winter-milk);
   color: var(--heading-color);
   font-size: 0.9rem;
@@ -444,241 +163,62 @@ footer a {
   color: var(--heading-color);
 }
 
-@media screen and (max-width: 768px) {
-  .container {
-    padding: 15px 15px;
-  }
-  header nav {
-    gap: 15px;
-    padding: 10px;
-  }
-  header nav a {
-    font-size: 1rem;
-  }
-  .about-header h1 {
-    font-size: 2rem;
-  }
-  .avatar {
-    width: 120px;
-    height: 120px;
-    border-width: 4px;
-  }
-  .projects {
-    grid-template-columns: 1fr; /* 手機版專案卡片變單行 */
-  }
-  .carousel-group {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .carousel-group img {
-    width: 100%;
-    aspect-ratio: auto; 
-  }
-  .carousel-group img:hover {
-    transform: none;
-  }
+body.home footer {
+  background-color: transparent; 
+  color: rgba(255, 255, 255, 0.6); 
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8); 
 }
 
-/* ==========================================
-   8. 進階互動體驗 (UX/UI)
-   ========================================== */
+body.home footer a { color: rgba(255, 255, 255, 0.8); }
 
-/* --- 滾動滑入動畫 (Scroll Fade-in) --- */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px); /* 初始狀態：往下沉一點點 */
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+/* 共用 UI 元件 */
+.tag {
+  background-color: var(--c4-winter-mist);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: inline-block;
 }
 
-/* 觸發動畫後的狀態 (由 JS 動態加入) */
-.fade-in.is-visible {
-  opacity: 1;
-  transform: translateY(0); /* 浮現回原位 */
+.btn-back {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: var(--c3-cold-smoke);
+  color: white;
+  border-radius: 30px;
+  transition: all 0.3s ease;
 }
 
-/* --- 回到頂部按鈕 (Back to Top) --- */
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: var(--accent-color); /* 使用冰晶水藍色 */
-  color: #fff;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
+.btn-back:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(104, 170, 198, 0.4);
+}
+
+.btn-action {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 30px;
+  font-size: 0.95rem;
   font-weight: bold;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease,
-              transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform, opacity;
-  box-shadow: 0 4px 15px rgba(104, 170, 198, 0.4);
-  z-index: 1000;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
-/* 滾動到一定距離後顯示按鈕 */
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+.btn-action:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(104, 170, 198, 0.3);
 }
 
-.back-to-top:hover {
-  background-color: var(--heading-color); /* 滑過時變深色 */
-  transform: translateY(-5px); /* 微微浮起 */
-  box-shadow: 0 6px 20px rgba(55, 70, 76, 0.3);
-}
-
-/* 手機版微調按鈕位置，避免擋住重要內容 */
 @media screen and (max-width: 768px) {
-  .back-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-  }
-}
-
-/* ==========================================
-   9. 主題性粒子特效 (電影級光斑與細雪 Bokeh & Snow Dust)
-   ========================================== */
-#bubble-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* 讓滑鼠點擊穿透 */
-  z-index: 0;
-  overflow: hidden;
-}
-
-/* 確保粒子特效會乖乖待在 RPG 首頁與其他內容頁的背景 */
-main.container, main.hero-rpg {
-  position: relative;
-  z-index: 1; 
-}
-
-/* 粒子的基礎樣式：不再是生硬的圓圈，而是柔和的光點 */
-.particle {
-  position: absolute;
-  bottom: -50px;
-  border-radius: 50%;
-  background-color: #ffffff;
-  /* 散發淡淡的光暈，而不是硬邊的陰影 */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-  /* 動畫路徑改由 JS 注入變數控制，讓每顆粒子的軌跡都不一樣 */
-  animation: cinematicDrift linear infinite;
-  will-change: transform, opacity;
-}
-
-/* 電影級的漂浮動畫 */
-@keyframes cinematicDrift {
-  0% {
-    transform: translateY(0) translateX(0) scale(1);
-    opacity: 0;
-  }
-  20% {
-    opacity: var(--max-opacity); /* 浮現到專屬的最高透明度 */
-  }
-  80% {
-    opacity: var(--max-opacity);
-  }
-  100% {
-    /* 往上飄的同時，加上左右隨機橫移，以及輕微的大小變化 */
-    transform: translateY(-110vh) translateX(var(--drift-x)) scale(var(--end-scale));
-    opacity: 0; /* 柔和地消散 */
-  }
-}
-
-/* ==========================================
-   10. 無縫頁面過場 (完美正弦波 Sine Wave 版)
-   ========================================== */
-html::before,
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  /* 改用 transform: translateX 做橫向偏移，避免觸發 Layout */
-  left: 0;
-  width: 120vw;
-  height: 150vh;
-  pointer-events: none;
-  
-  /* 設定 SVG 波浪遮罩 (讓正方形的色塊被裁切成完美的 S 型波浪) */
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-
-  /* 預告瀏覽器此元素即將做 transform，建立獨立合成層 */
-  will-change: transform;
-
-  /* 初始狀態：在螢幕上方外側退潮 */
-  transform: translateY(-150vh) translateX(-10vw);
-}
-
-/*第一層：冷水藍 (波峰在左邊) */
-html::before {
-  background-color:#f4f7f8aa; /* 這層是最淡的白色，營造出水面反光的感覺 */
-  z-index: 9997;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,15 Q25,25 50,15 T100,15 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,15 Q25,25 50,15 T100,15 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
-}
-
-/*第二層：煙霧灰 (波峰在右邊，產生交錯感) */
-body::before {
-  background-color:#9ab0c1d1; /* 這層是煙霧灰藍，讓波浪有層次感 */
-  z-index: 9998;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,15 Q25,5 50,15 T100,15 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,15 Q25,5 50,15 T100,15 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
-}
-
-/*第三層：雪白底色 (波幅更深的海浪) */
-body::after {
-  background-color:#72828f;
-  z-index: 9999;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,20 Q25,30 50,20 T100,20 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,20 Q25,30 50,20 T100,20 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
-}
-
-/* ======== 狀態 1：新網頁載入時 (海浪繼續往上退去) ======== */
-/* 加入微小的 translateX 橫移，創造液體流動感 */
-html::before { animation: waveSlideReveal 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0.2s; }
-body::before { animation: waveSlideReveal 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0.1s; }
-body::after  { animation: waveSlideReveal 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0s; }
-
-@keyframes waveSlideReveal {
-  0% { transform: translateY(-40vh) translateX(-10vw); }       /* 畫面被海浪完全蓋滿 */
-  100% { transform: translateY(-150vh) translateX(-5vw); }     /* 往上滑走並輕微右移 */
-}
-
-/* ======== 狀態 2：點擊連結離開時 (海浪從下方湧上來) ======== */
-html.is-leaving { overflow: hidden; }
-
-html.is-leaving::before { animation: waveSlideCover 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0s; }
-html.is-leaving body::before { animation: waveSlideCover 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0.1s; }
-html.is-leaving body::after  { animation: waveSlideCover 1.2s cubic-bezier(0.64, 0.04, 0.35, 1) forwards; animation-delay: 0.2s; }
-
-@keyframes waveSlideCover {
-  0% { transform: translateY(100vh) translateX(-5vw); }    /* 從最下方海平面準備 */
-  100% { transform: translateY(-40vh) translateX(-10vw); } /* 湧上來並完美蓋滿畫面 */
-}
-
-/* ==========================================
-   手機版波浪平滑優化 (解決擠壓變陡的問題)
-   ========================================== */
-@media screen and (max-width: 768px) {
-  html::before,
-  body::before,
-  body::after {
-    /* 手機版用 scaleX 將波浪橫向拉寬，讓弦波保持平滑，避免觸發 Layout */
-    transform: translateY(-150vh) translateX(-10vw) scaleX(3);
-    transform-origin: center top;
-  }
+  .container { padding: 15px 15px; }
+  header nav { gap: 15px; padding: 10px; }
+  header nav a { font-size: 1rem; }
 }
