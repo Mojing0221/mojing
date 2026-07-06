@@ -12,6 +12,7 @@
 
 /* 單一作品卡片外觀與懸停特效 */
 .project {
+  position: relative; /* 🌟 關鍵新增：作為點擊範圍擴張的物理邊界基準 */
   background-color: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--c4-winter-mist);
   border-radius: 12px;
@@ -66,12 +67,28 @@
   margin-top: 5px;
 }
 
-/* 底部連結自動推至最下方 */
+/* 底部連結自動推至最下方並置中 */
 .project a {
   margin-top: auto; 
+  align-self: center; /* 🌟 關鍵新增：在 Flex 容器中水平置中 */
   display: inline-block;
   padding-top: 15px;
   color: var(--accent-color);
+  
+  /* 確保 a 標籤不會攔截或限制其偽元素的絕對定位 */
+  position: static; 
+}
+
+/* 🌟 核心魔法：創建覆蓋整張卡片的隱形點擊熱區 (維持不變) */
+.project a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10; 
+  cursor: pointer; 
 }
 
 /* ==========================================
