@@ -1,4 +1,26 @@
 /* ==========================================
+   漫畫標題與話次區塊排版
+   ========================================== */
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin: 0 0 10px 0;
+  color: var(--heading-color);
+}
+
+.about-header p {
+  font-size: 1.1rem;
+  color: var(--c3-cold-smoke);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* ==========================================
    傳統漫畫單頁閱讀器 (comic-reader.css)
    ========================================== */
 
@@ -50,10 +72,10 @@
 
 /* 滑鼠懸停時的視覺回饋 (選用：可讓邊緣微微發光提示使用者可點擊) */
 .zone-prev:hover {
-  background: linear-gradient(to right, rgba(255,255,255,0.1) 0%, transparent 20%);
+  background: linear-gradient(to left, rgba(255,255,255,0.1) 0%, transparent 20%);
 }
 .zone-next:hover {
-  background: linear-gradient(to left, rgba(255,255,255,0.1) 0%, transparent 20%);
+  background: linear-gradient(to right, rgba(255,255,255,0.1) 0%, transparent 20%);
 }
 
 /* ==========================================
