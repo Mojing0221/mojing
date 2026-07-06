@@ -1,0 +1,112 @@
+/* ==========================================
+   傳統漫畫單頁閱讀器 (comic-reader.css)
+   ========================================== */
+
+/* 閱讀器主容器 */
+.manga-reader-container {
+  position: relative;
+  max-width: 900px; 
+  height: 80vh; /* 🌟 關鍵修改：將高度限制為螢幕可視範圍的 80% */
+  margin: 0 auto 20px auto;
+  background-color: var(--c5-winter-milk); 
+  box-shadow: 0 10px 30px rgba(78, 98, 106, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 移除了 aspect-ratio，交給內部的 img object-fit: contain 自動運算比例 */
+}
+
+/* 漫畫頁面圖片 */
+.manga-page {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  user-select: none; /* 防止使用者連點翻頁時誤選取圖片 */
+  -webkit-user-drag: none; /* 防止圖片被意外拖曳 */
+}
+
+/* 🌟 隱形翻頁熱區 (Hotzones) */
+.page-turn-zone {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* 左翻邏輯：點擊左側 = 上一頁 */
+.zone-prev {
+  right: 0;
+}
+
+/* 左翻邏輯：點擊右側 = 下一頁 */
+.zone-next {
+  left: 0;
+}
+
+/* 滑鼠懸停時的視覺回饋 (選用：可讓邊緣微微發光提示使用者可點擊) */
+.zone-prev:hover {
+  background: linear-gradient(to right, rgba(255,255,255,0.1) 0%, transparent 20%);
+}
+.zone-next:hover {
+  background: linear-gradient(to left, rgba(255,255,255,0.1) 0%, transparent 20%);
+}
+
+/* ==========================================
+   控制列與頁碼
+   ========================================== */
+.manga-controls {
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--c4-winter-mist);
+  border-radius: 8px;
+}
+
+.page-counter {
+  font-family: 'Cinzel', 'Noto Sans TC', sans-serif;
+  color: var(--heading-color);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.control-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-color);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.control-btn:hover {
+  color: var(--heading-color);
+}
+
+/* ==========================================
+   手機版自適應 (RWD)
+   ========================================== */
+@media screen and (max-width: 768px) {
+  .manga-reader-container {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    aspect-ratio: auto;
+    height: 75vh; /* 手機上放棄鎖定比例，改以螢幕高度為主，搭配 object-fit: contain 保證不變形 */
+  }
+  
+  .manga-controls {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}

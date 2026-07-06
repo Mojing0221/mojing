@@ -70,7 +70,7 @@
 /* 底部連結自動推至最下方並置中 */
 .project a {
   margin-top: auto; 
-  align-self: center; /* 🌟 關鍵新增：在 Flex 容器中水平置中 */
+  align-self: center;
   display: inline-block;
   padding-top: 15px;
   color: var(--accent-color);

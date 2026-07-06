@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魚缸管理員</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/comic-reader.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">首頁</a>
+            <a href="about.html">關於我</a>
+
+            <div class="dropdown">
+                <a href="projects.html">作品集 ▾</a>
+                <div class="dropdown-content">
+                    <a href="projects.html#game">遊戲開發</a>
+                    <a href="projects.html#art">圖文創作</a>
+                    <a href="projects.html#cosplay">角色扮演</a>
+                </div>
+            </div>
+
+            <a href="contact.html">聯絡我</a>
+        </nav>
+    </header>
+
+
+    <main class="container">
+        <!-- 頂部資訊區 -->
+        <div class="about-header fade-in">
+            <h1>漫畫名稱</h1>
+            <p>第 1 話</p>
+        </div>
+
+        <!-- 漫畫閱讀器核心 -->
+        <div class="manga-reader-container fade-in">
+            <!-- 隱形點擊熱區 -->
+            <div class="page-turn-zone zone-prev" id="btn-prev-zone" title="上一頁"></div>
+            <div class="page-turn-zone zone-next" id="btn-next-zone" title="下一頁"></div>
+
+            <!-- 🌟 修正 2：只保留一個 img 標籤作為畫布，交給 JS 替換圖片 -->
+            <img src="images/Comics/漫畫封面.webp" alt="漫畫內容" class="manga-page" id="manga-img">
+        </div>
+
+        <!-- 底部控制列 -->
+        <div class="manga-controls fade-in">
+            <!-- 確保此處的按鈕位置符合你設定的左右翻邏輯 -->
+            <button class="control-btn" id="btn-next">← 下一頁</button>
+            <div class="page-counter">
+                <span id="current-page">1</span> / <span id="total-pages">24</span>
+            </div>
+            <button class="control-btn" id="btn-prev">上一頁 →</button>
+        </div>
+
+    </main>
+
+    <script src="js/fadein.js" defer></script>
+    <script src="js/transition.js" defer></script>
+    <script src="js/manga-reader.js" defer></script>
+
+</body>
+
+</html>
