@@ -31,13 +31,12 @@
   height: 80vh; /* 🌟 關鍵修改：將高度限制為螢幕可視範圍的 80% */
   margin: 0 auto 20px auto;
   background-color: var(--c5-winter-milk); 
-  box-shadow: 0 10px 30px rgba(78, 98, 106, 0.15);
+  box-shadow: 0 10px 30px rgba(78, 98, 106, 0.182);
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* 移除了 aspect-ratio，交給內部的 img object-fit: contain 自動運算比例 */
 }
 
 /* 漫畫頁面圖片 */
@@ -50,7 +49,7 @@
   -webkit-user-drag: none; /* 防止圖片被意外拖曳 */
 }
 
-/* 🌟 隱形翻頁熱區 (Hotzones) */
+
 .page-turn-zone {
   position: absolute;
   top: 0;
@@ -123,7 +122,8 @@
     border-left: none;
     border-right: none;
     aspect-ratio: auto;
-    height: 75vh; /* 手機上放棄鎖定比例，改以螢幕高度為主，搭配 object-fit: contain 保證不變形 */
+    height: 75vh;
+    object-fit: contain;
   }
   
   .manga-controls {
