@@ -123,7 +123,8 @@
     border-right: none;
     aspect-ratio: auto;
     height: 75vh;
-    object-fit: contain;
+    background-color: transparent;
+    box-shadow: none;
   }
   
   .manga-controls {
