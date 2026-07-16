@@ -1,3 +1,65 @@
+body {
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   畫廊總大標題 (Page Header)
+   ========================================== */
+.gallery-page-header {
+    text-align: center;
+    /* 控制標題區塊與頂部導覽列、下方第一個專案的間距 */
+    margin: 60px auto 100px; 
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.gallery-page-header .massive-title {
+    font-family: 'Cinzel', 'Noto Serif TC', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin: 0;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-page-header .sub-title {
+    font-size: 1.2rem;
+    color: var(--c3-cold-smoke);
+    letter-spacing: 6px;
+    margin: 15px 0 35px;
+}
+
+/* 標題底部的裝飾線 */
+.gallery-page-header .title-divider {
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* 響應式調整：在行動裝置縮小標題 */
+@media screen and (max-width: 992px) {
+    .gallery-page-header {
+        margin: 40px auto 60px;
+    }
+    .gallery-page-header .massive-title {
+        font-size: 2.8rem;
+        letter-spacing: 5px;
+    }
+    .gallery-page-header .sub-title {
+        font-size: 1rem;
+        letter-spacing: 3px;
+        margin: 10px 0 25px;
+    }
+}
+/* ==========================================
+   畫廊基礎排版與標題
+   ========================================== */
 .gallery-section {
   padding: 60px 20px;
   max-width: 1200px;
@@ -21,9 +83,13 @@
   letter-spacing: 2px;
 }
 
+/* ==========================================
+   瀑布流網格與圖片項目 (保留給其他頁面或區塊使用)
+   ========================================== */
 .gallery-grid {
-  column-count: 3;
+  column-count: 1;
   column-gap: 15px;
+  width: 100%;
 }
 
 .gallery-item {
@@ -33,13 +99,15 @@
   cursor: pointer;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   break-inside: avoid; 
-  margin-bottom: 15px; 
+  margin-bottom: 20px; 
+  background-color: var(--c5-winter-milk);
 }
 
 .gallery-item img {
   width: 100%;
   height: auto; 
   display: block;
+  object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -80,15 +148,33 @@
 .gallery-item:hover .gallery-overlay h3,
 .gallery-item:hover .gallery-overlay p { transform: translateY(0); }
 
-@media screen and (max-width: 992px) {
-  .gallery-grid { column-count: 3; }
+@media screen and (min-width: 768px) {
+  .gallery-grid {
+    column-count: 3;
+    column-gap: 20px;
+  }
 }
 
-@media screen and (max-width: 768px) {
-  .gallery-grid { column-count: 2; column-gap: 10px; }
-  .gallery-item { margin-bottom: 10px; }
+@media screen and (min-width: 1200px) {
+  .gallery-grid {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    column-count: 4;
+    column-gap: 20px;
+  }
 }
 
+@media screen and (min-width: 1600px) {
+  .gallery-grid {
+    max-width: 1200px;
+    column-count: 5;
+  }
+}
+
+/* ==========================================
+   燈箱 (Lightbox) 放大預覽
+   ========================================== */
 .lightbox {
   position: fixed;
   top: 0;
@@ -142,4 +228,219 @@
   color: #ffffff;
   font-size: 1.2rem;
   letter-spacing: 2px;
+}
+
+/* ==========================================
+   設定集/雜誌風 畫廊排版 (Editorial Gallery)
+   ========================================== */
+.editorial-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding: 40px 20px 100px;
+}
+
+.art-spread {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    padding: 40px;
+    border-radius: 16px;
+    z-index: 1;
+}
+
+.layout-left { grid-template-columns: 1.2fr 1fr; }
+.layout-right { grid-template-columns: 1fr 1.2fr; }
+
+/* 滿版出血背景設計 */
+.spread-bg {
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    height: 100%;
+    border-radius: 0;
+    z-index: -1;
+    opacity: 0.6;
+    transition: opacity 0.5s ease;
+}
+
+.layout-left .spread-bg {
+   background: linear-gradient(135deg, var(--spread-color, var(--c5-winter-milk)) 0%, transparent 70%);
+   border-left: 4px solid var(--spread-line, var(--accent-color));
+}
+
+.layout-right .spread-bg {
+    background: linear-gradient(-135deg, var(--spread-color, var(--c5-winter-milk)) 0%, transparent 70%);
+    border-right: 4px solid var(--spread-line, var(--c3-cold-smoke));
+}
+
+.art-spread:hover .spread-bg { opacity: 1; }
+
+.spread-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.editorial-text .spread-id {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: var(--c3-cold-smoke);
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.editorial-text h3 {
+    font-size: 2.2rem;
+    color: var(--heading-color);
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+.editorial-text p {
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    border-left: 2px solid var(--c4-winter-mist);
+    padding-left: 15px;
+}
+
+.detail-grid, .detail-grid-asym {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.detail-grid-asym img:first-child {
+    grid-column: 1 / -1; 
+}
+
+.detail-grid img, .detail-grid-asym img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--c4-winter-mist);
+    transition: transform 0.3s ease;
+}
+
+.detail-grid img:hover, .detail-grid-asym img:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+}
+
+/* ==========================================
+   雜誌風主圖區塊：底圖與立繪疊加處理
+   ========================================== */
+.spread-hero {
+    position: relative;
+    z-index: 2;
+}
+
+.spread-hero .hero-base {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    object-fit: cover; 
+    clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
+    border-radius: 0;
+    filter: drop-shadow(0 10px 15px rgba(78, 98, 106, 0.2)); 
+    display: block;
+    background-color: var(--c4-winter-mist);
+    color: transparent;
+    opacity: 0.5;
+}
+
+.spread-hero .hero-sprite {
+    position: absolute;
+    bottom: -60%;
+    left: 10%;
+    width: 60%;
+    height: auto;
+    display: block;
+    z-index: 3;
+    filter: drop-shadow(8px 10px 15px rgba(0, 0, 0, 0.25));
+    pointer-events: none;
+}
+
+/* 響應式調整 */
+@media screen and (max-width: 992px) {
+    .layout-left, .layout-right {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 25px 15px;
+    }
+    .layout-right .spread-hero { order: -1; }
+    .editorial-text h3 { font-size: 1.8rem; }
+    
+    .layout-left .spread-bg, .layout-right .spread-bg {
+        background: linear-gradient(180deg, var(--spread-color, var(--c5-winter-milk)) 0%, transparent 100%);
+        border: none;
+        border-top: 4px solid var(--spread-line, var(--accent-color));
+    }
+
+    /* 針對 21/9 比例與懸空立繪的容器修正 */
+    .spread-hero {
+        /* 強制推開下方文字區塊，避免被突出的立繪遮擋。若文字仍被遮擋，請加大此數值 */
+        margin-top: 40px;
+        margin-bottom: 25%; 
+    }
+
+    .spread-hero .hero-sprite {
+        width: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+        /* 呼應電腦版的懸空比例，加深突出程度 */
+        bottom: -100%; 
+    }
+}
+
+/* 針對更小螢幕的手機追加修正 */
+@media screen and (max-width: 480px) {
+    .spread-hero {
+        margin-bottom: 35%; /* 螢幕越窄，立繪佔據的絕對高度比例越大，需要更多底邊距 */
+    }
+    .spread-hero .hero-sprite {
+        width: 85%; /* 在極小螢幕放大角色佔比 */
+        bottom: -65%;
+    }
+}
+
+/* ==========================================
+   電腦版：全螢幕寬高滿版 (Full Viewport Slide)
+   ========================================== */
+@media screen and (min-width: 992px) {
+    
+    /* 1. 強制解除基礎 container 的寬度限制，讓畫廊容器 100% 釋放 */
+    main.container.editorial-gallery {
+        max-width: 100%;
+        padding-left: 4vw;  
+        padding-right: 4vw;
+        gap: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    /* 2. 控制單一展頁的寬高與排版 */
+    .art-spread {
+        /* 高度：剛好扣除導覽列的一個螢幕高 */
+        min-height: calc(100vh - 80px);
+        
+        /* 寬度：確保區塊橫向展開 */
+        width: 100%; 
+        
+        /* 防禦機制：避免在 4K 螢幕上圖文被拉得太散，設定極限安全值並置中 */
+        max-width: 1600px;
+        margin: 0 auto;
+        
+        /* 內容絕對垂直置中 */
+        align-content: center;
+        
+        /* 微調上下內邊距 */
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 }

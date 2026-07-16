@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>-畫廊-</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/project-gallery.css">
+    <link rel="stylesheet" href="css/projects.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">首頁</a>
+            <a href="about.html">關於我</a>
+
+            <div class="dropdown">
+                <a href="projects.html">作品集 ▾</a>
+                <div class="dropdown-content">
+                    <a href="projects.html#game">遊戲開發</a>
+                    <a href="projects.html#art">圖文創作</a>
+                    <a href="projects.html#cosplay">角色扮演</a>
+                </div>
+            </div>
+
+            <a href="contact.html">聯絡我</a>
+        </nav>
+    </header>
+
+
+    <!-- 作品展示主容器 (雜誌風設定集) -->
+    <main class="container editorial-gallery">
+
+        <!-- 畫廊頁面總標題 -->
+        <div class="gallery-page-header fade-in">
+            <h1 class="massive-title">Project Gallery</h1>
+            <p class="sub-title">概念設定</p>
+            <div class="title-divider"></div>
+        </div>
+
+        <!-- 模組 A：左側大主圖 (含疊加立繪)，右側文字與細節圖 -->
+        <article class="art-spread layout-left fade-in" style="--spread-color: #8b2d2d; --spread-line: #202020;">
+            <div class="spread-bg"></div>
+
+            <div class="spread-hero">
+                <!-- 底圖 -->
+                <img class="hero-base" src="images/Art/Art-7.webp" alt="主視覺背景">
+                <!-- 疊加立繪 -->
+                <img class="hero-sprite" src="images/Art/Liming-1.webp" alt="角色立繪">
+            </div>
+
+            <div class="spread-content">
+                <div class="editorial-text">
+                    <span class="spread-id">PROJECT 01</span>
+                    <h3>+黎溟+</h3>
+                    <p>角色設定。</p>
+                </div>
+                <div class="detail-grid">
+                    <img src="images/Art/prop-1.webp" alt="裝備細節">
+                    <img src="images/Art/prop-2.webp" alt="表情差分">
+                </div>
+            </div>
+        </article>
+
+        <!-- 模組 B：左側文字與細節圖，右側大主圖 (無立繪範例) -->
+        <article class="art-spread layout-right fade-in" style="--spread-color: #6e4f91; --spread-line: #202020;">
+            <div class="spread-bg"></div>
+
+            <div class="spread-content">
+                <div class="editorial-text">
+                    <span class="spread-id">PROJECT 02</span>
+                    <h3>+伊蘇+</h3>
+                    <p>角色設定。</p>
+                </div>
+                <div class="detail-grid-asym">
+                    <img src="images/Art/sketch-1.webp" alt="場景草圖">
+                    <img src="images/Art/sketch-2.webp" alt="物件設定">
+                    <img src="images/Art/sketch-3.webp" alt="材質測試">
+                </div>
+            </div>
+
+            <div class="spread-hero">
+                <img class="hero-base" src="" alt="場景主視覺">
+                <img class="hero-sprite" src="images/Art/Character-2.webp" alt="角色立繪">
+            </div>
+        </article>
+
+        <article class="art-spread layout-left fade-in" style="--spread-color: #4f5e91; --spread-line: #202020;">
+            <div class="spread-bg"></div>
+
+            <div class="spread-hero">
+                <!-- 底圖 -->
+                <img class="hero-base" src="" alt="主視覺背景">
+                <!-- 疊加立繪 -->
+                <img class="hero-sprite" src="images/Art/Character-1.webp" alt="角色立繪">
+            </div>
+
+            <div class="spread-content">
+                <div class="editorial-text">
+                    <span class="spread-id">PROJECT 03</span>
+                    <h3>+黎澄+</h3>
+                    <p>角色設定。</p>
+                </div>
+                <div class="detail-grid">
+                    <img src="images/Art/prop-1.webp" alt="裝備細節">
+                    <img src="images/Art/prop-2.webp" alt="表情差分">
+                </div>
+            </div>
+        </article>
+
+        <article class="art-spread layout-right fade-in" style="--spread-color: #809fc7; --spread-line: #202020;">
+            <div class="spread-bg"></div>
+
+            <div class="spread-content">
+                <div class="editorial-text">
+                    <span class="spread-id">PROJECT 04</span>
+                    <h3>+無名+</h3>
+                    <p>角色設定。</p>
+                </div>
+                <div class="detail-grid-asym">
+                    <img src="images/Art/sketch-1.webp" alt="場景草圖">
+                    <img src="images/Art/sketch-2.webp" alt="物件設定">
+                    <img src="images/Art/sketch-3.webp" alt="材質測試">
+                </div>
+            </div>
+
+            <div class="spread-hero">
+                <img class="hero-base" src="" alt="場景主視覺">
+                <img class="hero-sprite" src="images/Art/Character-3.webp" alt="角色立繪">
+            </div>
+        </article>
+
+    </main>
+
+    <script src="js/fadein.js" defer></script>
+    <script src="js/transition.js" defer></script>
+    <script src="js/manga-reader.js" defer></script>
+
+</body>
+
+</html>
