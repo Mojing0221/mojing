@@ -394,13 +394,12 @@ body {
         /* 核心修正：雙向極限約束 */
         width: auto;
         height: auto;
-        max-width: 80%;       /* 寬圖防護：最大不超過螢幕寬 90% */
-        max-height: 450px;    /* 窄圖防護：最大高度鎖死，杜絕無限放大 */
+        max-width: 80%;       
+        max-height: 450px;    
         object-fit: contain;
         
         left: 50%;
         transform: translateX(-50%);
-        /* 配合新的高度上限，調整下沉深度 */
         bottom: -220px; 
     }
 }
@@ -408,12 +407,14 @@ body {
 /* 針對更小螢幕的手機追加修正 */
 @media screen and (max-width: 480px) {
     .spread-hero {
-        margin-bottom: 100px; 
+        /* 修正斷層：配合上方 992px 的 200px，這裡需同步加大推擠空間 */
+        margin-bottom: 180px; 
     }
     .spread-hero .hero-sprite {
         max-width: 95%; 
-        max-height: 380px; /* 在小手機上進一步壓低極限高度 */
-        bottom: -60px;
+        max-height: 380px; 
+        /* 修正斷層：配合上方 992px 的 -220px，這裡需同步加深下沉幅度 */
+        bottom: -190px;
     }
 }
 
