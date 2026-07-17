@@ -356,10 +356,12 @@ body {
 
 .spread-hero .hero-sprite {
     position: absolute;
-    bottom: -60%;
+    bottom: -30%;
     left: 10%;
-    width: 60%;
-    height: auto;
+    height: 500px;
+    width: auto;
+    max-width: none; 
+    object-fit: contain; 
     display: block;
     z-index: 3;
     filter: drop-shadow(8px 10px 15px rgba(0, 0, 0, 0.25));
@@ -382,30 +384,36 @@ body {
         border-top: 4px solid var(--spread-line, var(--accent-color));
     }
 
-    /* 針對 21/9 比例與懸空立繪的容器修正 */
+    /* 容器空間修正 */
     .spread-hero {
-        /* 強制推開下方文字區塊，避免被突出的立繪遮擋。若文字仍被遮擋，請加大此數值 */
-        margin-top: 40px;
-        margin-bottom: 25%; 
+        margin-top: 50px;
+        margin-bottom: 200px; 
     }
 
     .spread-hero .hero-sprite {
-        width: 75%;
+        /* 核心修正：雙向極限約束 */
+        width: auto;
+        height: auto;
+        max-width: 80%;       /* 寬圖防護：最大不超過螢幕寬 90% */
+        max-height: 450px;    /* 窄圖防護：最大高度鎖死，杜絕無限放大 */
+        object-fit: contain;
+        
         left: 50%;
         transform: translateX(-50%);
-        /* 呼應電腦版的懸空比例，加深突出程度 */
-        bottom: -100%; 
+        /* 配合新的高度上限，調整下沉深度 */
+        bottom: -220px; 
     }
 }
 
 /* 針對更小螢幕的手機追加修正 */
 @media screen and (max-width: 480px) {
     .spread-hero {
-        margin-bottom: 35%; /* 螢幕越窄，立繪佔據的絕對高度比例越大，需要更多底邊距 */
+        margin-bottom: 100px; 
     }
     .spread-hero .hero-sprite {
-        width: 85%; /* 在極小螢幕放大角色佔比 */
-        bottom: -65%;
+        max-width: 95%; 
+        max-height: 380px; /* 在小手機上進一步壓低極限高度 */
+        bottom: -60px;
     }
 }
 
