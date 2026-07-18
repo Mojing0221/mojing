@@ -376,9 +376,9 @@ body {
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 3px;
-    color: var(--c3-cold-smoke);
+    color: var(--spread-color);
     background: var(--bg-color);
-    padding: 0 6px 0 0;
+    padding: 0 6px 0 6px;
 }
 
 .detail-grid-asym img:first-child {
