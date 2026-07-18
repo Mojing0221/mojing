@@ -250,8 +250,8 @@ body {
     z-index: 1;
 }
 
-.layout-left { grid-template-columns: 1.2fr 1fr; }
-.layout-right { grid-template-columns: 1fr 1.2fr; }
+.layout-left { grid-template-columns: minmax(320px, 1.4fr) minmax(280px, 1fr); }
+.layout-right { grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.4fr); }
 
 /* 滿版出血背景設計 */
 .spread-bg {
@@ -319,6 +319,11 @@ body {
     grid-column: 1 / -1; 
 }
 
+/* 只有一張圖時改為單欄，避免出現空白欄位 */
+.detail-grid-asym:has(img:only-child) {
+    grid-template-columns: 1fr;
+}
+
 .detail-grid img, .detail-grid-asym img {
     width: 100%;
     height: 100%;
@@ -354,11 +359,16 @@ body {
     opacity: 0.5;
 }
 
+.spread-hero {
+    /* 立繪高度隨容器寬度縮放，與 hero-base 的 aspect-ratio 連動，避免比例跑掉 */
+    --sprite-h: clamp(320px, 38vw, 560px);
+}
+
 .spread-hero .hero-sprite {
     position: absolute;
-    bottom: -30%;
+    bottom: clamp(-38%, -13vw, -22%);
     left: 10%;
-    height: 500px;
+    height: var(--sprite-h);
     width: auto;
     max-width: none; 
     object-fit: contain; 
@@ -369,7 +379,7 @@ body {
 }
 
 /* 響應式調整 */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 960px) {
     .layout-left, .layout-right {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -384,37 +394,30 @@ body {
         border-top: 4px solid var(--spread-line, var(--accent-color));
     }
 
-    /* 容器空間修正 */
     .spread-hero {
+        --sprite-overflow: clamp(80px, 24vw, 210px);
         margin-top: 50px;
-        margin-bottom: 200px; 
+        margin-bottom: var(--sprite-overflow);
     }
 
     .spread-hero .hero-sprite {
-        /* 核心修正：雙向極限約束 */
+        /* 核心修正：高度隨容器寬度等比縮放，寬度用 auto 依圖片本身比例換算 */
         width: auto;
-        height: auto;
+        height: clamp(240px, 72.6vw, 640px);
         max-width: 80%;       
-        max-height: 450px;    
         object-fit: contain;
         
         left: 50%;
         transform: translateX(-50%);
-        bottom: -220px; 
+        bottom: calc(-1 * var(--sprite-overflow));
     }
 }
 
-/* 針對更小螢幕的手機追加修正 */
+/* 針對更小螢幕的手機追加修正：尺寸與位移沿用同一組 vw 公式自動縮小，
+   這裡只需再放寬 max-width 讓立繪在窄版盡量撐滿 */
 @media screen and (max-width: 480px) {
-    .spread-hero {
-        /* 修正斷層：配合上方 992px 的 200px，這裡需同步加大推擠空間 */
-        margin-bottom: 180px; 
-    }
     .spread-hero .hero-sprite {
         max-width: 95%; 
-        max-height: 380px; 
-        /* 修正斷層：配合上方 992px 的 -220px，這裡需同步加深下沉幅度 */
-        bottom: -190px;
     }
 }
 
@@ -437,6 +440,8 @@ body {
     .art-spread {
         /* 高度：剛好扣除導覽列的一個螢幕高 */
         min-height: calc(100vh - 80px);
+        /* 上限保護：文字內容過長時避免無限延伸，同時 align-content:center 觀感才不會跑掉 */
+        max-height: 1400px;
         
         /* 寬度：確保區塊橫向展開 */
         width: 100%; 
