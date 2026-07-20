@@ -78,82 +78,6 @@ body {
 }
 
 /* ==========================================
-   畫廊基礎排版與標題
-   ========================================== */
-.gallery-section {
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-title h2 {
-  font-size: 2rem;
-  color: var(--c1-dark-slate);
-  margin-bottom: 40px;
-  border-bottom: 2px solid var(--c4-winter-mist);
-  padding-bottom: 10px;
-  display: inline-block;
-}
-
-.section-title span {
-  font-size: 1rem;
-  color: var(--c3-cold-smoke);
-  font-weight: normal;
-  margin-left: 10px;
-  letter-spacing: 2px;
-}
-
-/* ==========================================
-   瀑布流網格與圖片項目
-   ========================================== */
-.gallery-grid {
-  column-count: 1;
-  column-gap: 15px;
-  width: 100%;
-}
-
-.gallery-item {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  break-inside: avoid; 
-  margin-bottom: 20px; 
-  background-color: var(--c5-winter-milk);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: auto; 
-  display: block;
-  object-fit: cover;
-}
-
-@media screen and (min-width: 768px) {
-  .gallery-grid {
-    column-count: 3;
-    column-gap: 20px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .gallery-grid {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    column-count: 4;
-    column-gap: 20px;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  .gallery-grid {
-    max-width: 1200px;
-    column-count: 5;
-  }
-}
-
-/* ==========================================
    設定集/雜誌風 畫廊排版 (Editorial Gallery)
    ========================================== */
 .editorial-gallery {
@@ -348,7 +272,7 @@ body {
     pointer-events: none;
 }
 
-.detail-grid, .detail-grid-asym {
+.detail-grid-asym {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
@@ -357,7 +281,7 @@ body {
     border-top: 1px dashed var(--spread-line, var(--accent-color));
 }
 
-.detail-grid::before, .detail-grid-asym::before {
+.detail-grid-asym::before {
     content: '';
     position: absolute;
     top: -1px;
@@ -367,7 +291,7 @@ body {
     background: var(--spread-line, var(--accent-color));
 }
 
-.detail-grid::after, .detail-grid-asym::after {
+.detail-grid-asym::after {
     content: 'DETAIL';
     position: absolute;
     top: -9px;
@@ -389,13 +313,11 @@ body {
     grid-template-columns: 1fr;
 }
 
-.detail-grid img, .detail-grid-asym img {
+.detail-grid-asym img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-   
 }
-
 
 /* ==========================================
    雜誌風主圖區塊：底圖與立繪疊加處理
@@ -403,6 +325,7 @@ body {
 .spread-hero {
     position: relative;
     z-index: 2;
+    --sprite-h: clamp(320px, 38vw, 560px);
 }
 
 .spread-hero .hero-base {
@@ -416,10 +339,6 @@ body {
     background-color: var(--c4-winter-mist);
     color: transparent;
     opacity: 0.5;
-}
-
-.spread-hero {
-    --sprite-h: clamp(320px, 38vw, 560px);
 }
 
 .spread-hero .hero-sprite {
@@ -472,7 +391,6 @@ body {
         height: clamp(240px, 72.6vw, 640px);
         max-width: 80%;       
         object-fit: contain;
-        
         left: 50%;
         transform: translateX(-50%);
         bottom: calc(-1 * var(--sprite-overflow));

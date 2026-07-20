@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>-《澄月》-</title>
+    <title>-畫廊-</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/effects.css">
-    <link rel="stylesheet" href="css/comic-reader.css">
+    <link rel="stylesheet" href="css/project-illustration.css">
+    <link rel="stylesheet" href="css/projects.css">
 </head>
 
 <body>
@@ -29,35 +30,30 @@
         </nav>
     </header>
 
+    <div class="gallery-header">
+        <h2>Illustration Gallery</h2>
+        <p>個人插畫作品展示</p>
+    </div>
 
-    <main class="container">
-        <!-- 頂部資訊區 -->
-        <div class="about-header fade-in">
-            <h1>-《澄月》-</h1>
-            <p>原創漫畫，閱讀方向：由右至左</p>
-        </div>
+    <main class="illustration-masonry">
 
-        <!-- 漫畫閱讀器核心 -->
-        <div class="manga-reader-container fade-in">
-            <!-- 隱形點擊熱區 -->
-            <div class="page-turn-zone zone-prev" id="btn-prev-zone" title="上一頁"></div>
-            <div class="page-turn-zone zone-next" id="btn-next-zone" title="下一頁"></div>
-
-            <img src="images/Comics/漫畫封面.webp" alt="漫畫內容" class="manga-page" id="manga-img">
-        </div>
-
-        <!-- 底部控制列 -->
-        <div class="manga-controls fade-in">
-            <!-- 確保此處的按鈕位置符合你設定的左右翻邏輯 -->
-            <button class="control-btn" id="btn-next">← 下一頁</button>
-            <div class="page-counter">
-                <span id="current-page">1</span> / <span id="total-pages">24</span>
+        <div class="art-item">
+            <img src="images/Art/illustration-1.webp" alt="插畫作品 1">
+            <div class="art-overlay">
+                <h3 class="art-title">星空下的約定</h3>
+                <span class="art-category">Original Art</span>
             </div>
-            <button class="control-btn" id="btn-prev">上一頁 →</button>
+        </div>
+
+        <div class="art-item">
+            <img src="images/Art/illustration-2.webp" alt="插畫作品 2">
+            <div class="art-overlay">
+                <h3 class="art-title">廢墟探索</h3>
+                <span class="art-category">Concept Art</span>
+            </div>
         </div>
 
     </main>
-
     <footer>
         <p>
             © 2026 沫鯨Mojing |
@@ -68,8 +64,6 @@
 
     <script src="js/fadein.js" defer></script>
     <script src="js/transition.js" defer></script>
-    <script src="js/manga-reader.js" defer></script>
-
 </body>
 
 </html>

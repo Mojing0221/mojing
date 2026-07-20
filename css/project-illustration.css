@@ -1,0 +1,141 @@
+/* ==========================================
+   插畫畫廊專屬樣式 (Illustration Gallery)
+   ========================================== */
+
+/* --- 頂部標題區塊 --- */
+.gallery-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background-color: var(--bg-color, #fafafa); /* 可依您的主題替換變數 */
+}
+
+.gallery-header h2 {
+    font-family: 'Cinzel', 'Noto Serif TC', serif;
+    font-size: 3rem;
+    color: var(--heading-color, #333);
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.gallery-header p {
+    color: var(--text-color, #666);
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+/* --- 瀑布流網格主體 (Masonry Layout) --- */
+.illustration-masonry {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    
+    /* 使用 column 屬性達成純 CSS 瀑布流 */
+    column-count: 4;
+    column-gap: 20px;
+}
+
+/* --- 單張畫作容器 --- */
+.art-item {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 12px; /* 圓角設定，若喜歡直角可改為 0 */
+    overflow: hidden;
+    break-inside: avoid; /* 防止圖片被截斷到下一列 */
+    background-color: #eee; /* 圖片載入前的底色 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transform: translateZ(0); /* 提升渲染效能 */
+}
+
+/* 畫作圖片 */
+.art-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease; /* 圖片放大動畫時間 */
+}
+
+/* --- 懸停時的遮罩與資訊 (Overlay) --- */
+.art-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    opacity: 0;
+    transition: opacity 0.4s ease; /* 遮罩漸出動畫 */
+    pointer-events: none; /* 確保不阻擋滑鼠點擊圖片 */
+}
+
+.art-title {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin: 0 0 5px 0;
+    transform: translateY(15px);
+    transition: transform 0.4s ease;
+}
+
+.art-category {
+    color: #cccccc;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transform: translateY(15px);
+    transition: transform 0.4s ease 0.05s; /* 稍微延遲產生層次感 */
+}
+
+/* --- 滑鼠懸停特效 (Hover Effects) --- */
+.art-item:hover img {
+    transform: scale(1.05); /* 圖片微微放大 */
+}
+
+.art-item:hover .art-overlay {
+    opacity: 1; /* 顯示遮罩 */
+}
+
+.art-item:hover .art-title,
+.art-item:hover .art-category {
+    transform: translateY(0); /* 文字向上浮現 */
+}
+
+/* --- 響應式設計 (RWD) --- */
+/* 螢幕寬度小於 1200px 時改為 3 欄 */
+@media screen and (max-width: 1200px) {
+    .illustration-masonry {
+        column-count: 3;
+    }
+}
+
+/* 螢幕寬度小於 900px 時改為 2 欄 */
+@media screen and (max-width: 900px) {
+    .illustration-masonry {
+        column-count: 2;
+        column-gap: 15px;
+    }
+    .gallery-header h2 {
+        font-size: 2.2rem;
+    }
+    .art-item {
+        margin-bottom: 15px;
+    }
+}
+
+/* 螢幕寬度小於 600px (手機) 時改為 1 欄 */
+@media screen and (max-width: 600px) {
+    .illustration-masonry {
+        column-count: 1;
+    }
+    .art-overlay {
+        /* 手機上建議預設顯示淡淡的漸層，避免沒有 hover 效果 */
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+    }
+    .art-title, .art-category {
+        transform: translateY(0);
+    }
+}

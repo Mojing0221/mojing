@@ -1,5 +1,5 @@
 /* ==========================================
-   作品集總覽頁專屬排版 (projects.css)
+   作品集總覽頁
    ========================================== */
 
 /* 網格容器設定 */
@@ -12,7 +12,7 @@
 
 /* 單一作品卡片外觀與懸停特效 */
 .project {
-  position: relative; /* 🌟 關鍵新增：作為點擊範圍擴張的物理邊界基準 */
+  position: relative;
   background-color: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--c4-winter-mist);
   border-radius: 12px;
@@ -79,7 +79,7 @@
   position: static; 
 }
 
-/* 🌟 核心魔法：創建覆蓋整張卡片的隱形點擊熱區 (維持不變) */
+/*創建覆蓋整張卡片的隱形點擊熱區 (維持不變) */
 .project a::after {
   content: '';
   position: absolute;
