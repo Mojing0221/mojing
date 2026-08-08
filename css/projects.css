@@ -5,81 +5,202 @@
 /* 網格容器設定 */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 40px;
   margin-top: 30px;
+  align-items: start;
 }
 
-/* 單一作品卡片外觀與懸停特效 */
+/* ==========================================
+   單一作品卡片 - 票根樣式 (四角大圓切邊版)
+   ========================================== */
 .project {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid var(--c4-winter-mist);
-  border-radius: 12px;
-  padding: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  will-change: transform;
-  box-shadow: 0 4px 15px rgba(137, 159, 175, 0.1);
+  --project-bg: var(--c2-cold-aqua);
+  background-color: transparent; 
+  border: none; 
+  border-radius: 0; 
+  
+  padding: 30px 15px 25px 15px; 
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease;
+  will-change: transform;
+  isolation: isolate;
+}
+
+.project::before,
+.project::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: 
+    radial-gradient(circle at top left, transparent 20px, black 21px),
+    radial-gradient(circle at top right, transparent 20px, black 21px),
+    radial-gradient(circle at bottom left, transparent 20px, black 21px),
+    radial-gradient(circle at bottom right, transparent 20px, black 21px);
+  -webkit-mask-size: 51% 51%; 
+  -webkit-mask-position: top left, top right, bottom left, bottom right; 
+  -webkit-mask-repeat: no-repeat; 
+  mask-image: 
+    radial-gradient(circle at top left, transparent 20px, black 21px),
+    radial-gradient(circle at top right, transparent 20px, black 21px),
+    radial-gradient(circle at bottom left, transparent 20px, black 21px),
+    radial-gradient(circle at bottom right, transparent 20px, black 21px);
+  mask-size: 51% 51%;
+  mask-position: top left, top right, bottom left, bottom right;
+  mask-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.project::before {
+  z-index: -2;
+  background-color: rgba(104, 170, 198, 0.5);
+  transform: translate(5px, 10px);
+  transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+}
+
+.project::after {
+  z-index: -1;
+  background-color: var(--project-bg);
 }
 
 .project:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(104, 170, 198, 0.25);
-  border-color: var(--accent-color);
 }
 
-/* 卡片圖片統一比例裁切 */
-.project img {
+.project:hover::before {
+  opacity: 0.65;
+  filter: blur(8px);
+  transform: translate(0, 12px);
+}
+
+/* ==========================================
+   卡片圖片統一比例裁切 (四邊切角 + 白色細邊版)
+   ========================================== */
+.project-image-frame {
+  position: relative;
+  width: calc(100% - 30px); 
+  margin: 0 auto 15px auto; 
+  display: block; 
+  aspect-ratio: 16 / 9; 
+  
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0; 
+  overflow: hidden;
+  padding: 0;
+  filter: drop-shadow(5px 6px 0 rgba(78, 98, 106, 0.22));
+  
+  /* 維持原有的四邊切角 */
+  -webkit-clip-path: polygon(
+    15px 0, calc(100% - 15px) 0, 
+    100% 15px, 100% calc(100% - 15px), 
+    calc(100% - 15px) 100%, 15px 100%, 
+    0 calc(100% - 15px), 0 15px
+  );
+  clip-path: polygon(
+    15px 0, calc(100% - 15px) 0, 
+    100% 15px, 100% calc(100% - 15px), 
+    calc(100% - 15px) 100%, 15px 100%, 
+    0 calc(100% - 15px), 0 15px
+  );
+}
+
+.project-image-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 3px solid #ffffff;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.project-image-frame.portrait {
+  aspect-ratio: 3 / 4; 
+  /* portrait 會自動繼承上方的 clip-path 與 filter 設定 */
+}
+
+/* 票根內的標題：加上底部實線分隔，像電影名稱欄位 */
+.project-image-frame img {
   width: 100%;
-  aspect-ratio: 16 / 9; /* 統一橫式比例 */
+  height: 100%;
+  margin: 0;
+  display: block;
+  position: relative;
+  z-index: 1;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  border-radius: 0;
+  filter: none;
+  -webkit-clip-path: polygon(
+    10px 0, calc(100% - 10px) 0, 
+    100% 10px, 100% calc(100% - 10px), 
+    calc(100% - 10px) 100%, 10px 100%, 
+    0 calc(100% - 10px), 0 10px
+  );
+  clip-path: polygon(
+    10px 0, calc(100% - 10px) 0, 
+    100% 10px, 100% calc(100% - 10px), 
+    calc(100% - 10px) 100%, 10px 100%, 
+    0 calc(100% - 10px), 0 10px
+  );
 }
 
-.project img.portrait {
-  aspect-ratio: 3 / 4; /* 特殊直式比例覆寫 */
-  object-fit: cover;  
-  border-radius: 8px; 
-}
-
-/* 卡片內文字與標籤排版 */
 .project h3 {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
   font-size: 1.3rem;
+  color: #ffffff; /* 深色底配白字 */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  text-align: center;
+  letter-spacing: 1px;
 }
 
+/* 票根內的內文 */
 .project p {
   margin: 5px 0;
   font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
 }
 
+/* 標籤改成「空心框線」，配合票根的印刷排版感且不帶圓角 */
 .project .tag {
-  background-color: var(--c4-winter-mist);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 0; /* 強制直角 */
   font-size: 0.8rem;
   display: inline-block;
-  margin-top: 5px;
+  margin-top: 8px;
+  margin-right: 4px;
 }
 
-/* 底部連結自動推至最下方並置中 */
+/* 底部連結：加上頂部【虛線】分隔，模擬票根的撕線區 */
 .project a {
   margin-top: auto; 
   align-self: center;
-  display: inline-block;
+  display: block;
+  width: 100%;
+  text-align: center;
   padding-top: 15px;
-  color: var(--accent-color);
-  
-  /* 確保 a 標籤不會攔截或限制其偽元素的絕對定位 */
+  margin-top: 20px;
+  color: #ffffff;
+  border-top: 2px dashed rgba(255, 255, 255, 0.4);
   position: static; 
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-/*創建覆蓋整張卡片的隱形點擊熱區 (維持不變) */
+/* 懸停時稍微改變文字顏色作為回饋 */
+.project a:hover {
+  color: var(--c1-dark-slate);
+}
+
+/* 創建覆蓋整張卡片的隱形點擊熱區 (維持不變) */
 .project a::after {
   content: '';
   position: absolute;
@@ -112,4 +233,34 @@
   .projects {
     grid-template-columns: 1fr; /* 螢幕過小時強制變為單行滿版排列 */
   }
+}
+
+/* ==========================================
+   增加票根高低錯落感 (僅限電腦/平板版)
+   ========================================== */
+@media screen and (min-width: 769px) {
+  /* 讓偶數項目的票根往下推 40px */
+  .project:nth-child(even) {
+    margin-top: 40px;
+  }
+  
+  /* 為了不影響 hover 浮動效果，微調偶數項的 hover 狀態 */
+  .project:nth-child(even):hover {
+    transform: translateY(-5px); 
+    /* 由於原本是用 margin-top 往下推，所以原本的 transform 浮起動畫不受影響，依然完美運作 */
+  }
+}
+
+/* ==========================================
+   雙色票根設計 (單數/雙數底色不同)
+   ========================================== */
+
+/* 🌟 單數票根 (第 1, 3, 5... 張)：維持原本的海玻璃藍 */
+.project:nth-child(odd) {
+  --project-bg: #81959f;
+}
+
+/* 🌟 雙數票根 (第 2, 4, 6... 張)：換成色卡中的 Powder Blue (粉末藍) */
+.project:nth-child(even) {
+  --project-bg: #a5bec1;
 }

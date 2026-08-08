@@ -46,7 +46,7 @@ a:hover { color: var(--accent-color); }
 h1, h2, h3 { color: var(--heading-color); }
 
 .container {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
   flex: 1;

@@ -4,32 +4,153 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>-在夢境的彼端長眠-</title>
+    <title>-在夢境的彼端長眠- | 沫鯨的魚缸</title>
     <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* 針對本頁可調整的局部樣式 */
+        /* --- 針對本頁的專屬佈局 --- */
         main.container {
-            max-width: 960px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1200px;
+            /* 稍微加寬以完美容納瀑布流 */
+            margin: 3rem auto;
+            padding: 0 1.5rem;
         }
 
-        .page-header {
+        /* --- 頂部作品資訊區塊 --- */
+        .project-header {
             text-align: center;
+            margin-bottom: 4rem;
+            padding: 2.5rem 1rem;
+            background: rgba(0, 0, 0, 0.03);
+            /* 輕微的底色提升層次感 */
+            /* 移除圓角，呈現方正俐落感 */
+            border-radius: 0;
+        }
+
+        .project-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .project-header .tag {
+            font-size: 1rem;
+            color: #777;
+            display: inline-block;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            /* 確保文字標籤的背景或邊框也沒有圓角 */
+            border-radius: 0;
+        }
+
+        /* 按鈕保留圓角 */
+        .read-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #2c3e50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            /* 保留按鈕的圓角 */
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .read-btn:hover {
+            background-color: #1a252f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: #444;
+        }
+
+        /* --- 瀑布流網格展示 (Masonry Grid) --- */
+        .masonry-gallery {
+            column-count: 4;
+            /* 大螢幕顯示 4 欄 */
+            column-gap: 1.5rem;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
             margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            /* 移除圖片外框的圓角 */
+            border-radius: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
 
-        .page-image {
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        /* 懸停放大效果 */
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 懸停漸層遮罩 */
+        .masonry-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
             display: flex;
-            justify-content: center;
-            margin-top: 2rem;
+            align-items: flex-end;
+            padding: 1.5rem;
         }
 
-        .page-image img {
-            width: 300px;
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+
+        .masonry-overlay span {
+            color: #fff;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- 響應式配置 --- */
+        @media (max-width: 1024px) {
+            .masonry-gallery {
+                column-count: 3;
+            }
+
+            /* 平板切換 3 欄 */
+        }
+
+        @media (max-width: 768px) {
+            .masonry-gallery {
+                column-count: 2;
+            }
+
+            /* 小平板切換 2 欄 */
+            .project-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .masonry-gallery {
+                column-count: 1;
+            }
+
+            /* 手機切換 1 欄 */
         }
     </style>
 </head>
@@ -54,44 +175,54 @@
     </header>
 
     <main class="container">
-        <!-- 主要頁面標題區，可編輯 -->
-        <div class="about-header">
+        <div class="project-header fade-in">
             <h1>《在夢境的彼端長眠》</h1>
-            <h2><span class="tag">#中篇原創小說</span></h2>
+            <span class="tag">#中篇原創小說</span>
+            <br>
             <a href="https://drive.google.com/file/d/1UWIzvP2FZeZApOUZXKT6r7xOyrT_3EUe/view?usp=drive_link"
-                target="_blank" rel="noopener noreferrer">+前往觀看完整文本+</a>
-
+                target="_blank" rel="noopener noreferrer" class="read-btn">
+                ✦ 前往觀看完整文本 ✦
+            </a>
         </div>
 
-
-        <div class="about-header">
-            <h2>=章節插圖=</h2>
+        <div class="section-title fade-in">
+            <h2>= 章節插圖 =</h2>
         </div>
 
+        <div class="masonry-gallery">
+            <div class="masonry-item fade-in">
+                <img src="dreamNovelPIC/novelpic8.jpg" alt="插圖 8" />
+                <div class="masonry-overlay"><span>Chapter 8</span></div>
+            </div>
 
+            <div class="masonry-item fade-in">
+                <img src="dreamNovelPIC/novelpic7.jpg" alt="插圖 7" />
+                <div class="masonry-overlay"><span>Chapter 7</span></div>
+            </div>
 
-        <div class="gallery">
-            <!-- 圖片區域，可換成你想放的圖片 -->
-            <div class="page-image fade-in">
-                <img src="dreamNovelPIC/novelpic8.jpg" alt="頁面圖片描述" />
+            <div class="masonry-item fade-in">
+                <img src="dreamNovelPIC/novelpic6.jpg" alt="插圖 6" />
+                <div class="masonry-overlay"><span>Chapter 6</span></div>
             </div>
-            <div class="page-image fade-in">
-                <img src="dreamNovelPIC/novelpic7.jpg" alt="頁面圖片描述" />
+
+            <div class="masonry-item fade-in">
+                <img src="dreamNovelPIC/novelpic5.jpg" alt="插圖 5" />
+                <div class="masonry-overlay"><span>Chapter 5</span></div>
             </div>
-            <div class="page-image fade-in">
-                <img src="dreamNovelPIC/novelpic6.jpg" alt="頁面圖片描述" />
+
+            <div class="masonry-item fade-in">
+                <img src="dreamNovelPIC/novelpic4.jpg" alt="插圖 4" />
+                <div class="masonry-overlay"><span>Chapter 4</span></div>
             </div>
-            <div class="page-image fade-in">
-                <img src="dreamNovelPIC/novelpic5.jpg" alt="頁面圖片描述" />
+
+            <div class="masonry-item fade-in">
+                <img src="dreamNovelPIC/novelpic3.jpg" alt="插圖 3" />
+                <div class="masonry-overlay"><span>Chapter 3</span></div>
             </div>
-            <div class="page-image fade-in">
-                <img src="dreamNovelPIC/novelpic4.jpg" alt="頁面圖片描述" />
-            </div>
-            <div class="page-image fade-in">
-                <img src="dreamNovelPIC/novelpic3.jpg" alt="頁面圖片描述" />
-            </div>
-            <div class="page-image fade-in">
-                <img src="dreamNovelPIC/novelpic2.jpg" alt="頁面圖片描述" />
+
+            <div class="masonry-item fade-in">
+                <img src="dreamNovelPIC/novelpic2.jpg" alt="插圖 2" />
+                <div class="masonry-overlay"><span>Chapter 2</span></div>
             </div>
         </div>
     </main>
