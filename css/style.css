@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800&family=Shippori+Mincho:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/chiron-sung-hk-webfont/css/vf.css');
 
 html { scroll-behavior: smooth; }
 
@@ -20,7 +21,7 @@ html { scroll-behavior: smooth; }
 }
 
 h1, h2, h3, .hero-title, .hero-title-cn, .water-warning, .deco-text {
-  font-family: 'Cinzel', 'Shippori Mincho', serif;
+  font-family: 'Cinzel', 'Noto Sans TC', serif;
   font-weight: 600;
   letter-spacing: 2px;
 }

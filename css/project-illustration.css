@@ -10,7 +10,7 @@
 }
 
 .gallery-header h2 {
-    font-family: 'Cinzel', 'Shippori Mincho', serif;
+    font-family: 'Cinzel', 'Noto Sans TC', serif;
     font-size: 3rem;
     color: var(--heading-color, #333);
     margin-bottom: 10px;

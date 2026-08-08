@@ -14,7 +14,7 @@ body {
 }
 
 .gallery-page-header .massive-title {
-    font-family: 'Cinzel', 'Shippori Mincho', serif;
+    font-family: 'Cinzel', 'Noto Sans TC', serif;
     font-size: 5rem;
     font-weight: 700;
     color: var(--heading-color);
