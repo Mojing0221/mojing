@@ -107,44 +107,45 @@
   );
 }
 
-.project-image-frame::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  border: 3px solid #ffffff;
+/* ==========================================
+   卡片圖片 - 完美等寬斜角白邊版
+   ========================================== */
+.project-image-frame {
+  position: relative;
+  width: calc(100% - 30px); 
+  margin: 0 auto 15px auto; 
+  aspect-ratio: 16 / 9; 
+  background-color: #ffffff; /* 白底，用來當作邊框顏色 */
+  
+  /*利用 padding 直接往內擠出 3px 的空間，形成直線白邊 */
+  padding: 3px; 
   box-sizing: border-box;
-  pointer-events: none;
+
+  /*外層框架的切角 (15px) */
+  -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+  clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+
+  /* 保留你設定的陰影 */
+  filter: drop-shadow(5px 6px 0 rgba(78, 98, 106, 0.22));
+}
+
+.project-image-frame::before {
+  display: none;
 }
 
 .project-image-frame.portrait {
   aspect-ratio: 3 / 4; 
-  /* portrait 會自動繼承上方的 clip-path 與 filter 設定 */
 }
 
-/* 票根內的標題：加上底部實線分隔，像電影名稱欄位 */
 .project-image-frame img {
   width: 100%;
   height: 100%;
-  margin: 0;
-  display: block;
-  position: relative;
-  z-index: 1;
   object-fit: cover;
-  border-radius: 0;
-  filter: none;
-  -webkit-clip-path: polygon(
-    10px 0, calc(100% - 10px) 0, 
-    100% 10px, 100% calc(100% - 10px), 
-    calc(100% - 10px) 100%, 10px 100%, 
-    0 calc(100% - 10px), 0 10px
-  );
-  clip-path: polygon(
-    10px 0, calc(100% - 10px) 0, 
-    100% 10px, 100% calc(100% - 10px), 
-    calc(100% - 10px) 100%, 10px 100%, 
-    0 calc(100% - 10px), 0 10px
-  );
+  display: block;
+
+  /* 套用黃金公式！內層切角 = 15 - (3 * 0.586) = 13.2px */
+  -webkit-clip-path: polygon(13.2px 0, calc(100% - 13.2px) 0, 100% 13.2px, 100% calc(100% - 13.2px), calc(100% - 13.2px) 100%, 13.2px 100%, 0 calc(100% - 13.2px), 0 13.2px);
+  clip-path: polygon(13.2px 0, calc(100% - 13.2px) 0, 100% 13.2px, 100% calc(100% - 13.2px), calc(100% - 13.2px) 100%, 13.2px 100%, 0 calc(100% - 13.2px), 0 13.2px);
 }
 
 .project h3 {
