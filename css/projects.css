@@ -116,8 +116,6 @@
   margin: 0 auto 15px auto; 
   aspect-ratio: 16 / 9; 
   background-color: #ffffff; /* 白底，用來當作邊框顏色 */
-  
-  /*利用 padding 直接往內擠出 3px 的空間，形成直線白邊 */
   padding: 3px; 
   box-sizing: border-box;
 
@@ -143,7 +141,7 @@
   object-fit: cover;
   display: block;
 
-  /* 套用黃金公式！內層切角 = 15 - (3 * 0.586) = 13.2px */
+  /* 套用公式！內層切角 = 15 - (3 * 0.586) = 13.2px */
   -webkit-clip-path: polygon(13.2px 0, calc(100% - 13.2px) 0, 100% 13.2px, 100% calc(100% - 13.2px), calc(100% - 13.2px) 100%, 13.2px 100%, 0 calc(100% - 13.2px), 0 13.2px);
   clip-path: polygon(13.2px 0, calc(100% - 13.2px) 0, 100% 13.2px, 100% calc(100% - 13.2px), calc(100% - 13.2px) 100%, 13.2px 100%, 0 calc(100% - 13.2px), 0 13.2px);
 }
@@ -157,6 +155,15 @@
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
   text-align: center;
   letter-spacing: 1px;
+}
+
+.project h3 span {
+  display: block;
+  font-size: 0.75em;
+  margin-top: 3px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  opacity: 0.9;
 }
 
 /* 票根內的內文 */
