@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800&family=Shippori+Mincho:wght@400;700;800&display=swap');
+
 html { scroll-behavior: smooth; }
 
 :root {
@@ -18,7 +20,7 @@ html { scroll-behavior: smooth; }
 }
 
 h1, h2, h3, .hero-title, .hero-title-cn, .water-warning, .deco-text {
-  font-family: 'Cinzel', 'Noto Serif TC', serif;
+  font-family: 'Cinzel', 'Shippori Mincho', serif;
   font-weight: 600;
   letter-spacing: 2px;
 }
@@ -221,4 +223,43 @@ body.home footer a { color: rgba(255, 255, 255, 0.8); }
   .container { padding: 15px 15px; }
   header nav { gap: 15px; padding: 10px; }
   header nav a { font-size: 1rem; }
+}
+
+/* ==========================================
+   子頁面通用頂部大標題 (取代個別頁面的設定)
+   ========================================== */
+.page-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-top: 20px;
+  position: relative;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 4px; /* 稍微拉開字距，增加質感 */
+  margin: 0;
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.page-header h1::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-color); /* 使用你的冷水藍主色調 */
+  margin: 15px auto 0 auto;
+  border-radius: 2px;
+}
+
+.page-header h1 span {
+  display: block; 
+  font-size: 0.35em;
+  letter-spacing: 8px;
+  font-weight: 400;
+  margin-top: 10px;
+  color: var(--c3-cold-smoke);
+  text-transform: uppercase;
+  font-family: 'Noto Sans TC', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
